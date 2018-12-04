@@ -1,12 +1,80 @@
-﻿<Window x:Class="MainWindow"
+﻿<Window x:Class="MainWindow" x:Name="Panel_pacientes"
+        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Hospital_Ultimate"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
-    <Grid>
-        
-    </Grid>
+        Title="MainWindow" Height="1080" Width="1920"
+        WindowStyle="None"
+        Background="{DynamicResource MaterialDesignPaper}"
+        FontFamily="Noto Sans">
+    <materialDesign:DialogHost Identifier="RootDialog" SnackbarMessageQueue="{Binding ElementName=MainSnack, Path=MessageQueue}">
+        <materialDesign:DrawerHost IsRightDrawerOpen="{Binding IsChecked, ElementName=btn_menu}" Foreground="#FF1976D2">
+            <materialDesign:DrawerHost.RightDrawerContent>
+                <DockPanel
+                    MinWidth="200">
+                    <Rectangle
+                    Height="10"
+                    DockPanel.Dock="Bottom" Fill="DodgerBlue"/>
+                    <ToggleButton Style="{StaticResource MaterialDesignHamburgerToggleButton}"
+                              x:Name="btn_rtn"
+                                  DockPanel.Dock="Top"
+                                  HorizontalAlignment="Left"
+                                  Margin="0 8 8 0"
+                                  IsChecked="{Binding ElementName=btn_menu, Path=IsChecked, Mode=TwoWay}"
+                                  Cursor="Hand" RenderTransformOrigin="0.5,0.5">
+                        <ToggleButton.RenderTransform>
+                            <TransformGroup>
+                                <ScaleTransform/>
+                                <SkewTransform/>
+                                <RotateTransform Angle="180"/>
+                                <TranslateTransform/>
+                            </TransformGroup>
+                        </ToggleButton.RenderTransform>
+                    </ToggleButton>
+                    <ListBox x:Name="lat_menu"
+                             Margin="0 16 0 16"
+                         Height="auto" Width="auto">
+                        <ListBoxItem x:Name="btn_close"
+                                 Content="Salir"
+                                 Cursor="Hand"
+                                     Height="50"
+                                     FontSize="16"/>
+                    </ListBox>
+                </DockPanel>
+            </materialDesign:DrawerHost.RightDrawerContent>
+            <!--FINAL DEL PANEL MENÚ LATERAL-->
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="*"/>
+                </Grid.RowDefinitions>
+                <Border x:Name="win_mov" CornerRadius="0,0,0,0">
+                    <materialDesign:ColorZone
+            Mode="PrimaryDark"
+            Padding="10"
+            CornerRadius="0"
+            Margin="0">
+                        <DockPanel>
+                            <ToggleButton x:Name="btn_menu"
+                                          Style="{DynamicResource MaterialDesignHamburgerToggleButton}"
+                                          IsChecked="False"
+                                          HorizontalAlignment="Right"
+                                          Cursor="Hand" Width="30" Height="30" DockPanel.Dock="Right"/>
+                            <TextBlock
+                    VerticalAlignment="Center" HorizontalAlignment="Center"
+                    Margin="30 0 0 0"
+                    FontSize="22"
+                                Text="Sala de Espera"></TextBlock>
+                        </DockPanel>
+                    </materialDesign:ColorZone>
+                </Border>
+                <materialDesign:Snackbar MessageQueue="{materialDesign:MessageQueue}"
+                                         x:Name="MainSnack"
+                                         Grid.Row="1"/>
+            </Grid>
+        </materialDesign:DrawerHost>
+    </materialDesign:DialogHost>
 </Window>
