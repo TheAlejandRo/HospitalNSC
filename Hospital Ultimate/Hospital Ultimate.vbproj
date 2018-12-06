@@ -48,6 +48,9 @@
   <PropertyGroup>
     <OptionInfer>On</OptionInfer>
   </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationIcon>Logo.ico</ApplicationIcon>
+  </PropertyGroup>
   <ItemGroup>
     <Reference Include="Google.Protobuf, Version=3.5.1.0, Culture=neutral, PublicKeyToken=a7d26565bac4d604, processorArchitecture=MSIL">
       <HintPath>..\packages\Google.Protobuf.3.5.1\lib\net45\Google.Protobuf.dll</HintPath>
@@ -89,18 +92,165 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="PanelsDR\Drpanel1.xaml.vb">
+      <DependentUpon>Drpanel1.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="PanelsDR\Drpanel10.xaml.vb">
+      <DependentUpon>Drpanel10.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="PanelsDR\Drpanel2.xaml.vb">
+      <DependentUpon>Drpanel2.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="PanelsDR\Drpanel3.xaml.vb">
+      <DependentUpon>Drpanel3.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="PanelsDR\Drpanel4.xaml.vb">
+      <DependentUpon>Drpanel4.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="PanelsDR\Drpanel5.xaml.vb">
+      <DependentUpon>Drpanel5.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="PanelsDR\Drpanel6.xaml.vb">
+      <DependentUpon>Drpanel6.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="PanelsDR\Drpanel7.xaml.vb">
+      <DependentUpon>Drpanel7.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="PanelsDR\Drpanel8.xaml.vb">
+      <DependentUpon>Drpanel8.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="PanelsDR\Drpanel9.xaml.vb">
+      <DependentUpon>Drpanel9.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="PanelsSCR\Scrpanel1.xaml.vb">
+      <DependentUpon>Scrpanel1.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="PanelsSCR\Scrpanel2.xaml.vb">
+      <DependentUpon>Scrpanel2.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="PanelsSCR\Scrpanel3.xaml.vb">
+      <DependentUpon>Scrpanel3.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="PanelsSCR\Scrpanel4.xaml.vb">
+      <DependentUpon>Scrpanel4.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="PanelsSCR\Scrpanel5.xaml.vb">
+      <DependentUpon>Scrpanel5.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Secretarias.xaml.vb">
+      <DependentUpon>Secretarias.xaml</DependentUpon>
+    </Compile>
+    <Page Include="Administrador.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Dialogs\MessageClsDlg.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Dialogs\MessageDialog.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Doctores.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Login.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
+    <Compile Include="Administrador.xaml.vb">
+      <DependentUpon>Administrador.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Application.xaml.vb">
       <DependentUpon>Application.xaml</DependentUpon>
       <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Dialogs\MessageClsDlg.xaml.vb">
+      <DependentUpon>MessageClsDlg.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Dialogs\MessageDialog.xaml.vb">
+      <DependentUpon>MessageDialog.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Doctores.xaml.vb">
+      <DependentUpon>Doctores.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Login.xaml.vb">
+      <DependentUpon>Login.xaml</DependentUpon>
     </Compile>
     <Compile Include="MainWindow.xaml.vb">
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Page Include="PanelsDR\Drpanel1.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="PanelsDR\Drpanel10.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="PanelsDR\Drpanel2.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="PanelsDR\Drpanel3.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="PanelsDR\Drpanel4.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="PanelsDR\Drpanel5.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="PanelsDR\Drpanel6.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="PanelsDR\Drpanel7.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="PanelsDR\Drpanel8.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="PanelsDR\Drpanel9.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="PanelsSCR\Scrpanel1.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="PanelsSCR\Scrpanel2.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="PanelsSCR\Scrpanel3.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="PanelsSCR\Scrpanel4.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="PanelsSCR\Scrpanel5.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Secretarias.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
   </ItemGroup>
   <ItemGroup>
     <Import Include="System.Threading.Tasks" />
@@ -148,16 +298,21 @@
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.vb</LastGenOutput>
     </None>
-    <None Include="packages.config" />
+    <None Include="packages.config">
+      <SubType>Designer</SubType>
+    </None>
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Dialogs\" />
     <Folder Include="PanelsAD\" />
-    <Folder Include="PanelsDR\" />
-    <Folder Include="PanelsSCR\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Logotipo Hospital Nuestra Señora del Carmen - editable transparent.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Logo.ico" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.VisualBasic.targets" />
 </Project>

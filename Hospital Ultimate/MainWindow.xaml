@@ -12,14 +12,15 @@
         FontFamily="Noto Sans">
     <materialDesign:DialogHost Identifier="RootDialog" SnackbarMessageQueue="{Binding ElementName=MainSnack, Path=MessageQueue}">
         <materialDesign:DrawerHost IsRightDrawerOpen="{Binding IsChecked, ElementName=btn_menu}" Foreground="#FF1976D2">
-            <materialDesign:DrawerHost.RightDrawerContent>
+            <materialDesign:DrawerHost.RightDrawerContent >
                 <DockPanel
                     MinWidth="200">
                     <Rectangle
                     Height="10"
-                    DockPanel.Dock="Bottom" Fill="DodgerBlue"/>
+                    DockPanel.Dock="Bottom" Fill="#FF1976D2"/>
                     <ToggleButton Style="{StaticResource MaterialDesignHamburgerToggleButton}"
                               x:Name="btn_rtn"
+                                  Foreground="#FF1976D2"
                                   DockPanel.Dock="Top"
                                   HorizontalAlignment="Left"
                                   Margin="0 8 8 0"
@@ -36,7 +37,7 @@
                     </ToggleButton>
                     <ListBox x:Name="lat_menu"
                              Margin="0 16 0 16"
-                         Height="auto" Width="auto">
+                             Foreground="#FF1976D2">
                         <ListBoxItem x:Name="btn_close"
                                  Content="Salir"
                                  Cursor="Hand"
@@ -45,7 +46,6 @@
                     </ListBox>
                 </DockPanel>
             </materialDesign:DrawerHost.RightDrawerContent>
-            <!--FINAL DEL PANEL MENÚ LATERAL-->
             <Grid>
                 <Grid.RowDefinitions>
                     <RowDefinition Height="Auto"/>
@@ -74,6 +74,10 @@
                 <materialDesign:Snackbar MessageQueue="{materialDesign:MessageQueue}"
                                          x:Name="MainSnack"
                                          Grid.Row="1"/>
+                <WebBrowser Grid.Row="1"
+                            x:Name="web_view" Margin="0,0,552,257"/>
+                <DataGrid x:Name="Listado_tikets"
+                          Grid.Row="1" Margin="1365,10,0,257"/>
             </Grid>
         </materialDesign:DrawerHost>
     </materialDesign:DialogHost>

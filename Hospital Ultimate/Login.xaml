@@ -1,0 +1,98 @@
+﻿<Window x:Class="Login" x:Name="LoginHNSC"
+        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Hospital_Ultimate"
+        mc:Ignorable="d"
+        Title="Login"
+        Background="Transparent"
+        Height="480" Width="320"
+        FontFamily="Noto Sans"
+        WindowStartupLocation="CenterScreen"
+        AllowsTransparency="True" WindowStyle="None">
+    <Border CornerRadius="20" Background="{DynamicResource MaterialDesignPaper}">
+        <materialDesign:DialogHost Identifier="RootDialog" SnackbarMessageQueue="{Binding ElementName=MainSnack, Path=MessageQueue}">
+            <StackPanel>
+                <Grid Height="480">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="*"/>
+                    </Grid.RowDefinitions>
+                    <Border x:Name="Window_mov" CornerRadius="20,20,0,0" Grid.ColumnSpan="2">
+                        <materialDesign:ColorZone
+                        Mode="PrimaryDark"
+                        Padding="10"
+                        CornerRadius="20,20,0,0"
+                        materialDesign:ShadowAssist.ShadowDepth="Depth3"
+                        Margin="0">
+                            <DockPanel>
+                                <TextBlock
+                                    VerticalAlignment="Center" HorizontalAlignment="Center"
+                                    Margin="0 0 0 0" FontSize="14" FontWeight="Normal">
+                                Hospital NSC - Login
+                                </TextBlock>
+                            </DockPanel>
+                        </materialDesign:ColorZone>
+                    </Border>
+                    <Image
+                Height="200" Width="200"
+                Grid.Row="1" VerticalAlignment="Top" Margin="0,15,0,0"
+                Grid.ColumnSpan="2" Source="Logotipo Hospital Nuestra Señora del Carmen - editable transparent.png"/>
+                    <TextBlock
+                Foreground="DodgerBlue" FontWeight="Bold"
+                        FontSize="16"
+                Grid.Row="1"
+                Margin="0,75,90,0"
+                VerticalAlignment="Center" HorizontalAlignment="Center">
+                Usuario
+                    </TextBlock>
+                    <TextBox x:Name="Txt_user"
+                Width="100"  Height="26" BorderBrush="#7F0078D7"
+                FontSize="12"
+                Grid.Row="1"
+                Margin="120,75,0,0" FontFamily="Segoe UI Semibold">
+                        <!--SelectionBrush="#990078D7" BorderBrush="#7F0078D7" Foreground="#D8000000"-->
+                    </TextBox>
+                    <TextBlock
+                Foreground="DodgerBlue" FontWeight="Bold"
+                        FontSize="16"
+                Grid.Row="1"
+                Margin="0,185,115,0"
+                VerticalAlignment="Center" HorizontalAlignment="Center">
+                Contraseña
+                    </TextBlock>
+                    <PasswordBox x:Name="Txt_pass"
+                Width="100" Height="26"
+                                 FontSize="12"
+                Grid.Row="1"
+                Margin="120,185,0,0" BorderBrush="#7F0078D7" FontFamily="Segoe UI Semibold"/>
+                    <Button x:Name="btn_sig"
+                Width="145"
+                Margin="15,0,0,0"
+                VerticalAlignment="Bottom" HorizontalAlignment="Left"
+                Grid.Row="1"
+                Style="{StaticResource MaterialDesignFlatButton}"
+                            FontWeight="Bold"
+                            IsDefault="True">
+                        Aceptar
+                    </Button>
+                    <Button x:Name="bnt_close"
+                Width="145"
+                Margin="0 0 15 0"
+                VerticalAlignment="Bottom" HorizontalAlignment="Right"
+                Grid.Row="1"
+                Style="{StaticResource MaterialDesignFlatButton}"
+                            FontWeight="Bold"
+                            IsCancel="True">
+                        Cerrar
+                    </Button>
+                    <materialDesign:Snackbar MessageQueue="{materialDesign:MessageQueue}"
+                                         x:Name="MainSnack"
+                                         Grid.Row="1"/>
+                </Grid>
+            </StackPanel>
+        </materialDesign:DialogHost>
+    </Border>
+</Window>
