@@ -23,4 +23,5 @@ Public Class Administrador
         Me.Finalize()
         Me.Close()
     End Sub
+
 End Class

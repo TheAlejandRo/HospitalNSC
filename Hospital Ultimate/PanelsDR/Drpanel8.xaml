@@ -1,12 +1,44 @@
 ﻿<UserControl x:Class="Drpanel8"
+             xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:Hospital_Ultimate"
              mc:Ignorable="d" 
-             d:DesignHeight="450" d:DesignWidth="800">
+             d:DesignHeight="357" d:DesignWidth="550"
+             FontFamily="Noto Sans">
     <Grid>
-            
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="167*"/>
+            <ColumnDefinition Width="383*"/>
+        </Grid.ColumnDefinitions>
+        <DataGrid x:Name="list_pacientes" Margin="10"
+                  Foreground="#FF1976D2" FontSize="16" ColumnWidth="147"
+                  SelectedIndex="0">
+        </DataGrid>
+        <ToggleButton x:Name="estado"
+                      Grid.Column="1"
+                Style="{StaticResource MaterialDesignSwitchToggleButton}"  Margin="0,10,10,0"
+                      HorizontalAlignment="Right" Width="60" Height="30" VerticalAlignment="Top">
+            <materialDesign:PackIcon Kind="AccountOff" Cursor="Hand">
+            </materialDesign:PackIcon>
+            <materialDesign:ToggleButtonAssist.OnContent>
+                <materialDesign:PackIcon Kind="AccountCircle" />
+            </materialDesign:ToggleButtonAssist.OnContent>
+        </ToggleButton>
+        <TextBlock x:Name="txt_estado"
+                   Grid.Column="1" HorizontalAlignment="Right" Margin="0,15,60,0" TextWrapping="Wrap"
+                   Text="Conectado" VerticalAlignment="Top" Foreground="#FF1976D2" Height="20" Width="70" TextAlignment="Center">
+            <TextBlock.Effect>
+                <DropShadowEffect ShadowDepth="4" Opacity="0.5" BlurRadius="4"/>
+            </TextBlock.Effect>
+        </TextBlock>
+        <Button x:Name="cliente_sig"
+                Content="SIGUIENTE" Grid.Column="1"
+                Height="41" Width="125" Margin="0 40 0 0" FontWeight="Bold"/>
+        <TextBlock x:Name="cliente_actual"
+                   Grid.Column="1" Text="Tiket No.1" Height="40" Width="160"
+                   FontSize="30" Foreground="#FF1976D2" FontWeight="Bold" TextAlignment="Center" Margin="0 0 0 100"/>
     </Grid>
 </UserControl>

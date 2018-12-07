@@ -18,10 +18,7 @@ Public Class Secretarias
 
     Private Sub btn_menu_Click(sender As Object, e As RoutedEventArgs) Handles btn_menu.Click
         lat_menu.SelectedIndex = -1
-    End Sub
-
-    Private Sub generador_ticket_Selected(sender As Object, e As RoutedEventArgs) Handles generador_ticket.Selected
-        btn_menu.IsChecked = False
+        btn_rtn.IsChecked = True
     End Sub
 
     Private Sub config_pnlespera_Selected(sender As Object, e As RoutedEventArgs) Handles config_pnlespera.Selected
@@ -36,17 +33,16 @@ Public Class Secretarias
     End Sub
 
     Private Sub cls_sesion_Selected(sender As Object, e As RoutedEventArgs) Handles cls_sesion.Selected
-        btn_menu.IsChecked = False
-        Dim panel As New MainWindow
         Dim login As New Login
+        btn_menu.IsChecked = False
         login.Show()
-        panel.Close()
         Me.Close()
     End Sub
 
     Private Sub pnl_espera_Selected(sender As Object, e As RoutedEventArgs) Handles pnl_espera.Selected
         Dim panel As New MainWindow
-        panel.Show()
+        btn_menu.IsChecked = False
+        Panel.Show()
     End Sub
 
     Private Sub Secretarias_Loaded(sender As Object, e As RoutedEventArgs) Handles Me.Loaded
@@ -59,19 +55,19 @@ Public Class Secretarias
             If tabla.Rows.Count = 1 Then
                 panel_secretaria.Children.Clear()
                 If tabla.Rows(0)(0).ToString = "1" Then
-                    panel_secretaria.Children.Add(New Drpanel1)
+                    panel_secretaria.Children.Add(New Scrpanel1)
                     Activo()
                 ElseIf tabla.Rows(0)(0).ToString = "2" Then
-                    panel_secretaria.Children.Add(New Drpanel2)
+                    panel_secretaria.Children.Add(New Scrpanel2)
                     Activo()
                 ElseIf tabla.Rows(0)(0).ToString = "3" Then
-                    panel_secretaria.Children.Add(New Drpanel3)
+                    panel_secretaria.Children.Add(New Scrpanel3)
                     Activo()
                 ElseIf tabla.Rows(0)(0).ToString = "4" Then
-                    panel_secretaria.Children.Add(New Drpanel4)
+                    panel_secretaria.Children.Add(New Scrpanel4)
                     Activo()
                 ElseIf tabla.Rows(0)(0).ToString = "5" Then
-                    panel_secretaria.Children.Add(New Drpanel5)
+                    panel_secretaria.Children.Add(New Scrpanel5)
                     Activo()
                 End If
             Else
@@ -107,5 +103,29 @@ Public Class Secretarias
         Finally
             conexion.Close()
         End Try
+    End Sub
+
+    Private Sub generador_ticket_Selected(sender As Object, e As RoutedEventArgs) Handles generador_ticket.Selected
+        btn_menu.IsChecked = False
+        If IDscr.Text = "1" Then
+            panel_secretaria.Children.Add(New Scrpanel1)
+        ElseIf IDscr.Text = "2" Then
+            panel_secretaria.Children.Add(New Scrpanel2)
+        ElseIf IDscr.Text = "3" Then
+            panel_secretaria.Children.Add(New Scrpanel3)
+        ElseIf IDscr.Text = "4" Then
+            panel_secretaria.Children.Add(New Scrpanel4)
+        ElseIf IDscr.Text = "5" Then
+            panel_secretaria.Children.Add(New Scrpanel5)
+        Else
+            Dim dlgshw As New MessageDialog
+            dlgshw.Message.Text = "Contacte con el Administrador del Sistema, Error No.x004-1"
+            DialogHost.Show(dlgshw, "RootDialog")
+        End If
+    End Sub
+
+    Private Sub btn_rtn_Checked(sender As Object, e As RoutedEventArgs) Handles btn_rtn.Click
+        btn_menu.IsChecked = False
+        btn_rtn.IsChecked = True
     End Sub
 End Class

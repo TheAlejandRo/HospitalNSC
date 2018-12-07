@@ -1,7 +1,6 @@
 ﻿Imports System.Data
 Imports MySql.Data.MySqlClient
 Imports MaterialDesignThemes.Wpf
-Imports System.ComponentModel
 
 Public Class Doctores
 
@@ -9,13 +8,12 @@ Public Class Doctores
     Dim consulta As String = String.Empty
     Dim comando As MySqlCommand
     Dim adaptador As MySqlDataAdapter
-    Dim tabla As DataTable
+    Dim tabla As New DataTable
     Dim update_state As String = String.Empty
 
     Private Sub win_mov_MouseLeftButtonDown(sender As Object, e As MouseButtonEventArgs) Handles win_mov.MouseLeftButtonDown
         DragMove()
     End Sub
-
 
     Private Sub btn_close_Selected(sender As Object, e As RoutedEventArgs) Handles btn_close.Selected
         Dim dlgclshw As New MessageClsDlg
@@ -35,7 +33,6 @@ Public Class Doctores
             consulta = "SELECT idusuario FROM usuarios WHERE docnom='" & Dr_Title.Text & "' AND tipo_usuario='Doctor'"
             comando = New MySqlCommand(consulta, conexion)
             adaptador = New MySqlDataAdapter(comando)
-            tabla = New DataTable
             adaptador.Fill(tabla)
             If tabla.Rows.Count = 1 Then
                 panel_dr.Children.Clear()
@@ -82,7 +79,7 @@ Public Class Doctores
         End Try
     End Sub
 
-    Private Sub Activo()
+    Public Sub Activo()
         Try
             update_state = "UPDATE usuarios SET estado='1' WHERE idusuario='" & idDr.Text & "'"
             comando = New MySqlCommand(update_state, conexion)
@@ -103,10 +100,6 @@ Public Class Doctores
         Finally
             conexion.Close()
         End Try
-    End Sub
-
-    Private Sub Doctores_Closing(sender As Object, e As CancelEventArgs) Handles Me.Closing
-        Inactivo()
     End Sub
 
     Private Sub btn_menu_Checked(sender As Object, e As RoutedEventArgs) Handles btn_menu.Checked
