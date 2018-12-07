@@ -5,7 +5,7 @@ Imports System.Windows.Threading
 
 Public Class Scrpanel1
 
-    Dim Timer As DispatcherTimer = New DispatcherTimer
+    Dim WithEvents Timer1 As New DispatcherTimer
     Dim conexion As New MySqlConnection("host=127.0.0.1; user=root; database=dbturnos")
     Dim consulta As String = String.Empty
     Dim comando As MySqlCommand
@@ -13,6 +13,8 @@ Public Class Scrpanel1
     Dim tabla As New DataTable
 
     Private Sub Scrpanel1_Loaded(sender As Object, e As RoutedEventArgs) Handles Me.Loaded
+        Timer1.Interval = New TimeSpan(0, 0, 1)
+        Timer1.Start()
         Try
             conexion.Open()
             consulta = "SELECT idusuario, docnom, apnom FROM usuarios WHERE tipo_usuario='Doctor'"
