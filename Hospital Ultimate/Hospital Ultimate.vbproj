@@ -92,6 +92,15 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="PanelsAD\UsersAD.xaml.vb">
+      <DependentUpon>UsersAD.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="PanelsAD\UsersDoc.xaml.vb">
+      <DependentUpon>UsersDoc.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="PanelsAD\UsersScr.xaml.vb">
+      <DependentUpon>UsersScr.xaml</DependentUpon>
+    </Compile>
     <Compile Include="PanelsDR\Drpanel1.xaml.vb">
       <DependentUpon>Drpanel1.xaml</DependentUpon>
     </Compile>
@@ -121,9 +130,6 @@
     </Compile>
     <Compile Include="PanelsDR\Drpanel9.xaml.vb">
       <DependentUpon>Drpanel9.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="PanelsSCR\Scrpanel1.xaml.vb">
-      <DependentUpon>Scrpanel1.xaml</DependentUpon>
     </Compile>
     <Compile Include="PanelsSCR\Scrpanel2.xaml.vb">
       <DependentUpon>Scrpanel2.xaml</DependentUpon>
@@ -187,6 +193,18 @@
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Page Include="PanelsAD\UsersAD.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="PanelsAD\UsersDoc.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="PanelsAD\UsersScr.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="PanelsDR\Drpanel1.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -224,10 +242,6 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="PanelsDR\Drpanel9.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="PanelsSCR\Scrpanel1.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -305,9 +319,7 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="PanelsAD\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <Resource Include="Logotipo Hospital Nuestra Señora del Carmen - editable transparent.png" />
   </ItemGroup>
