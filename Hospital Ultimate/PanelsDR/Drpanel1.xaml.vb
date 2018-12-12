@@ -1,8 +1,10 @@
 ﻿Imports System.Data
+Imports System.Windows.Threading
 Imports MySql.Data.MySqlClient
 
 Public Class Drpanel1
 
+    Dim WithEvents ds As New DispatcherTimer
     Dim conexion As New MySqlConnection("server=192.168.1.90; user=TheAlejandRo; password=Tech.Code; database=dbturnos")
     Dim consulta As String = String.Empty
     Dim comando As MySqlCommand
@@ -11,6 +13,8 @@ Public Class Drpanel1
     Dim update_state As String = String.Empty
 
     Private Sub Drpanel1_Loaded(sender As Object, e As RoutedEventArgs) Handles Me.Loaded
+        ds.Interval = New TimeSpan(0, 0, 1)
+        ds.Start()
         estado.IsChecked = True
         Lista()
     End Sub
@@ -64,5 +68,9 @@ Public Class Drpanel1
         Finally
             conexion.Close()
         End Try
+    End Sub
+
+    Private Sub ds_Tick(sender As Object, e As EventArgs) Handles ds.Tick
+        Lista()
     End Sub
 End Class
