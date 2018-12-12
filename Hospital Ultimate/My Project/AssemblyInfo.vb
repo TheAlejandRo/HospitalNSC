@@ -12,12 +12,12 @@ Imports System.Windows
 ' Revisar los valores de los atributos del ensamblado
 
 <Assembly: AssemblyTitle("Hospital Nuestra Señora del Carmen")>
-<Assembly: AssemblyDescription("Sistema de turnos")>
+<Assembly: AssemblyDescription("")>
 <Assembly: AssemblyCompany("Hospital Nuestra Señora del Carmen")>
-<Assembly: AssemblyProduct("Hospital_Ultimate")>
+<Assembly: AssemblyProduct("Sistema De Turnos")>
 <Assembly: AssemblyCopyright("Copyright ©  2018 AlejandRo Caal")>
 <Assembly: AssemblyTrademark("TheAlejandRoCode")>
-<Assembly: ComVisible(True)>
+<Assembly: ComVisible(False)>
 
 'Para comenzar a compilar aplicaciones que se puedan traducir, establezca
 '<UICulture>CultureYouAreCodingWith</UICulture> en el archivo .vbproj
@@ -57,4 +57,4 @@ Imports System.Windows
 
 <Assembly: AssemblyVersion("1.0.0.0")>
 <Assembly: AssemblyFileVersion("1.0.0.0")>
-<Assembly: NeutralResourcesLanguage("es-419")>
+<Assembly: NeutralResourcesLanguage("")>
