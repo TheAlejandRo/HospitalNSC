@@ -7,7 +7,7 @@ Public Class Login
     Dim Secretaria As New Secretarias
     Dim administrador As New Administrador
     Dim Doctores As New Doctores
-    Dim conexion As New MySqlConnection("host=127.0.0.1; user=root; database=dbturnos")
+    Dim conexion As New MySqlConnection("server=192.168.1.90; user=TheAlejandRo; password=Tech.Code; database=dbturnos")
     Dim consulta As String = String.Empty
     Dim comando As MySqlCommand
     Dim adaptador As MySqlDataAdapter

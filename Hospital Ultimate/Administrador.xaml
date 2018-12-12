@@ -33,6 +33,16 @@
                          FontSize="14"
                              FontWeight="Heavy"
                          DockPanel.Dock="Top">
+                        <ListBoxItem x:Name="UserAD"
+                                     Content="Administradores"
+                                     Cursor="Hand"/>
+                        <ListBoxItem x:Name="UserDR"
+                                     Content="Doctores"
+                                     Cursor="Hand"/>
+                        <ListBoxItem x:Name="UserSCR"
+                                     Content="Secretarias"
+                                     Cursor="Hand"/>
+                        <Separator/>
                         <ListBoxItem x:Name="cls_sesion"
                                      Content="Cerrar Sesión"
                                      Cursor="Hand"/>
@@ -83,6 +93,7 @@
                 <materialDesign:Snackbar MessageQueue="{materialDesign:MessageQueue}"
                                      x:Name="MainSnack"
                                      Grid.Row="1"/>
+                <Grid x:Name="PgAdmin" Grid.Row="1"/>
             </Grid>
         </materialDesign:DrawerHost>
     </materialDesign:DialogHost>

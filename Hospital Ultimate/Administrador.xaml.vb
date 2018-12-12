@@ -24,4 +24,13 @@ Public Class Administrador
         Me.Close()
     End Sub
 
+    Private Sub Administrador_Loaded(sender As Object, e As RoutedEventArgs) Handles Me.Loaded
+
+    End Sub
+
+    Private Sub UserDR_Selected(sender As Object, e As RoutedEventArgs) Handles UserDR.Selected
+        btn_menu.IsChecked = False
+        PgAdmin.Children.Clear()
+        PgAdmin.Children.Add(New UsersAD)
+    End Sub
 End Class
