@@ -13,7 +13,7 @@ Public Class Drpanel1
     Dim update_state As String = String.Empty
 
     Private Sub Drpanel1_Loaded(sender As Object, e As RoutedEventArgs) Handles Me.Loaded
-        ds.Interval = New TimeSpan(0, 0, 1)
+        ds.Interval = New TimeSpan(0, 0, 60)
         ds.Start()
         estado.IsChecked = True
         Lista()
@@ -22,11 +22,13 @@ Public Class Drpanel1
     Public Sub Lista()
         Try
             conexion.Open()
-            consulta = "SELECT Tiket FROM pacientes WHERE idDoctor='6'"
+            consulta = "SELECT Tiket, estado_paciente FROM pacientes WHERE idDoctor='6'"
             comando = New MySqlCommand(consulta, conexion)
             adaptador = New MySqlDataAdapter(comando)
+            tabla.Clear()
             adaptador.Fill(tabla)
             list_pacientes.ItemsSource = tabla.DefaultView
+            list_pacientes.SelectedItem = paciente.Text
         Catch ex As MySqlException
             MessageBox.Show(ex.Message)
         Finally
@@ -72,5 +74,14 @@ Public Class Drpanel1
 
     Private Sub ds_Tick(sender As Object, e As EventArgs) Handles ds.Tick
         Lista()
+    End Sub
+
+    Private Sub cliente_sig_Click(sender As Object, e As RoutedEventArgs) Handles cliente_sig.Click
+        list_pacientes.SelectedIndex += 1
+        Dim cuentapacientes As Integer
+        cuentapacientes = list_pacientes.Items.Count
+        If list_pacientes.SelectedIndex <= cuentapacientes Then
+            MessageBox.Show("Ultimo Registro")
+        End If
     End Sub
 End Class

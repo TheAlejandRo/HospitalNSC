@@ -8,24 +8,108 @@
       mc:Ignorable="d" 
       d:DesignHeight="450" d:DesignWidth="800"
       FontFamily="Noto Sans">
-    <Grid Margin="10">
+    <Grid  Margin="10">
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="7*"/>
             <ColumnDefinition Width="5*"/>
         </Grid.ColumnDefinitions>
-        <DataGrid x:Name="AdminsUsers"/>
+        <DataGrid x:Name="AdminsUsers" SelectedIndex="-1"/>
         <materialDesign:Card Background="{DynamicResource PrimaryHueMidBrush}" Foreground="{DynamicResource PrimaryHueDarkForegroundBrush}" Grid.Column="1" Padding="8">
             <TextBlock
-                FontSize="16" FontWeight="Light" HorizontalAlignment="Center">
-                Agregar o Modificar Usuarios
+                FontSize="16" FontWeight="Bold" HorizontalAlignment="Center">
+                Actualizar Usuarios
             </TextBlock>
         </materialDesign:Card>
-        <TextBox x:Name="Txt_newUser"
+        <TextBox x:Name="user"
                  Grid.Column="1"
-                Margin="60 60 60 0"
-                materialDesign:HintAssist.Hint="Nombre del nuevo usuario"
+                Margin="60 155 60 0"
+                materialDesign:HintAssist.Hint="Usuario"
                 Text="{Binding Name}"
+                 FontSize="12"
                  Foreground="#FF1976D2"
                 VerticalAlignment="Top" />
+        <PasswordBox x:Name="Txt_newpassword"
+                 Grid.Column="1"
+                 Margin="60 190 60 0"
+                 materialDesign:HintAssist.Hint="Contraseña"
+                 FontSize="12"
+                     Foreground="#FF1976D2"
+                     VerticalAlignment="Top"/>
+        <TextBox x:Name="IDnew"
+                 Grid.Column="1"
+                 Margin="60 225 60 0"
+                 materialDesign:HintAssist.Hint="ID del usuario"
+                 Text="{Binding Name}"
+                 FontSize="12"
+                 Foreground="#FF1676D2"
+                 VerticalAlignment="Top"/>
+        <TextBox x:Name="tel1"
+                 Grid.Column="1"
+                 Margin="90 260 60 0"
+                 materialDesign:HintAssist.Hint="Teléfono #1"
+                 Text="{Binding Name}"
+                 FontSize="12"
+                 Foreground="#FF1676D2"
+                 VerticalAlignment="Top"/>
+        <TextBox x:Name="tel2"
+                 Grid.Column="1"
+                 Margin="90 315 60 0"
+                 materialDesign:HintAssist.Hint="Teléfono #2"
+                 Text="{Binding Name}"
+                 FontSize="12"
+                 Foreground="#FF1676D2"
+                 VerticalAlignment="Top"/>
+        <TextBox x:Name="tel3"
+                 Grid.Column="1"
+                 Margin="90 285 60 0"
+                 materialDesign:HintAssist.Hint="Teléfono #3"
+                 Text="{Binding Name}"
+                 FontSize="12"
+                 Foreground="#FF1676D2"
+                 VerticalAlignment="Top"/>
+        <TextBox x:Name="CodClinica"
+                 Grid.Column="1"
+                 Margin="60 50 120 0"
+                 materialDesign:HintAssist.Hint="Clínica"
+                 Text="{Binding Name}"
+                 FontSize="12"
+                 Foreground="#FF1676D2"
+                 VerticalAlignment="Top"/>
+        <TextBox x:Name="Nameuser"
+                 Grid.Column="1"
+                 Margin="60 85 60 0"
+                 materialDesign:HintAssist.Hint="Nombres"
+                 Text="{Binding Name}"
+                 FontSize="12"
+                 Foreground="#FF1676D2"
+                 VerticalAlignment="Top"/>
+        <TextBox x:Name="Firstuser"
+                 Grid.Column="1"
+                 Margin="60 120 60 0"
+                 materialDesign:HintAssist.Hint="Apellidos"
+                 Text="{Binding Name}"
+                 FontSize="12"
+                 Foreground="#FF1676D2"
+                 VerticalAlignment="Top"/>
+        <materialDesign:Badged
+            Grid.Column="1"
+            Margin="20 0 0 30"
+            VerticalAlignment="Bottom"
+            Badge="{materialDesign:PackIcon AccountMultiplePlus}"
+            BadgeColorZoneMode="Accent">
+            <Button FontSize="12" FontWeight="Bold">
+                Actualizar
+            </Button>
+        </materialDesign:Badged>
+        <materialDesign:Badged
+            Grid.Column="1"
+            Margin="0 0 20 30"
+            VerticalAlignment="Bottom" HorizontalAlignment="Right"
+            Badge="{materialDesign:PackIcon AccountMultipleMinus}"
+            BadgeColorZoneMode="Accent">
+            <Button FontSize="12" FontWeight="Bold">
+                Eliminar usuario
+            </Button>
+        </materialDesign:Badged>
     </Grid>
 </UserControl>
