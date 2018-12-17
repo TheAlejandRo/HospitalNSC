@@ -24,7 +24,7 @@ Public Class Doctores
     Private Sub cls_sesion_Selected(sender As Object, e As RoutedEventArgs) Handles cls_sesion.Selected
         Dim ventana As New Login
         ventana.Show()
-        Me.Close()
+        Close()
     End Sub
 
     Private Sub Doctores_Loaded(sender As Object, e As RoutedEventArgs) Handles Me.Loaded

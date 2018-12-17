@@ -33,6 +33,9 @@
                          FontSize="14"
                              FontWeight="Heavy"
                          DockPanel.Dock="Top">
+                        <ListBoxItem x:Name="Usersgnl"
+                                     Content="General"
+                                     Cursor="Hand"/>
                         <ListBoxItem x:Name="UserAD"
                                      Content="Administradores"
                                      Cursor="Hand"/>
@@ -68,6 +71,145 @@
                     <RowDefinition Height="Auto"/>
                     <RowDefinition Height="*"/>
                 </Grid.RowDefinitions>
+                <Grid x:Name="PgAdmin" Grid.Row="1"/>
+                <Grid x:Name="Usuariosgeneral" Margin="10" Grid.Row="1" IsEnabled="True" Visibility="Visible">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="7*"/>
+                        <ColumnDefinition Width="5*"/>
+                    </Grid.ColumnDefinitions>
+                    <DataGrid x:Name="Usersgrid" SelectedIndex="-1" Foreground="#FF1976D2" HorizontalGridLinesBrush="#FF1676D2" HeadersVisibility="None" ColumnWidth="Auto" CanUserAddRows="False"/>
+                    <materialDesign:Card Background="{DynamicResource PrimaryHueMidBrush}" Foreground="{DynamicResource PrimaryHueDarkForegroundBrush}" Grid.Column="1" Padding="8">
+                        <TextBlock
+                FontSize="16" FontWeight="Bold" HorizontalAlignment="Center" Text="Lista de Usuarios"/>
+                    </materialDesign:Card>
+                    <TextBox x:Name="user"
+                 Grid.Column="1"
+                Margin="60 155 60 0"
+                materialDesign:HintAssist.Hint="Usuario"
+                Text="{Binding Name}"
+                 FontSize="12"
+                 Foreground="#FF1976D2"
+                VerticalAlignment="Top" />
+                    <TextBox x:Name="Txt_newpassword"
+                 Grid.Column="1"
+                             Text="{Binding Name}"
+                 Margin="60 190 60 0"
+                 materialDesign:HintAssist.Hint="Contraseña"
+                 FontSize="12"
+                     Foreground="#FF1976D2"
+                     VerticalAlignment="Top"/>
+                    <TextBox x:Name="IDnew"
+                 Grid.Column="1"
+                 Margin="60 225 60 0"
+                 materialDesign:HintAssist.Hint="ID del usuario"
+                 Text="{Binding Name}"
+                 FontSize="12"
+                 Foreground="#FF1676D2"
+                 VerticalAlignment="Top"/>
+                    <TextBox x:Name="tel1"
+                 Grid.Column="1"
+                 Margin="90 260 60 0"
+                 materialDesign:HintAssist.Hint="Teléfono #1"
+                 Text="{Binding Name}"
+                 FontSize="12"
+                 Foreground="#FF1676D2"
+                 VerticalAlignment="Top"/>
+                    <TextBox x:Name="tel2"
+                 Grid.Column="1"
+                 Margin="90 315 60 0"
+                 materialDesign:HintAssist.Hint="Teléfono #2"
+                 Text="{Binding Name}"
+                 FontSize="12"
+                 Foreground="#FF1676D2"
+                 VerticalAlignment="Top"/>
+                    <TextBox x:Name="tel3"
+                 Grid.Column="1"
+                 Margin="90 285 60 0"
+                 materialDesign:HintAssist.Hint="Teléfono #3"
+                 Text="{Binding Name}"
+                 FontSize="12"
+                 Foreground="#FF1676D2"
+                 VerticalAlignment="Top"/>
+                    <TextBox x:Name="CodClinica"
+                 Grid.Column="1"
+                 Margin="60 50 120 0"
+                 materialDesign:HintAssist.Hint="Clínica"
+                 Text="{Binding Name}"
+                 FontSize="12"
+                 Foreground="#FF1676D2"
+                 VerticalAlignment="Top"/>
+                    <TextBox x:Name="Nameuser"
+                 Grid.Column="1"
+                 Margin="60 85 60 0"
+                 materialDesign:HintAssist.Hint="Nombres"
+                 Text="{Binding Name}"
+                 FontSize="12"
+                 Foreground="#FF1676D2"
+                 VerticalAlignment="Top"/>
+                    <TextBox x:Name="TypeUser"
+                             Grid.Column="1"
+                             Margin="60 350 60 0"
+                             materialDesign:HintAssist.Hint="Tipo de usuario"
+                             Text="{Binding Name}"
+                             FontSize="12"
+                             Foreground="#FF1676D2"
+                             VerticalAlignment="Top"/>
+                    <TextBox x:Name="Firstuser"
+                 Grid.Column="1"
+                 Margin="60 120 60 0"
+                 materialDesign:HintAssist.Hint="Apellidos"
+                 Text="{Binding Name}"
+                 FontSize="12"
+                 Foreground="#FF1676D2"
+                 VerticalAlignment="Top"/>
+                    <!-- floating action button with progress -->
+                    <TextBlock
+      Margin="0 250 0 0"
+                        HorizontalAlignment="Center"
+      VerticalAlignment="Center" Grid.Column="1" Text="Actualizar la lista"/>
+                    <Button x:Name="Btnactualizar"
+      Style="{StaticResource MaterialDesignFloatingActionLightButton}"
+      Margin="0 340 0 0"
+                        Grid.Column="1"
+      Command="{Binding SaveComand}"
+      materialDesign:ButtonProgressAssist.IsIndicatorVisible="{Binding IsSaving}"
+      materialDesign:ButtonProgressAssist.Value="{Binding SaveProgress}">
+                        <!-- simple example of toggling/animating pack icon with a data trigger-->
+                        <materialDesign:PackIcon
+        Height="24"
+        Width="24">
+                            <materialDesign:PackIcon.Style>
+                                <Style
+            TargetType="materialDesign:PackIcon"
+            BasedOn="{StaticResource {x:Type materialDesign:PackIcon}}">
+                                    <Setter
+              Property="Kind"
+              Value="CloudSync" />
+                                    <Style.Triggers>
+                                        <DataTrigger
+                Binding="{Binding IsSaveComplete}"
+                Value="True">
+                                            <Setter
+                  Property="Kind"
+                  Value="Check" />
+                                            <DataTrigger.EnterActions>
+                                                <BeginStoryboard>
+                                                    <Storyboard>
+                                                        <DoubleAnimation
+                        Storyboard.TargetProperty="Opacity"
+                        From="0"
+                        To="1"
+                        Duration="0:0:0.8" />
+                                                    </Storyboard>
+                                                </BeginStoryboard>
+                                            </DataTrigger.EnterActions>
+                                        </DataTrigger>
+                                    </Style.Triggers>
+                                </Style>
+                            </materialDesign:PackIcon.Style>
+                        </materialDesign:PackIcon>
+                    </Button>
+                </Grid>
                 <Border x:Name="win_move"
                     CornerRadius="0,0,15,15">
                     <materialDesign:ColorZone
@@ -85,15 +227,13 @@
                             <TextBlock x:Name="Admin_Title"
                                     VerticalAlignment="Center" HorizontalAlignment="Center"
                                     Margin="0 0 23 0"
-                                    Text="Administrador" FontSize="16">
-                            </TextBlock>
+                                    Text="Administrador" FontSize="16"/>
                         </DockPanel>
                     </materialDesign:ColorZone>
                 </Border>
                 <materialDesign:Snackbar MessageQueue="{materialDesign:MessageQueue}"
                                      x:Name="MainSnack"
                                      Grid.Row="1"/>
-                <Grid x:Name="PgAdmin" Grid.Row="1"/>
             </Grid>
         </materialDesign:DrawerHost>
     </materialDesign:DialogHost>

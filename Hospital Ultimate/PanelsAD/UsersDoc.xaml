@@ -1,4 +1,5 @@
-﻿<Page x:Class="UsersDoc"
+﻿<UserControl x:Class="UsersDoc"
+      xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
       xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
       xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
@@ -6,8 +7,110 @@
       xmlns:local="clr-namespace:Hospital_Ultimate"
       mc:Ignorable="d" 
       d:DesignHeight="450" d:DesignWidth="800"
-      Title="UsersDoc">
-    <Grid>
-        
+      FontFamily="Noto Sans">
+    <Grid  Margin="10">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="7*"/>
+            <ColumnDefinition Width="5*"/>
+        </Grid.ColumnDefinitions>
+        <DataGrid x:Name="Doctorusers" SelectedIndex="-1" Foreground="#FF1976D2" HorizontalGridLinesBrush="#FF1676D2" HeadersVisibility="None" ColumnWidth="Auto" CanUserAddRows="False"/>
+        <materialDesign:Card Background="{DynamicResource PrimaryHueMidBrush}" Foreground="{DynamicResource PrimaryHueDarkForegroundBrush}" Grid.Column="1" Padding="8">
+            <TextBlock
+                FontSize="16" FontWeight="Bold" HorizontalAlignment="Center">
+                Doctores
+            </TextBlock>
+        </materialDesign:Card>
+        <TextBox x:Name="user"
+                 Grid.Column="1"
+                Margin="60 155 60 0"
+                materialDesign:HintAssist.Hint="Usuario"
+                Text="{Binding Name}"
+                 FontSize="12"
+                 Foreground="#FF1976D2"
+                VerticalAlignment="Top" />
+        <TextBox x:Name="Txt_newpassword"
+                 Grid.Column="1"
+                 Text="{Binding Name}"
+                 Margin="60 190 60 0"
+                 materialDesign:HintAssist.Hint="Contraseña"
+                 FontSize="12"
+                     Foreground="#FF1976D2"
+                     VerticalAlignment="Top"/>
+        <TextBox x:Name="IDnew"
+                 Grid.Column="1"
+                 Margin="60 225 60 0"
+                 materialDesign:HintAssist.Hint="ID del usuario"
+                 Text="{Binding Name}"
+                 FontSize="12"
+                 Foreground="#FF1676D2"
+                 VerticalAlignment="Top"/>
+        <TextBox x:Name="tel1"
+                 Grid.Column="1"
+                 Margin="90 260 60 0"
+                 materialDesign:HintAssist.Hint="Teléfono #1"
+                 Text="{Binding Name}"
+                 FontSize="12"
+                 Foreground="#FF1676D2"
+                 VerticalAlignment="Top"/>
+        <TextBox x:Name="tel2"
+                 Grid.Column="1"
+                 Margin="90 315 60 0"
+                 materialDesign:HintAssist.Hint="Teléfono #2"
+                 Text="{Binding Name}"
+                 FontSize="12"
+                 Foreground="#FF1676D2"
+                 VerticalAlignment="Top"/>
+        <TextBox x:Name="tel3"
+                 Grid.Column="1"
+                 Margin="90 285 60 0"
+                 materialDesign:HintAssist.Hint="Teléfono #3"
+                 Text="{Binding Name}"
+                 FontSize="12"
+                 Foreground="#FF1676D2"
+                 VerticalAlignment="Top"/>
+        <TextBox x:Name="CodClinica"
+                 Grid.Column="1"
+                 Margin="60 50 120 0"
+                 materialDesign:HintAssist.Hint="Clínica"
+                 Text="{Binding Name}"
+                 FontSize="12"
+                 Foreground="#FF1676D2"
+                 VerticalAlignment="Top"/>
+        <TextBox x:Name="Nameuser"
+                 Grid.Column="1"
+                 Margin="60 85 60 0"
+                 materialDesign:HintAssist.Hint="Nombres"
+                 Text="{Binding Name}"
+                 FontSize="12"
+                 Foreground="#FF1676D2"
+                 VerticalAlignment="Top"/>
+        <TextBox x:Name="Firstuser"
+                 Grid.Column="1"
+                 Margin="60 120 60 0"
+                 materialDesign:HintAssist.Hint="Apellidos"
+                 Text="{Binding Name}"
+                 FontSize="12"
+                 Foreground="#FF1676D2"
+                 VerticalAlignment="Top"/>
+        <materialDesign:Badged
+            Grid.Column="1"
+            Margin="20 0 0 30"
+            VerticalAlignment="Bottom"
+            Badge="{materialDesign:PackIcon AccountMultiplePlus}"
+            BadgeColorZoneMode="Accent">
+            <Button FontSize="12" FontWeight="Bold">
+                Actualizar
+            </Button>
+        </materialDesign:Badged>
+        <materialDesign:Badged
+            Grid.Column="1"
+            Margin="0 0 20 30"
+            VerticalAlignment="Bottom" HorizontalAlignment="Right"
+            Badge="{materialDesign:PackIcon AccountMultipleMinus}"
+            BadgeColorZoneMode="Accent">
+            <Button FontSize="12" FontWeight="Bold">
+                Eliminar usuario
+            </Button>
+        </materialDesign:Badged>
     </Grid>
-</Page>
+</UserControl>
