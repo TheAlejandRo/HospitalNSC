@@ -99,6 +99,7 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Dialogs\Log.vb" />
     <Compile Include="PanelsAD\UsersAD.xaml.vb">
       <DependentUpon>UsersAD.xaml</DependentUpon>
     </Compile>
@@ -138,17 +139,11 @@
     <Compile Include="PanelsDR\Drpanel9.xaml.vb">
       <DependentUpon>Drpanel9.xaml</DependentUpon>
     </Compile>
-    <Compile Include="PanelsSCR\Scrpanel2.xaml.vb">
-      <DependentUpon>Scrpanel2.xaml</DependentUpon>
+    <Compile Include="PanelsSCR\ScrConfig.xaml.vb">
+      <DependentUpon>ScrConfig.xaml</DependentUpon>
     </Compile>
-    <Compile Include="PanelsSCR\Scrpanel3.xaml.vb">
-      <DependentUpon>Scrpanel3.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="PanelsSCR\Scrpanel4.xaml.vb">
-      <DependentUpon>Scrpanel4.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="PanelsSCR\Scrpanel5.xaml.vb">
-      <DependentUpon>Scrpanel5.xaml</DependentUpon>
+    <Compile Include="PanelsSCR\ScrDeleteTiket.xaml.vb">
+      <DependentUpon>ScrDeleteTiket.xaml</DependentUpon>
     </Compile>
     <Compile Include="Secretarias.xaml.vb">
       <DependentUpon>Secretarias.xaml</DependentUpon>
@@ -252,19 +247,11 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="PanelsSCR\Scrpanel2.xaml">
+    <Page Include="PanelsSCR\ScrConfig.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="PanelsSCR\Scrpanel3.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="PanelsSCR\Scrpanel4.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="PanelsSCR\Scrpanel5.xaml">
+    <Page Include="PanelsSCR\ScrDeleteTiket.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

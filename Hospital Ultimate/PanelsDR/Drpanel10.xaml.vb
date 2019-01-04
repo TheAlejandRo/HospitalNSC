@@ -4,6 +4,7 @@ Imports System.Windows.Threading
 
 Public Class Drpanel10
 
+    Dim row As DataRowView
     Dim WithEvents ds As New DispatcherTimer
     Dim conexion As New MySqlConnection("server=192.168.1.90; user=TheAlejandRo; password=Tech.Code; database=dbturnos")
     Dim consulta As String = String.Empty
@@ -13,7 +14,7 @@ Public Class Drpanel10
     Dim update_state As String = String.Empty
 
     Private Sub Drpanel10_Loaded(sender As Object, e As RoutedEventArgs) Handles Me.Loaded
-        ds.Interval = New TimeSpan(0, 0, 20)
+        ds.Interval = New TimeSpan(0, 0, 5)
         ds.Start()
         estado.IsChecked = True
         Lista()
@@ -22,19 +23,19 @@ Public Class Drpanel10
     Public Sub Lista()
         Try
             conexion.Open()
-            consulta = "SELECT Tiket FROM pacientes WHERE idDoctor='15' AND estado_paciente='1'"
+            consulta = "SELECT Tiket FROM pacientes WHERE idDoctor='15' AND estado_paciente='0' OR estado_paciente='1'"
             comando = New MySqlCommand(consulta, conexion)
             adaptador = New MySqlDataAdapter(comando)
             adaptador.Fill(tabla)
             If tabla.Rows.Count <> 0 Then
                 list_pacientes.SelectedIndex = 0
                 list_pacientes.ItemsSource = tabla.DefaultView
-                Dim row As DataRowView
-                row = list_pacientes.SelectedItem
-                paciente.Text = row.Row.ItemArray(0).ToString
+                cliente_sig.IsEnabled = True
             Else
+                list_pacientes.SelectedItems.Clear()
+                list_pacientes.SelectedIndex = -1
                 list_pacientes.ItemsSource = tabla.DefaultView
-                paciente.Text = "0"
+                cliente_sig.IsEnabled = False
             End If
         Catch ex As MySqlException
             MessageBox.Show(ex.Message)
@@ -84,13 +85,43 @@ Public Class Drpanel10
     End Sub
 
     Private Sub cliente_sig_Click(sender As Object, e As RoutedEventArgs) Handles cliente_sig.Click
+        Try
+            conexion.Open()
+            Dim estadopaciente As String = String.Empty
+            estadopaciente = "UPDATE pacientes SET estado_paciente='2' WHERE tiket='" & paciente.Text & "'"
+            comando = New MySqlCommand(estadopaciente, conexion)
+            comando.ExecuteNonQuery()
+        Catch ex As MySqlException
+            MsgBox(ex.Message)
+        Finally
+            conexion.Close()
+        End Try
         list_pacientes.SelectedIndex += 1
         Dim cuentapacientes As Integer
         cuentapacientes = (list_pacientes.Items.Count - 1)
         If list_pacientes.SelectedIndex < cuentapacientes Then
-            MsgBox("Hay más registros")
         ElseIf list_pacientes.SelectedIndex = cuentapacientes Then
             MsgBox("Último registro")
+        End If
+    End Sub
+
+    Private Sub list_pacientes_SelectedCellsChanged(sender As Object, e As SelectedCellsChangedEventArgs) Handles list_pacientes.SelectedCellsChanged
+        If list_pacientes.SelectedIndex <> -1 Then
+            row = list_pacientes.SelectedItem
+            paciente.Text = row.Row.ItemArray(0).ToString
+            Try
+                conexion.Open()
+                Dim estadopac As String = String.Empty
+                estadopac = "UPDATE pacientes SET estado_paciente='1' WHERE tiket='" & paciente.Text & "'"
+                comando = New MySqlCommand(estadopac, conexion)
+                comando.ExecuteNonQuery()
+            Catch ex As MySqlException
+                MsgBox(ex.Message)
+            Finally
+                conexion.Close()
+            End Try
+        Else
+            paciente.Text = ""
         End If
     End Sub
 End Class

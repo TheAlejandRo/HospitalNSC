@@ -23,6 +23,7 @@ Public Class Login
             consulta = "SELECT tipo_usuario, docnom, idusuario, apnom FROM usuarios WHERE user='" & Txt_user.Text & "' AND pass='" & Txt_pass.Password & "'"
             comando = New MySqlCommand(consulta, conexion)
             adaptador = New MySqlDataAdapter(comando)
+            tabla.Clear()
             adaptador.Fill(tabla)
             If tabla.Rows.Count = 1 Then
                 If tabla.Rows(0)(0).ToString = "Administrador" Then
@@ -53,8 +54,9 @@ Public Class Login
                 dlgshw.Message.Text = "Usuario o Contraseña incorrecta"
                 DialogHost.Show(dlgshw, "RootDialog")
             End If
-        Catch ex As MySqlException
+        Catch ex As Exception
             MessageBox.Show(ex.Message)
+            Log.e("Error con excepción y traza", ex, New StackFrame(True))
         Finally
             conexion.Close()
         End Try

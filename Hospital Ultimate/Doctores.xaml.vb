@@ -16,12 +16,14 @@ Public Class Doctores
     End Sub
 
     Private Sub btn_close_Selected(sender As Object, e As RoutedEventArgs) Handles btn_close.Selected
+        Inactivo()
         Dim dlgclshw As New MessageClsDlg
         dlgclshw.Message.Text = "¿Quieres cerrar el programa?"
         DialogHost.Show(dlgclshw, "RootDialog")
     End Sub
 
     Private Sub cls_sesion_Selected(sender As Object, e As RoutedEventArgs) Handles cls_sesion.Selected
+        Inactivo()
         Dim ventana As New Login
         ventana.Show()
         Close()

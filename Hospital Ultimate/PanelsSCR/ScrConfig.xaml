@@ -1,0 +1,49 @@
+﻿<UserControl x:Class="ScrConfig"
+            xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:Hospital_Ultimate"
+             mc:Ignorable="d" 
+             d:DesignHeight="450" d:DesignWidth="800"
+             FontFamily="Noto Sans">
+    <Grid Margin="10">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="63*"/>
+            <RowDefinition Height="367*"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="1*"/>
+            <ColumnDefinition Width="1*"/>
+        </Grid.ColumnDefinitions>
+        <Label Content="Ajustes para la Ventana de Espera" HorizontalAlignment="Stretch"  HorizontalContentAlignment="Center" VerticalContentAlignment="Center" VerticalAlignment="Center" Grid.ColumnSpan="2" Grid.Row="0" Foreground="#FF1676D2" FontSize="20" FontWeight="Bold"/>
+        <Label Content="Forma de Reproducción de Video" Grid.Column="0" Grid.Row="1" Foreground="#FF1676D2" FontSize="14"/>
+        <ToggleButton x:Name="RPonline"
+                      Style="{StaticResource MaterialDesignSwitchToggleButton}"
+                      Grid.Row="1" Grid.Column="0"
+                      Margin="20 40 0 0" VerticalAlignment="Top" HorizontalAlignment="Left" IsChecked="True" Focusable="False"/>
+        <Label x:Name="RPonlineLB" Grid.Row="1" Grid.Column="0" Margin="70 35 0 0" HorizontalAlignment="Left" VerticalAlignment="Top" Content="Online" FontSize="12" Foreground="#FF1676D2" FontWeight="Bold"/>
+        <Grid x:Name="GridURL" Grid.Row="1" Grid.Column="0" VerticalAlignment="Top" Height="60" Margin="0,70,0,0">
+            <Label Margin="30 0 0 0" HorizontalAlignment="Left" VerticalAlignment="Top" Content="URL del video" Foreground="#FF1676D2" FontSize="12"/>
+            <TextBox x:Name="URLvideo" Foreground="#FF1676D2" materialDesign:HintAssist.Hint="www.youtube.com" Text="{Binding Name}" Margin="30 30 0 0" Width="220" VerticalAlignment="Top"  HorizontalAlignment="Left"/>
+            <Button x:Name="URLsave" Style="{StaticResource MaterialDesignFloatingActionMiniButton}" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="260 30 0 0" ToolTip="Guardar" Width="24" Height="24">
+                <materialDesign:PackIcon Kind="CheckboxMarkedCircle" Height="18" Width="18"/>
+            </Button>
+            <Button x:Name="URLcancel" Style="{StaticResource MaterialDesignFloatingActionMiniButton}" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="300 30 0 0" ToolTip="Borrar" Width="24" Height="24" Background="#FFF32121" BorderBrush="#FFF32121">
+                <materialDesign:PackIcon Kind="RemoveCircle" Height="18" Width="18"/>
+            </Button>
+        </Grid>
+        <ToggleButton x:Name="RPoffline"
+                      Style="{StaticResource MaterialDesignSwitchToggleButton}"
+                      Grid.Row="1" Grid.Column="0"
+                      Margin="20 140 0 0" VerticalAlignment="Top" HorizontalAlignment="Left" IsChecked="False"/>
+        <Label x:Name="RPofflineLB" Grid.Row="1" Grid.Column="0" Margin="70 135 0 0" HorizontalAlignment="Left" VerticalAlignment="Top" Content="Offline" FontSize="12" Foreground="#FF1676D2" FontWeight="Bold"/>
+        <Grid Grid.Row="1" Grid.Column="0" VerticalAlignment="Top" Margin="0 173 0 0" Height="40">
+        <TextBlock x:Name="URLofflineVideo" Margin="30 3 0 0" HorizontalAlignment="Left" VerticalAlignment="Top" Width="180" FontSize="14" Height="25" Foreground="#FF1676D2" TextOptions.TextFormattingMode="Display" TextWrapping="Wrap"/>
+        <materialDesign:Badged Margin="220 0 0 0" Badge="{materialDesign:PackIcon FileVideo}" BadgeColorZoneMode="Accent">
+            <Button x:Name="LoadVideo" Content="Cargar Video"/>
+        </materialDesign:Badged>
+        </Grid>
+    </Grid>
+</UserControl>

@@ -79,13 +79,12 @@
                 <materialDesign:Snackbar MessageQueue="{materialDesign:MessageQueue}"
                                          x:Name="MainSnack"
                                          Grid.Row="2" Margin="812,0,254,0"/>
-                <WebBrowser
-                            x:Name="web_view" Grid.Row="1"/>
-                <DataGrid x:Name="Listado_tikets"
-                          Grid.Row="1" Margin="0,10,0,257" FontSize="32" HorizontalGridLinesBrush="#FF1976D2" Foreground="#FF1976D2" Grid.Column="1" Grid.RowSpan="2"/>
+                <WebBrowser x:Name="web_view" Grid.Row="1" IsEnabled="False" Visibility="Collapsed"/>
+                <DataGrid x:Name="Listado_tikets" Margin="0,5,0,4" FontSize="32" HorizontalGridLinesBrush="#FF1976D2" Foreground="#FF1976D2" Grid.Column="1" Focusable="False" CanUserSortColumns="False" CanUserResizeColumns="False" CanUserReorderColumns="False" CanUserDeleteRows="False" CanUserResizeRows="False" CanUserAddRows="False" Grid.Row="1"/>
                 <Label Grid.Row="2" Grid.ColumnSpan="1"
                        Content="1" VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="72"
                        />
+                <MediaElement x:Name="OfflineView" Grid.Row="1" Volume="1" IsEnabled="False" Visibility="Collapsed" UnloadedBehavior="Play"/>
             </Grid>
         </materialDesign:DrawerHost>
     </materialDesign:DialogHost>
