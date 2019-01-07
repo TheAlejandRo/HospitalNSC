@@ -13,7 +13,7 @@
             <ColumnDefinition Width="17*"/>
             <ColumnDefinition Width="9*"/>
         </Grid.ColumnDefinitions>
-        <DataGrid x:Name="DtTikets" Margin="10" Focusable="False" HorizontalGridLinesBrush="#FF1676D2" HeadersVisibility="None" Foreground="#FF1676D2" CanUserAddRows="False" CanUserDeleteRows="False" CanUserResizeRows="False">
+        <DataGrid x:Name="DtTikets" IsReadOnly="True" Margin="10" Focusable="False" HorizontalGridLinesBrush="#FF1676D2" HeadersVisibility="None" Foreground="#FF1676D2" CanUserAddRows="False" CanUserDeleteRows="False" CanUserResizeRows="False">
             <DataGrid.AlternatingRowBackground>
                 <SolidColorBrush Color="{DynamicResource {x:Static SystemColors.ActiveCaptionColorKey}}"/>
             </DataGrid.AlternatingRowBackground>

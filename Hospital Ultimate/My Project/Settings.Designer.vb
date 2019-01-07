@@ -66,8 +66,7 @@ Partial Friend NotInheritable Class MySettings
     End Property
     
     <Global.System.Configuration.UserScopedSettingAttribute(),  _
-     Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-     Global.System.Configuration.DefaultSettingValueAttribute("0")>  _
+     Global.System.Diagnostics.DebuggerNonUserCodeAttribute()>  _
     Public Property ModeView() As Integer
         Get
             Return CType(Me("ModeView"),Integer)
@@ -78,14 +77,25 @@ Partial Friend NotInheritable Class MySettings
     End Property
     
     <Global.System.Configuration.UserScopedSettingAttribute(),  _
-     Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-     Global.System.Configuration.DefaultSettingValueAttribute("https://www.youtube.com/watch?v=uFFgZws1sDk")>  _
+     Global.System.Diagnostics.DebuggerNonUserCodeAttribute()>  _
     Public Property SourceFile() As String
         Get
             Return CType(Me("SourceFile"),String)
         End Get
         Set
             Me("SourceFile") = value
+        End Set
+    End Property
+    
+    <Global.System.Configuration.UserScopedSettingAttribute(),  _
+     Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+     Global.System.Configuration.DefaultSettingValueAttribute("")>  _
+    Public Property NameFile() As String
+        Get
+            Return CType(Me("NameFile"),String)
+        End Get
+        Set
+            Me("NameFile") = value
         End Set
     End Property
 End Class

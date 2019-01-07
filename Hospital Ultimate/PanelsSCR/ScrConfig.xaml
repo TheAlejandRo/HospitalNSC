@@ -22,7 +22,7 @@
         <ToggleButton x:Name="RPonline"
                       Style="{StaticResource MaterialDesignSwitchToggleButton}"
                       Grid.Row="1" Grid.Column="0"
-                      Margin="20 40 0 0" VerticalAlignment="Top" HorizontalAlignment="Left" IsChecked="True" Focusable="False"/>
+                      Margin="20 40 0 0" VerticalAlignment="Top" HorizontalAlignment="Left"/>
         <Label x:Name="RPonlineLB" Grid.Row="1" Grid.Column="0" Margin="70 35 0 0" HorizontalAlignment="Left" VerticalAlignment="Top" Content="Online" FontSize="12" Foreground="#FF1676D2" FontWeight="Bold"/>
         <Grid x:Name="GridURL" Grid.Row="1" Grid.Column="0" VerticalAlignment="Top" Height="60" Margin="0,70,0,0">
             <Label Margin="30 0 0 0" HorizontalAlignment="Left" VerticalAlignment="Top" Content="URL del video" Foreground="#FF1676D2" FontSize="12"/>
@@ -37,10 +37,10 @@
         <ToggleButton x:Name="RPoffline"
                       Style="{StaticResource MaterialDesignSwitchToggleButton}"
                       Grid.Row="1" Grid.Column="0"
-                      Margin="20 140 0 0" VerticalAlignment="Top" HorizontalAlignment="Left" IsChecked="False"/>
+                      Margin="20 140 0 0" VerticalAlignment="Top" HorizontalAlignment="Left"/>
         <Label x:Name="RPofflineLB" Grid.Row="1" Grid.Column="0" Margin="70 135 0 0" HorizontalAlignment="Left" VerticalAlignment="Top" Content="Offline" FontSize="12" Foreground="#FF1676D2" FontWeight="Bold"/>
         <Grid Grid.Row="1" Grid.Column="0" VerticalAlignment="Top" Margin="0 173 0 0" Height="40">
-        <TextBlock x:Name="URLofflineVideo" Margin="30 3 0 0" HorizontalAlignment="Left" VerticalAlignment="Top" Width="180" FontSize="14" Height="25" Foreground="#FF1676D2" TextOptions.TextFormattingMode="Display" TextWrapping="Wrap"/>
+        <TextBlock x:Name="URLofflineVideo" Margin="30 3 0 0" HorizontalAlignment="Left" VerticalAlignment="Top" Width="180" FontSize="14" Height="25" Foreground="#FF1676D2" TextOptions.TextFormattingMode="Display" TextWrapping="Wrap" Text="https://www.youtube.com/watch?v=uFFgZws1sDk"/>
         <materialDesign:Badged Margin="220 0 0 0" Badge="{materialDesign:PackIcon FileVideo}" BadgeColorZoneMode="Accent">
             <Button x:Name="LoadVideo" Content="Cargar Video"/>
         </materialDesign:Badged>

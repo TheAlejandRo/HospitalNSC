@@ -1,9 +1,11 @@
 ﻿Imports System.Data
 Imports MySql.Data.MySqlClient
 Imports MaterialDesignThemes.Wpf
+Imports System.ComponentModel
 
 Public Class Doctores
 
+    Dim modocerrar As Integer = 0
     Dim conexion As New MySqlConnection("server=192.168.1.90; user=TheAlejandRo; password=Tech.Code; database=dbturnos")
     Dim consulta As String = String.Empty
     Dim comando As MySqlCommand
@@ -25,16 +27,19 @@ Public Class Doctores
     Private Sub cls_sesion_Selected(sender As Object, e As RoutedEventArgs) Handles cls_sesion.Selected
         Inactivo()
         Dim ventana As New Login
+        modocerrar = 1
         ventana.Show()
         Close()
     End Sub
 
     Private Sub Doctores_Loaded(sender As Object, e As RoutedEventArgs) Handles Me.Loaded
+        modocerrar = 0
         Try
             conexion.Open()
             consulta = "SELECT idusuario FROM usuarios WHERE docnom='" & Dr_Title.Text & "' AND tipo_usuario='Doctor'"
             comando = New MySqlCommand(consulta, conexion)
             adaptador = New MySqlDataAdapter(comando)
+            tabla.Clear()
             adaptador.Fill(tabla)
             If tabla.Rows.Count = 1 Then
                 panel_dr.Children.Clear()
@@ -74,8 +79,9 @@ Public Class Doctores
                 dlgshw.Message.Text = "Contacte con el Administrador del Sistema, Error No.x004-1"
                 DialogHost.Show(dlgshw, "RootDialog")
             End If
-        Catch ex As MySqlException
+        Catch ex As Exception
             MessageBox.Show(ex.Message)
+            Log.e("Error con excepción y Traza", ex, New StackFrame(True))
         Finally
             conexion.Close()
         End Try
@@ -86,8 +92,9 @@ Public Class Doctores
             update_state = "UPDATE usuarios SET estado='1' WHERE idusuario='" & idDr.Text & "'"
             comando = New MySqlCommand(update_state, conexion)
             comando.ExecuteNonQuery()
-        Catch ex As MySqlException
+        Catch ex As Exception
             MessageBox.Show(ex.Message)
+            Log.e("Error con excepción y Traza", ex, New StackFrame(True))
         End Try
     End Sub
 
@@ -97,8 +104,9 @@ Public Class Doctores
             update_state = "UPDATE usuarios SET estado='0' WHERE idusuario='" & idDr.Text & "'"
             comando = New MySqlCommand(update_state, conexion)
             comando.ExecuteNonQuery()
-        Catch ex As MySqlException
+        Catch ex As Exception
             MessageBox.Show(ex.Message)
+            Log.e("Error con excepción y Traza", ex, New StackFrame(True))
         Finally
             conexion.Close()
         End Try
@@ -106,5 +114,16 @@ Public Class Doctores
 
     Private Sub btn_menu_Checked(sender As Object, e As RoutedEventArgs) Handles btn_menu.Checked
         lat_menu.SelectedIndex = -1
+    End Sub
+
+    Private Sub Doctores_Closing(sender As Object, e As CancelEventArgs) Handles Me.Closing
+        e.Cancel = True
+        If modocerrar = 1 Then
+            e.Cancel = False
+        Else
+            Dim dlgclshw As New MessageClsDlg
+            dlgclshw.Message.Text = "¿Quieres cerrar el programa?"
+            DialogHost.Show(dlgclshw, "RootDialog")
+        End If
     End Sub
 End Class

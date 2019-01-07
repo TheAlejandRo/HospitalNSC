@@ -11,7 +11,7 @@
         WindowStyle="None" AllowsTransparency="True"
         Background="{DynamicResource MaterialDesignPaper}"
         FontFamily="Noto Sans">
-    <materialDesign:DialogHost Identifier="RootDialog" SnackbarMessageQueue="{Binding ElementName=MainSnack, Path=MessageQueue}">
+    <materialDesign:DialogHost Identifier="RootDialog" SnackbarMessageQueue="{Binding ElementName=MainSnack, Path=MessageQueue}" IsTabStop="False" Focusable="False">
         <materialDesign:DrawerHost IsLeftDrawerOpen="{Binding  ElementName=btn_menu, Path=IsChecked}">
             <materialDesign:DrawerHost.LeftDrawerContent>
                 <DockPanel
@@ -77,13 +77,13 @@
                             <TextBlock x:Name="Dr_Title"
                     VerticalAlignment="Center" HorizontalAlignment="Center"
                     Margin="0 0 23 0"
-                    Text="Doctor"/>
+                    Text="Doctor" FontSize="16"/>
                         </DockPanel>
                     </materialDesign:ColorZone>
                 </Border>
                 <materialDesign:Snackbar x:Name="MainSnack"
                                          MessageQueue="{materialDesign:MessageQueue}"
-                                         Grid.Row="1"/>
+                                         Grid.Row="1" IsTabStop="False"/>
                 <Grid x:Name="panel_dr"
                       Grid.Row="1"/>
             </Grid>

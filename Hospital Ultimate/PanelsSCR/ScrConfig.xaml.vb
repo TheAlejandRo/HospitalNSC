@@ -4,7 +4,18 @@ Public Class ScrConfig
 
     Private Sub ScrConfig_Loaded(sender As Object, e As RoutedEventArgs) Handles Me.Loaded
         URLvideo.Text = My.Settings.URLvideo
-        URLofflineVideo.Text = My.Settings.SourceFile
+        URLofflineVideo.Text = My.Settings.NameFile
+        If My.Settings.ModeView = 0 Then
+            RPonline.IsChecked = False
+            RPoffline.IsChecked = True
+            GridURL.IsEnabled = False
+            LoadVideo.IsEnabled = True
+        ElseIf My.Settings.ModeView = 1 Then
+            RPonline.IsChecked = True
+            RPoffline.IsChecked = False
+            GridURL.IsEnabled = True
+            LoadVideo.IsEnabled = False
+        End If
     End Sub
 
     Private Sub URLsave_Click(sender As Object, e As RoutedEventArgs) Handles URLsave.Click
@@ -28,6 +39,7 @@ Public Class ScrConfig
         explorador.ShowDialog()
         If explorador.SafeFileName <> "" Then
             URLofflineVideo.Text = explorador.SafeFileName
+            My.Settings.NameFile = explorador.SafeFileName
             My.Settings.SourceFile = explorador.FileName
             My.Settings.Save()
         Else
@@ -66,16 +78,16 @@ Public Class ScrConfig
         My.Settings.Save()
     End Sub
 
-    Private Sub RPoffline_Unchecked(sender As Object, e As RoutedEventArgs) Handles RPoffline.Unchecked
-
-    End Sub
-
     Private Sub RPonline_Checked(sender As Object, e As RoutedEventArgs) Handles RPonline.Checked
         My.Settings.ModeView = 1
         My.Settings.Save()
     End Sub
 
-    Private Sub RPonline_Unchecked(sender As Object, e As RoutedEventArgs) Handles RPonline.Unchecked
+    Private Sub ScrConfig_IsEnabledChanged(sender As Object, e As DependencyPropertyChangedEventArgs) Handles Me.IsEnabledChanged
+
+    End Sub
+
+    Private Sub ScrConfig_Initialized(sender As Object, e As EventArgs) Handles Me.Initialized
 
     End Sub
 End Class

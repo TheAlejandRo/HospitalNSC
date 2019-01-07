@@ -8,40 +8,58 @@
              mc:Ignorable="d" 
              d:DesignHeight="357" d:DesignWidth="550"
              FontFamily="Noto Sans">
-    <Grid>
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="167*"/>
-            <ColumnDefinition Width="383*"/>
-        </Grid.ColumnDefinitions>
-        <DataGrid x:Name="list_pacientes" Margin="10"
-                  Foreground="#FF1976D2" FontSize="16" ColumnWidth="147"
+    <materialDesign:DrawerHost Focusable="False">
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="167*"/>
+                <ColumnDefinition Width="383*"/>
+            </Grid.ColumnDefinitions>
+            <DataGrid x:Name="list_pacientes" Margin="10"
+                  Foreground="#FF1976D2" FontSize="16" ColumnWidth="147" IsReadOnly="True"
                   SelectedIndex="-1" Focusable="False" VerticalGridLinesBrush="#FF1976D2" HeadersVisibility="Column" CanUserAddRows="False" CanUserSortColumns="False"/>
-        <ToggleButton x:Name="estado"
+            <ToggleButton x:Name="estado"
                       Grid.Column="1"
                 Style="{StaticResource MaterialDesignSwitchToggleButton}"  Margin="0,10,10,0"
                       HorizontalAlignment="Right" Width="60" Height="30" VerticalAlignment="Top">
-            <materialDesign:PackIcon Kind="AccountOff" Cursor="Hand">
-            </materialDesign:PackIcon>
-            <materialDesign:ToggleButtonAssist.OnContent>
-                <materialDesign:PackIcon Kind="AccountCircle" />
-            </materialDesign:ToggleButtonAssist.OnContent>
-        </ToggleButton>
-        <TextBlock x:Name="txt_estado"
-                   Grid.Column="1" HorizontalAlignment="Right" Margin="0,15,60,0" TextWrapping="Wrap"
-                   Text="Conectado" VerticalAlignment="Top" Foreground="#FF1976D2" Height="20" Width="70" TextAlignment="Center">
-            <TextBlock.Effect>
-                <DropShadowEffect ShadowDepth="4" Opacity="0.5" BlurRadius="4"/>
-            </TextBlock.Effect>
-        </TextBlock>
-        <Button x:Name="cliente_sig"
+                <materialDesign:PackIcon Kind="AccountOff" Cursor="Hand">
+                </materialDesign:PackIcon>
+                <materialDesign:ToggleButtonAssist.OnContent>
+                    <materialDesign:PackIcon Kind="AccountCircle" Cursor="Hand"/>
+                </materialDesign:ToggleButtonAssist.OnContent>
+            </ToggleButton>
+            <TextBlock x:Name="txt_estado"
+                   Grid.Column="1" HorizontalAlignment="Right" Margin="0,15,70,0" TextWrapping="Wrap"
+                   Text="Conectado" VerticalAlignment="Top" Foreground="#FF1976D2" Height="20" Width="80" TextAlignment="Center">
+                <TextBlock.Effect>
+                    <DropShadowEffect ShadowDepth="4" Opacity="0.5" BlurRadius="4"/>
+                </TextBlock.Effect>
+            </TextBlock>
+            <Button x:Name="cliente_sig"
                 Content="SIGUIENTE" Grid.Column="1"
                 Height="41" Width="125" Margin="0 40 0 0" FontWeight="Bold"/>
-        <TextBlock
+            <TextBlock
                    Grid.Column="1" Text="Tiket No." Height="40" Width="160"
                    FontSize="30" Foreground="#FF1976D2" FontWeight="Bold" TextAlignment="Center" Margin="0 0 60 100"/>
-        <TextBlock x:Name="paciente"
+            <TextBlock x:Name="paciente"
                    Grid.Column="1" Text="0"
                    Height="40" Width="120"
                    FontSize="30" Foreground="#FF1976D2" FontWeight="Bold" TextAlignment="Left" Margin="200 0 0 100"/>
-    </Grid>
+        </Grid>
+        <!--<materialDesign:DrawerHost.BottomDrawerContent>
+            <StackPanel Margin="16" HorizontalAlignment="Center" Orientation="Horizontal">
+                <TextBlock Margin="4" VerticalAlignment="Center">Elija el tiempo que estará ausente</TextBlock>
+                <Button Command="{x:Static materialDesign:DrawerHost.CloseDrawerCommand}"
+                        Style="{DynamicResource MaterialDesignFlatButton}"
+                        Margin="4" VerticalAlignment="Center">
+                    CLOSE ALL
+                </Button>
+                <Button Command="{x:Static materialDesign:DrawerHost.CloseDrawerCommand}"
+                        CommandParameter="{x:Static Dock.Bottom}"
+                        Style="{DynamicResource MaterialDesignFlatButton}"
+                        Margin="4" VerticalAlignment="Center">
+                    CLOSE THIS
+                </Button>
+            </StackPanel>
+        </materialDesign:DrawerHost.BottomDrawerContent>-->
+    </materialDesign:DrawerHost>
 </UserControl>

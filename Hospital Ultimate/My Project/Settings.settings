@@ -5,11 +5,14 @@
     <Setting Name="URLvideo" Type="(Web Service URL)" Scope="User">
       <Value Profile="(Default)" />
     </Setting>
-    <Setting Name="ModeView" Type="System.Int32" Scope="User">
+    <Setting Name="ModeView" GenerateDefaultValueInCode="false" Type="System.Int32" Scope="User">
       <Value Profile="(Default)">0</Value>
     </Setting>
-    <Setting Name="SourceFile" Type="System.String" Scope="User">
+    <Setting Name="SourceFile" GenerateDefaultValueInCode="false" Type="System.String" Scope="User">
       <Value Profile="(Default)">https://www.youtube.com/watch?v=uFFgZws1sDk</Value>
+    </Setting>
+    <Setting Name="NameFile" Type="System.String" Scope="User">
+      <Value Profile="(Default)" />
     </Setting>
   </Settings>
 </SettingsFile>

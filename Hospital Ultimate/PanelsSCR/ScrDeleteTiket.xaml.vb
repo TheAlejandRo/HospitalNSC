@@ -21,6 +21,7 @@ Public Class ScrDeleteTiket
             adaptador.Fill(tabla)
             DtTikets.ItemsSource = tabla.DefaultView
         Catch ex As Exception
+            MsgBox(ex.Message)
             Log.e("Error con excepción y traza", ex, New StackFrame(True))
         Finally
             conexion.Close()

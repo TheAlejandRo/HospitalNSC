@@ -1,9 +1,11 @@
 ﻿Imports MaterialDesignThemes.Wpf
 Imports MySql.Data.MySqlClient
+Imports System.ComponentModel
 Imports System.Data
 
 Public Class Administrador
 
+    Dim modocerrar As Integer = 0
     Dim row As DataRowView
     Dim conexion As New MySqlConnection("server=192.168.1.90; user=TheAlejandRo; password=Tech.Code; database=dbturnos")
     Dim consulta As String = String.Empty
@@ -29,43 +31,45 @@ Public Class Administrador
     Private Sub cls_sesion_Selected(sender As Object, e As RoutedEventArgs) Handles cls_sesion.Selected
         Dim Login As New Login
         Login.Show()
+        modocerrar = 1
         Me.Finalize()
         Me.Close()
     End Sub
 
     Private Sub Administrador_Loaded(sender As Object, e As RoutedEventArgs) Handles Me.Loaded
         Lista()
+        modocerrar = 0
     End Sub
 
-    Private Sub UserDR_Selected(sender As Object, e As RoutedEventArgs) Handles UserDR.Selected
-        btn_menu.IsChecked = False
-        Usuariosgeneral.IsEnabled = False
-        Usuariosgeneral.Visibility = Visibility.Collapsed
-        PgAdmin.IsEnabled = True
-        PgAdmin.Visibility = Visibility.Visible
-        PgAdmin.Children.Clear()
-        PgAdmin.Children.Add(New UsersDoc)
-    End Sub
+    'Private Sub UserDR_Selected(sender As Object, e As RoutedEventArgs) Handles UserDR.Selected
+    '    btn_menu.IsChecked = False
+    '    Usuariosgeneral.IsEnabled = False
+    '    Usuariosgeneral.Visibility = Visibility.Collapsed
+    '    PgAdmin.IsEnabled = True
+    '    PgAdmin.Visibility = Visibility.Visible
+    '    PgAdmin.Children.Clear()
+    '    PgAdmin.Children.Add(New UsersDoc)
+    'End Sub
 
-    Private Sub UserAD_Selected(sender As Object, e As RoutedEventArgs) Handles UserAD.Selected
-        btn_menu.IsChecked = False
-        Usuariosgeneral.IsEnabled = False
-        Usuariosgeneral.Visibility = Visibility.Collapsed
-        PgAdmin.IsEnabled = True
-        PgAdmin.Visibility = Visibility.Visible
-        PgAdmin.Children.Clear()
-        PgAdmin.Children.Add(New UsersAD)
-    End Sub
+    'Private Sub UserAD_Selected(sender As Object, e As RoutedEventArgs) Handles UserAD.Selected
+    '    btn_menu.IsChecked = False
+    '    Usuariosgeneral.IsEnabled = False
+    '    Usuariosgeneral.Visibility = Visibility.Collapsed
+    '    PgAdmin.IsEnabled = True
+    '    PgAdmin.Visibility = Visibility.Visible
+    '    PgAdmin.Children.Clear()
+    '    PgAdmin.Children.Add(New UsersAD)
+    'End Sub
 
-    Private Sub UserSCR_Selected(sender As Object, e As RoutedEventArgs) Handles UserSCR.Selected
-        btn_menu.IsChecked = False
-        Usuariosgeneral.IsEnabled = False
-        Usuariosgeneral.Visibility = Visibility.Collapsed
-        PgAdmin.IsEnabled = True
-        PgAdmin.Visibility = Visibility.Visible
-        PgAdmin.Children.Clear()
-        PgAdmin.Children.Add(New UsersScr)
-    End Sub
+    'Private Sub UserSCR_Selected(sender As Object, e As RoutedEventArgs) Handles UserSCR.Selected
+    '    btn_menu.IsChecked = False
+    '    Usuariosgeneral.IsEnabled = False
+    '    Usuariosgeneral.Visibility = Visibility.Collapsed
+    '    PgAdmin.IsEnabled = True
+    '    PgAdmin.Visibility = Visibility.Visible
+    '    PgAdmin.Children.Clear()
+    '    PgAdmin.Children.Add(New UsersScr)
+    'End Sub
 
     Private Sub Usersgnl_Selected(sender As Object, e As RoutedEventArgs) Handles Usersgnl.Selected
         btn_menu.IsChecked = False
@@ -80,7 +84,7 @@ Public Class Administrador
         Nameuser.Text = ""
         Firstuser.Text = ""
         user.Text = ""
-        Txt_newpassword.Text = ""
+        Txt_newpassword.Password = ""
         IDnew.Text = ""
         tel1.Text = ""
         tel2.Text = ""
@@ -94,14 +98,15 @@ Public Class Administrador
     Private Sub Lista()
         Try
             conexion.Open()
-            consulta = "SELECT * FROM usuarios"
+            consulta = "SELECT idusuario, tipo_usuario, user, docnom, apnom, tel1, tel2, tel3, codclinica FROM usuarios"
             comando = New MySqlCommand(consulta, conexion)
             adaptador = New MySqlDataAdapter(comando)
             tabla.Clear()
             adaptador.Fill(tabla)
             Usersgrid.ItemsSource = tabla.DefaultView
-        Catch ex As MySqlException
+        Catch ex As Exception
             MsgBox(ex.Message)
+            Log.e("Error con excepción y Traza", ex, New StackFrame(True))
         Finally
             conexion.Close()
         End Try
@@ -114,7 +119,6 @@ Public Class Administrador
             Nameuser.Text = row.Row.ItemArray(3).ToString
             Firstuser.Text = row.Row.ItemArray(4).ToString
             user.Text = row.Row.ItemArray(2).ToString
-            Txt_newpassword.Text = row.Row.ItemArray(10).ToString
             IDnew.Text = row.Row.ItemArray(0).ToString
             tel1.Text = row.Row.ItemArray(5).ToString
             tel2.Text = row.Row.ItemArray(6).ToString
@@ -125,13 +129,24 @@ Public Class Administrador
             Nameuser.Text = ""
             Firstuser.Text = ""
             user.Text = ""
-            Txt_newpassword.Text = ""
+            Txt_newpassword.Password = ""
             IDnew.Text = ""
             tel1.Text = ""
             tel2.Text = ""
             tel3.Text = ""
             TypeUser.Text = ""
             row.CancelEdit()
+        End If
+    End Sub
+
+    Private Sub Administrador_Closing(sender As Object, e As CancelEventArgs) Handles Me.Closing
+        e.Cancel = True
+        If modocerrar = 1 Then
+            e.Cancel = False
+        Else
+            Dim dlgclshw = New MessageClsDlg
+            dlgclshw.Message.Text = "¿Quieres cerrar el programa?"
+            DialogHost.Show(dlgclshw, "RootDialog")
         End If
     End Sub
 End Class

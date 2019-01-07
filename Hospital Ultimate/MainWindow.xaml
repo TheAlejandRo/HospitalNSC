@@ -48,15 +48,30 @@
             </materialDesign:DrawerHost.RightDrawerContent>
             <Grid>
                 <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="677*"/>
-                    <ColumnDefinition Width="279*"/>
+                    <ColumnDefinition Width="1320*"/>
+                    <ColumnDefinition Width="240*"/>
+                    <ColumnDefinition Width="145*"/>
+                    <ColumnDefinition Width="207*"/>
                 </Grid.ColumnDefinitions>
                 <Grid.RowDefinitions>
                     <RowDefinition Height="Auto"/>
-                    <RowDefinition Height="382*"/>
-                    <RowDefinition Height="129*"/>
+                    <RowDefinition Height="53*"/>
+                    <RowDefinition Height="20*"/>
                 </Grid.RowDefinitions>
-                <Border x:Name="win_mov" CornerRadius="0,0,0,0" Grid.ColumnSpan="2">
+                <TextBlock Text="Doctor" Grid.Column="1" Grid.Row="1" Foreground="DodgerBlue" FontSize="40" FontWeight="Bold" VerticalAlignment="Top" TextAlignment="Center"/>
+                <TextBlock Text="Tiket" Grid.Column="2" Grid.Row="1" Foreground="DodgerBlue" FontSize="40" FontWeight="Bold" VerticalAlignment="Top" TextAlignment="Center"/>
+                <TextBlock Text="Clínica" Grid.Column="3" Grid.Row="1" Foreground="DodgerBlue" FontSize="40" FontWeight="Bold" VerticalAlignment="Top" TextAlignment="Center"/>
+                <materialDesign:Snackbar MessageQueue="{materialDesign:MessageQueue}"
+                                         x:Name="MainSnack"
+                                         Grid.Row="2" Margin="798,0,234,0" Height="0" Width="288"/>
+                <WebBrowser x:Name="web_view" Grid.Row="1" IsEnabled="False" Visibility="Collapsed"/>
+                <DataGrid x:Name="Listado_tikets" Margin="0,59,0,0" FontSize="28" HorizontalGridLinesBrush="#FF1976D2" Foreground="#FF1976D2" Grid.Column="1" Focusable="False" CanUserSortColumns="False" CanUserResizeColumns="False" CanUserReorderColumns="False" CanUserDeleteRows="False" CanUserResizeRows="False" CanUserAddRows="False" Grid.Row="1" HeadersVisibility="None" FontStretch="UltraCondensed" FontWeight="SemiBold" RowDetailsVisibilityMode="Collapsed" SelectionUnit="CellOrRowHeader" EnableRowVirtualization="False" Grid.ColumnSpan="3"/>
+                <Label Grid.Row="2"
+                       Content="1" VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="72" Margin="638,86,632,86" Height="108" Width="50"
+                       />
+                <MediaElement x:Name="OfflineView" Grid.Row="1" Grid.Column="0" Volume="1" IsEnabled="False"  Visibility="Collapsed" SnapsToDevicePixels="True" ScrollViewer.CanContentScroll="True" Margin="-10,0,0,0" Stretch="Uniform" UnloadedBehavior="Manual"/>
+                <Image x:Name="Portada" Grid.Row="1" Grid.Column="0" IsEnabled="False" Visibility="Collapsed" Source="Logotipo Hospital Nuestra Señora del Carmen - editable transparent.png"/>
+                <Border x:Name="win_mov" CornerRadius="0,0,0,0" Grid.ColumnSpan="4">
                     <materialDesign:ColorZone
             Mode="PrimaryDark"
             Padding="10"
@@ -72,19 +87,10 @@
                     VerticalAlignment="Center" HorizontalAlignment="Center"
                     Margin="30 0 0 0"
                     FontSize="22"
-                                Text="Sala de Espera"></TextBlock>
+                                Text="Sala de Espera"/>
                         </DockPanel>
                     </materialDesign:ColorZone>
                 </Border>
-                <materialDesign:Snackbar MessageQueue="{materialDesign:MessageQueue}"
-                                         x:Name="MainSnack"
-                                         Grid.Row="2" Margin="812,0,254,0"/>
-                <WebBrowser x:Name="web_view" Grid.Row="1" IsEnabled="False" Visibility="Collapsed"/>
-                <DataGrid x:Name="Listado_tikets" Margin="0,5,0,4" FontSize="32" HorizontalGridLinesBrush="#FF1976D2" Foreground="#FF1976D2" Grid.Column="1" Focusable="False" CanUserSortColumns="False" CanUserResizeColumns="False" CanUserReorderColumns="False" CanUserDeleteRows="False" CanUserResizeRows="False" CanUserAddRows="False" Grid.Row="1"/>
-                <Label Grid.Row="2" Grid.ColumnSpan="1"
-                       Content="1" VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="72"
-                       />
-                <MediaElement x:Name="OfflineView" Grid.Row="1" Volume="1" IsEnabled="False" Visibility="Collapsed" UnloadedBehavior="Play"/>
             </Grid>
         </materialDesign:DrawerHost>
     </materialDesign:DialogHost>

@@ -1,0 +1,2 @@
+﻿Actualmente los paneles alojados en esta carpeta están sin uso alguno y sin función cargada a ningún formulario,
+pero se dejó como código comentado en el formulario de Administración.

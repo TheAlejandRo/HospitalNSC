@@ -1,4 +1,5 @@
-﻿Imports System.Data
+﻿Imports System
+Imports System.Data
 Imports MySql.Data.MySqlClient
 Imports MaterialDesignThemes.Wpf
 Imports System.ComponentModel
@@ -6,6 +7,7 @@ Imports System.Windows.Threading
 
 Public Class Secretarias
 
+    Dim formadecerrar As Integer = 0
     Dim WithEvents Ds As New DispatcherTimer
     Dim conexion As New MySqlConnection("server=192.168.1.90; user=TheAlejandRo; password=Tech.Code; database=dbturnos")
     Dim consulta As String = String.Empty
@@ -44,6 +46,8 @@ Public Class Secretarias
         btn_menu.IsChecked = False
         Dim login As New Login
         login.Show()
+        formadecerrar = 1
+        Me.Finalize()
         Me.Close()
     End Sub
 
@@ -54,21 +58,20 @@ Public Class Secretarias
     End Sub
 
     Private Sub Secretarias_Loaded(sender As Object, e As RoutedEventArgs) Handles Me.Loaded
-        Ds.Interval = New TimeSpan(0, 0, 5)
+        formadecerrar = 0
+        Ds.Interval = New TimeSpan(0, 0, 1)
         Ds.Start()
     End Sub
 
     Private Sub Secretarias_Closing(sender As Object, e As CancelEventArgs) Handles Me.Closing
-        Try
-            conexion.Open()
-            update_state = "UPDATE usuarios SET estado='0' WHERE idusuario='" & IDscr.Text & "'"
-            comando = New MySqlCommand(update_state, conexion)
-            comando.ExecuteNonQuery()
-        Catch ex As MySqlException
-            MessageBox.Show(ex.Message)
-        Finally
-            conexion.Close()
-        End Try
+        e.Cancel = True
+        If formadecerrar = 1 Then
+            e.Cancel = False
+        Else
+            Dim dlgclshw As New MessageClsDlg
+            dlgclshw.Message.Text = "¿Quieres cerrar el programa?"
+            DialogHost.Show(dlgclshw, "RootDialog")
+        End If
     End Sub
 
     Private Sub generador_ticket_Selected(sender As Object, e As RoutedEventArgs) Handles generador_ticket.Selected
@@ -141,8 +144,9 @@ Public Class Secretarias
                 End If
                 conexion.Close()
             End If
-        Catch ex As MySqlException
+        Catch ex As Exception
             MsgBox(ex.Message)
+            Log.e("Error con Excepción y Traza", ex, New StackFrame(True))
         Finally
             conexion.Close()
         End Try
@@ -201,6 +205,7 @@ Public Class Secretarias
             End If
         Catch ex As Exception
             MsgBox(ex.Message)
+            Log.e("Error con Excepción y Traza", ex, New StackFrame(True))
         Finally
             conexion.Close()
         End Try
@@ -223,8 +228,9 @@ Public Class Secretarias
             tiket = "INSERT INTO pacientes (IDcliente, idDoctor, Doctor, Tiket, Clinica, estado_paciente) VALUES ('NULL', '6', '" & Drname1.Text & "', '" & TiketDr1.Text & "', '" & clinicatbl.Rows(0)(0).ToString & "', '0')"
             comando = New MySqlCommand(tiket, conexion)
             comando.ExecuteNonQueryAsync()
-        Catch ex As MySqlException
+        Catch ex As Exception
             MsgBox(ex.Message)
+            Log.e("Error con Excepción y Traza", ex, New StackFrame(True))
         Finally
             TiketDr1.Text = ""
             conexion.Close()
@@ -243,8 +249,9 @@ Public Class Secretarias
             tiket = "INSERT INTO pacientes (IDcliente, idDoctor, Doctor, Tiket, Clinica, estado_paciente) VALUES ('NULL', '7', '" & Drname2.Text & "', '" & TiketDr2.Text & "', '" & clinicatbl.Rows(0)(0).ToString & "', '0')"
             comando = New MySqlCommand(tiket, conexion)
             comando.ExecuteNonQueryAsync()
-        Catch ex As MySqlException
+        Catch ex As Exception
             MsgBox(ex.Message)
+            Log.e("Error con Excepción y Traza", ex, New StackFrame(True))
         Finally
             TiketDr2.Text = ""
             conexion.Close()
@@ -263,8 +270,9 @@ Public Class Secretarias
             tiket = "INSERT INTO pacientes (IDcliente, idDoctor, Doctor, Tiket, Clinica, estado_paciente) VALUES ('NULL', '8', '" & Drname3.Text & "', '" & TiketDr3.Text & "', '" & clinicatbl.Rows(0)(0).ToString & "', '0')"
             comando = New MySqlCommand(tiket, conexion)
             comando.ExecuteNonQueryAsync()
-        Catch ex As MySqlException
+        Catch ex As Exception
             MsgBox(ex.Message)
+            Log.e("Error con Excepción y Traza", ex, New StackFrame(True))
         Finally
             TiketDr3.Text = ""
             conexion.Close()
@@ -283,8 +291,9 @@ Public Class Secretarias
             tiket = "INSERT INTO pacientes (IDcliente, idDoctor, Doctor, Tiket, Clinica, estado_paciente) VALUES ('NULL', '9', '" & Drname4.Text & "', '" & TiketDr4.Text & "', '" & clinicatbl.Rows(0)(0).ToString & "', '0')"
             comando = New MySqlCommand(tiket, conexion)
             comando.ExecuteNonQueryAsync()
-        Catch ex As MySqlException
+        Catch ex As Exception
             MsgBox(ex.Message)
+            Log.e("Error con Excepción y Traza", ex, New StackFrame(True))
         Finally
             TiketDr4.Text = ""
             conexion.Close()
@@ -303,8 +312,9 @@ Public Class Secretarias
             tiket = "INSERT INTO pacientes (IDcliente, idDoctor, Doctor, Tiket, Clinica, estado_paciente) VALUES ('NULL', '10', '" & Drname5.Text & "', '" & TiketDr5.Text & "', '" & clinicatbl.Rows(0)(0).ToString & "', '0')"
             comando = New MySqlCommand(tiket, conexion)
             comando.ExecuteNonQueryAsync()
-        Catch ex As MySqlException
+        Catch ex As Exception
             MsgBox(ex.Message)
+            Log.e("Error con Excepción y Traza", ex, New StackFrame(True))
         Finally
             TiketDr5.Text = ""
             conexion.Close()
@@ -323,8 +333,9 @@ Public Class Secretarias
             tiket = "INSERT INTO pacientes (IDcliente, idDoctor, Doctor, Tiket, Clinica, estado_paciente) VALUES ('NULL', '11', '" & Drname6.Text & "', '" & TiketDr6.Text & "', '" & clinicatbl.Rows(0)(0).ToString & "', '0')"
             comando = New MySqlCommand(tiket, conexion)
             comando.ExecuteNonQueryAsync()
-        Catch ex As MySqlException
+        Catch ex As Exception
             MsgBox(ex.Message)
+            Log.e("Error con Excepción y Traza", ex, New StackFrame(True))
         Finally
             TiketDr6.Text = ""
             conexion.Close()
@@ -343,8 +354,9 @@ Public Class Secretarias
             tiket = "INSERT INTO pacientes (IDcliente, idDoctor, Doctor, Tiket, Clinica, estado_paciente) VALUES ('NULL', '12', '" & Drname7.Text & "', '" & TiketDr7.Text & "', '" & clinicatbl.Rows(0)(0).ToString & "', '0')"
             comando = New MySqlCommand(tiket, conexion)
             comando.ExecuteNonQueryAsync()
-        Catch ex As MySqlException
+        Catch ex As Exception
             MsgBox(ex.Message)
+            Log.e("Error con Excepción y Traza", ex, New StackFrame(True))
         Finally
             TiketDr7.Text = ""
             conexion.Close()
@@ -363,8 +375,9 @@ Public Class Secretarias
             tiket = "INSERT INTO pacientes (IDcliente, idDoctor, Doctor, Tiket, Clinica, estado_paciente) VALUES ('NULL', '13', '" & Drname8.Text & "', '" & TiketDr8.Text & "', '" & clinicatbl.Rows(0)(0).ToString & "', '0')"
             comando = New MySqlCommand(tiket, conexion)
             comando.ExecuteNonQueryAsync()
-        Catch ex As MySqlException
+        Catch ex As Exception
             MsgBox(ex.Message)
+            Log.e("Error con Excepción y Traza", ex, New StackFrame(True))
         Finally
             TiketDr8.Text = ""
             conexion.Close()
@@ -383,8 +396,9 @@ Public Class Secretarias
             tiket = "INSERT INTO pacientes (IDcliente, idDoctor, Doctor, Tiket, Clinica, estado_paciente) VALUES ('NULL', '14', '" & Drname9.Text & "', '" & TiketDr9.Text & "', '" & clinicatbl.Rows(0)(0).ToString & "', '0')"
             comando = New MySqlCommand(tiket, conexion)
             comando.ExecuteNonQueryAsync()
-        Catch ex As MySqlException
+        Catch ex As Exception
             MsgBox(ex.Message)
+            Log.e("Error con Excepción y Traza", ex, New StackFrame(True))
         Finally
             TiketDr9.Text = ""
             conexion.Close()
@@ -403,8 +417,9 @@ Public Class Secretarias
             tiket = "INSERT INTO pacientes (IDcliente, idDoctor, Doctor, Tiket, Clinica, estado_paciente) VALUES ('NULL', '15', '" & Drname10.Text & "', '" & TiketDr10.Text & "', '" & clinicatbl.Rows(0)(0).ToString & "', '0')"
             comando = New MySqlCommand(tiket, conexion)
             comando.ExecuteNonQueryAsync()
-        Catch ex As MySqlException
+        Catch ex As Exception
             MsgBox(ex.Message)
+            Log.e("Error con Excepción y Traza", ex, New StackFrame(True))
         Finally
             TiketDr10.Text = ""
             conexion.Close()

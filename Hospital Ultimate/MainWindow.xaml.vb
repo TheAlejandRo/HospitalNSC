@@ -13,20 +13,22 @@ Class MainWindow
     Dim tabla As New DataTable
 
     Private Sub win_mov_MouseLeftButtonDown(sender As Object, e As MouseButtonEventArgs) Handles win_mov.MouseLeftButtonDown
+        If WindowState = WindowState.Maximized Then
+            WindowState = WindowState.Normal
+        End If
         DragMove()
     End Sub
 
-    Private Sub btn_close_IsEnabledChanged(sender As Object, e As RoutedEventArgs) Handles btn_close.Selected
+    Private Sub btn_close_Selected(sender As Object, e As RoutedEventArgs) Handles btn_close.Selected
         Dtimer.Stop()
+        OfflineView.Close()
+        Me.Finalize()
         Me.Close()
     End Sub
 
-    Private Sub MainWindow_Closing(sender As Object, e As CancelEventArgs) Handles Me.Closing
-        Me.Finalize()
-    End Sub
-
     Private Sub MainWindow_Loaded(sender As Object, e As RoutedEventArgs) Handles Me.Loaded
-        MsgBox(My.Settings.ModeView.ToString)
+        ModoVisual()
+        Listado_tikets.IsReadOnly = True
         AddHandler Dtimer.Tick, AddressOf Dtimer_Tick
         Dtimer.Interval = New TimeSpan(0, 0, 1)
         Dtimer.Start()
@@ -69,6 +71,25 @@ Class MainWindow
                 My.Settings.ModeView = 1
                 My.Settings.Save()
             End If
+        End If
+    End Sub
+
+    Private Sub Listado_tikets_BeginningEdit(sender As Object, e As DataGridBeginningEditEventArgs) Handles Listado_tikets.BeginningEdit
+        Listado_tikets.CancelEdit()
+    End Sub
+
+    Private Sub OfflineView_MediaEnded(sender As Object, e As RoutedEventArgs) Handles OfflineView.MediaEnded
+        OfflineView.Position = New TimeSpan(0, 0, 0)
+        OfflineView.Play()
+    End Sub
+
+    Private Sub OfflineView_MediaOpened(sender As Object, e As RoutedEventArgs) Handles OfflineView.MediaOpened
+        If OfflineView.HasVideo = False Then
+            Portada.IsEnabled = True
+            Portada.Visibility = Visibility.Visible
+        ElseIf OfflineView.HasVideo = False And OfflineView.HasAudio = False Then
+            Portada.IsEnabled = False
+            Portada.Visibility = Visibility.Collapsed
         End If
     End Sub
 End Class

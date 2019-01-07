@@ -1,9 +1,11 @@
 ﻿Imports MySql.Data.MySqlClient
 Imports MaterialDesignThemes.Wpf
 Imports System.Data
+Imports System.ComponentModel
 
 Public Class Login
 
+    Dim modocerrar As Integer = 0
     Dim Secretaria As New Secretarias
     Dim administrador As New Administrador
     Dim Doctores As New Doctores
@@ -30,22 +32,25 @@ Public Class Login
                     administrador.Admin_Title.Text = tabla.Rows(0)(1).ToString
                     administrador.IDadmin.Text = tabla.Rows(0)(2).ToString
                     administrador.Show()
+                    modocerrar = 1
                     conexion.Close()
                     Me.Close()
                 ElseIf tabla.Rows(0)(0).ToString = "Doctor" Then
                     Doctores.Dr_Title.Text = tabla.Rows(0)(1).ToString
                     Doctores.idDr.Text = tabla.Rows(0)(2).ToString
                     Doctores.Show()
+                    modocerrar = 1
                     conexion.Close()
                     Me.Close()
                 ElseIf tabla.Rows(0)(0).ToString = "Secretaria" Then
                     Secretaria.Secretaria_Nom.Text = tabla.Rows(0)(1).ToString
                     Secretaria.IDscr.Text = tabla.Rows(0)(2).ToString
                     Secretaria.Show()
+                    modocerrar = 1
                     conexion.Close()
                     Me.Close()
                 End If
-            ElseIf tabla.Rows.Count > 1 Then
+            ElseIf tabla.Rows.Count <> 1 Then
                 Dim dlgshw = New MessageDialog
                 dlgshw.Message.Text = "El usuario está duplicado, por favor verifique sus credenciales."
                 DialogHost.Show(dlgshw, "RootDialog")
@@ -66,5 +71,20 @@ Public Class Login
         Dim dlgclshw = New MessageClsDlg
         dlgclshw.Message.Text = "¿Quieres cerrar el programa?"
         DialogHost.Show(dlgclshw, "RootDialog")
+    End Sub
+
+    Private Sub Login_Closing(sender As Object, e As CancelEventArgs) Handles Me.Closing
+        e.Cancel = True
+        If modocerrar = 1 Then
+            e.Cancel = False
+        Else
+            Dim dlgclshw = New MessageClsDlg
+            dlgclshw.Message.Text = "¿Quieres cerrar el programa?"
+            DialogHost.Show(dlgclshw, "RootDialog")
+        End If
+    End Sub
+
+    Private Sub Login_Loaded(sender As Object, e As RoutedEventArgs) Handles Me.Loaded
+        modocerrar = 0
     End Sub
 End Class

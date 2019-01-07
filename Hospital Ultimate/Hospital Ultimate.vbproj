@@ -314,7 +314,9 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Resource Include="PanelsAD\Actualmente Deshabilitados.txt" />
+  </ItemGroup>
   <ItemGroup>
     <Resource Include="Logotipo Hospital Nuestra Señora del Carmen - editable transparent.png" />
   </ItemGroup>
