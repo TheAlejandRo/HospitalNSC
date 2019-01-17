@@ -7,7 +7,8 @@
              xmlns:local="clr-namespace:Hospital_Ultimate"
              mc:Ignorable="d" 
              d:DesignHeight="300" d:DesignWidth="300"
-             FontFamily="Segeo UI Semibold">
+             MaxWidth="600"
+             FontFamily="Segoe UI Semibold">
     <Grid Margin="15">
         <Grid.RowDefinitions>
             <RowDefinition Height="1*"/>
@@ -16,7 +17,7 @@
         <TextBlock x:Name="Message"
                    Grid.Row="0"
                    Margin="0 6 0 0"
-                   FontSize="12"/>
+                   FontSize="12" TextWrapping="Wrap"/>
         <Button x:Name="clsButton"
             Grid.Row="1"
                 IsDefault="True"

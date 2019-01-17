@@ -10,11 +10,11 @@ Public Class Secretarias
     Dim formadecerrar As Integer = 0
     Dim WithEvents Ds As New DispatcherTimer
     Dim conexion As New MySqlConnection("server=192.168.1.90; user=TheAlejandRo; password=Tech.Code; database=dbturnos")
+    Dim conexion1 As New MySqlConnection("server=192.168.1.90; user=TheAlejandRo; password=Tech.Code; database=dbturnos")
     Dim consulta As String = String.Empty
     Dim comando As MySqlCommand
     Dim adaptador As MySqlDataAdapter
     Dim tabla As New DataTable
-    Dim update_state As String = String.Empty
     Dim tiket As String = String.Empty
 
     Private Sub win_move_MouseLeftButtonDown(sender As Object, e As MouseButtonEventArgs) Handles win_move.MouseLeftButtonDown
@@ -47,6 +47,7 @@ Public Class Secretarias
         Dim login As New Login
         login.Show()
         formadecerrar = 1
+        Ds.Stop()
         Me.Finalize()
         Me.Close()
     End Sub
@@ -84,71 +85,360 @@ Public Class Secretarias
 
     Private Sub ActiveDR()
         Try
-            conexion.Open()
+            conexion1.Open()
             consulta = "SELECT idusuario, estado FROM usuarios WHERE tipo_usuario='Doctor'"
-            comando = New MySqlCommand(consulta, conexion)
+            comando = New MySqlCommand(consulta, conexion1)
             adaptador = New MySqlDataAdapter(comando)
             Dim tabl As New DataTable
-            tabl.Reset()
+            tabl.Clear()
             adaptador.Fill(tabl)
-            If tabl.Rows.Count <> 0 Then
+            If tabl.Rows.Count = 1 Then
                 If tabl.Rows(0)(1).ToString = "1" Then
                     Doc1.IsEnabled = True
-                Else
+                ElseIf tabl.Rows(0)(1).ToString = "0" Then
+                    Doc1.IsEnabled = False
+                End If
+                Doc2.IsEnabled = False
+                Doc3.IsEnabled = False
+                Doc4.IsEnabled = False
+                Doc5.IsEnabled = False
+                Doc6.IsEnabled = False
+                Doc7.IsEnabled = False
+                Doc8.IsEnabled = False
+                Doc9.IsEnabled = False
+                Doc10.IsEnabled = False
+            ElseIf tabl.Rows.Count = 2 Then
+                If tabl.Rows(0)(1).ToString = "1" Then
+                    Doc1.IsEnabled = True
+                ElseIf tabl.Rows(0)(1).ToString = "0" Then
                     Doc1.IsEnabled = False
                 End If
                 If tabl.Rows(1)(1).ToString = "1" Then
                     Doc2.IsEnabled = True
-                Else
+                ElseIf tabl.Rows(1)(1).ToString = "0" Then
+                    Doc2.IsEnabled = False
+                End If
+                Doc3.IsEnabled = False
+                Doc4.IsEnabled = False
+                Doc5.IsEnabled = False
+                Doc6.IsEnabled = False
+                Doc7.IsEnabled = False
+                Doc8.IsEnabled = False
+                Doc9.IsEnabled = False
+                Doc10.IsEnabled = False
+            ElseIf tabl.Rows.Count = 3 Then
+                If tabl.Rows(0)(1).ToString = "1" Then
+                    Doc1.IsEnabled = True
+                ElseIf tabl.Rows(0)(1).ToString = "0" Then
+                    Doc1.IsEnabled = False
+                End If
+                If tabl.Rows(1)(1).ToString = "1" Then
+                    Doc2.IsEnabled = True
+                ElseIf tabl.Rows(1)(1).ToString = "0" Then
                     Doc2.IsEnabled = False
                 End If
                 If tabl.Rows(2)(1).ToString = "1" Then
                     Doc3.IsEnabled = True
-                Else
+                ElseIf tabl.Rows(2)(1).ToString = "0" Then
+                    Doc3.IsEnabled = False
+                End If
+                Doc4.IsEnabled = False
+                Doc5.IsEnabled = False
+                Doc6.IsEnabled = False
+                Doc7.IsEnabled = False
+                Doc8.IsEnabled = False
+                Doc9.IsEnabled = False
+                Doc10.IsEnabled = False
+            ElseIf tabl.Rows.Count = 4 Then
+                If tabl.Rows(0)(1).ToString = "1" Then
+                    Doc1.IsEnabled = True
+                ElseIf tabl.Rows(0)(1).ToString = "0" Then
+                    Doc1.IsEnabled = False
+                End If
+                If tabl.Rows(1)(1).ToString = "1" Then
+                    Doc2.IsEnabled = True
+                ElseIf tabl.Rows(1)(1).ToString = "0" Then
+                    Doc2.IsEnabled = False
+                End If
+                If tabl.Rows(2)(1).ToString = "1" Then
+                    Doc3.IsEnabled = True
+                ElseIf tabl.Rows(2)(1).ToString = "0" Then
                     Doc3.IsEnabled = False
                 End If
                 If tabl.Rows(3)(1).ToString = "1" Then
                     Doc4.IsEnabled = True
-                Else
+                ElseIf tabl.Rows(3)(1).ToString = "0" Then
+                    Doc4.IsEnabled = False
+                End If
+                Doc5.IsEnabled = False
+                Doc6.IsEnabled = False
+                Doc7.IsEnabled = False
+                Doc8.IsEnabled = False
+                Doc9.IsEnabled = False
+                Doc10.IsEnabled = False
+            ElseIf tabl.Rows.Count = 5 Then
+                If tabl.Rows(0)(1).ToString = "1" Then
+                    Doc1.IsEnabled = True
+                ElseIf tabl.Rows(0)(1).ToString = "0" Then
+                    Doc1.IsEnabled = False
+                End If
+                If tabl.Rows(1)(1).ToString = "1" Then
+                    Doc2.IsEnabled = True
+                ElseIf tabl.Rows(1)(1).ToString = "0" Then
+                    Doc2.IsEnabled = False
+                End If
+                If tabl.Rows(2)(1).ToString = "1" Then
+                    Doc3.IsEnabled = True
+                ElseIf tabl.Rows(2)(1).ToString = "0" Then
+                    Doc3.IsEnabled = False
+                End If
+                If tabl.Rows(3)(1).ToString = "1" Then
+                    Doc4.IsEnabled = True
+                ElseIf tabl.Rows(3)(1).ToString = "0" Then
                     Doc4.IsEnabled = False
                 End If
                 If tabl.Rows(4)(1).ToString = "1" Then
                     Doc5.IsEnabled = True
-                Else
+                ElseIf tabl.Rows(4)(1).ToString = "0" Then
+                    Doc5.IsEnabled = False
+                End If
+                Doc6.IsEnabled = False
+                Doc7.IsEnabled = False
+                Doc8.IsEnabled = False
+                Doc9.IsEnabled = False
+                Doc10.IsEnabled = False
+            ElseIf tabl.Rows.Count = 6 Then
+                If tabl.Rows(0)(1).ToString = "1" Then
+                    Doc1.IsEnabled = True
+                ElseIf tabl.Rows(0)(1).ToString = "0" Then
+                    Doc1.IsEnabled = False
+                End If
+                If tabl.Rows(1)(1).ToString = "1" Then
+                    Doc2.IsEnabled = True
+                ElseIf tabl.Rows(1)(1).ToString = "0" Then
+                    Doc2.IsEnabled = False
+                End If
+                If tabl.Rows(2)(1).ToString = "1" Then
+                    Doc3.IsEnabled = True
+                ElseIf tabl.Rows(2)(1).ToString = "0" Then
+                    Doc3.IsEnabled = False
+                End If
+                If tabl.Rows(3)(1).ToString = "1" Then
+                    Doc4.IsEnabled = True
+                ElseIf tabl.Rows(3)(1).ToString = "0" Then
+                    Doc4.IsEnabled = False
+                End If
+                If tabl.Rows(4)(1).ToString = "1" Then
+                    Doc5.IsEnabled = True
+                ElseIf tabl.Rows(4)(1).ToString = "0" Then
                     Doc5.IsEnabled = False
                 End If
                 If tabl.Rows(5)(1).ToString = "1" Then
                     Doc6.IsEnabled = True
-                Else
+                ElseIf tabl.Rows(5)(1).ToString = "0" Then
+                    Doc6.IsEnabled = False
+                End If
+                Doc7.IsEnabled = False
+                Doc8.IsEnabled = False
+                Doc9.IsEnabled = False
+                Doc10.IsEnabled = False
+            ElseIf tabl.Rows.Count = 7 Then
+                If tabl.Rows(0)(1).ToString = "1" Then
+                    Doc1.IsEnabled = True
+                ElseIf tabl.Rows(0)(1).ToString = "0" Then
+                    Doc1.IsEnabled = False
+                End If
+                If tabl.Rows(1)(1).ToString = "1" Then
+                    Doc2.IsEnabled = True
+                ElseIf tabl.Rows(1)(1).ToString = "0" Then
+                    Doc2.IsEnabled = False
+                End If
+                If tabl.Rows(2)(1).ToString = "1" Then
+                    Doc3.IsEnabled = True
+                ElseIf tabl.Rows(2)(1).ToString = "0" Then
+                    Doc3.IsEnabled = False
+                End If
+                If tabl.Rows(3)(1).ToString = "1" Then
+                    Doc4.IsEnabled = True
+                ElseIf tabl.Rows(3)(1).ToString = "0" Then
+                    Doc4.IsEnabled = False
+                End If
+                If tabl.Rows(4)(1).ToString = "1" Then
+                    Doc5.IsEnabled = True
+                ElseIf tabl.Rows(4)(1).ToString = "0" Then
+                    Doc5.IsEnabled = False
+                End If
+                If tabl.Rows(5)(1).ToString = "1" Then
+                    Doc6.IsEnabled = True
+                ElseIf tabl.Rows(5)(1).ToString = "0" Then
                     Doc6.IsEnabled = False
                 End If
                 If tabl.Rows(6)(1).ToString = "1" Then
                     Doc7.IsEnabled = True
-                Else
+                ElseIf tabl.Rows(6)(1).ToString = "0" Then
+                    Doc7.IsEnabled = False
+                End If
+                Doc8.IsEnabled = False
+                Doc9.IsEnabled = False
+                Doc10.IsEnabled = False
+            ElseIf tabl.Rows.Count = 8 Then
+                If tabl.Rows(0)(1).ToString = "1" Then
+                    Doc1.IsEnabled = True
+                ElseIf tabl.Rows(0)(1).ToString = "0" Then
+                    Doc1.IsEnabled = False
+                End If
+                If tabl.Rows(1)(1).ToString = "1" Then
+                    Doc2.IsEnabled = True
+                ElseIf tabl.Rows(1)(1).ToString = "0" Then
+                    Doc2.IsEnabled = False
+                End If
+                If tabl.Rows(2)(1).ToString = "1" Then
+                    Doc3.IsEnabled = True
+                ElseIf tabl.Rows(2)(1).ToString = "0" Then
+                    Doc3.IsEnabled = False
+                End If
+                If tabl.Rows(3)(1).ToString = "1" Then
+                    Doc4.IsEnabled = True
+                ElseIf tabl.Rows(3)(1).ToString = "0" Then
+                    Doc4.IsEnabled = False
+                End If
+                If tabl.Rows(4)(1).ToString = "1" Then
+                    Doc5.IsEnabled = True
+                ElseIf tabl.Rows(4)(1).ToString = "0" Then
+                    Doc5.IsEnabled = False
+                End If
+                If tabl.Rows(5)(1).ToString = "1" Then
+                    Doc6.IsEnabled = True
+                ElseIf tabl.Rows(5)(1).ToString = "0" Then
+                    Doc6.IsEnabled = False
+                End If
+                If tabl.Rows(6)(1).ToString = "1" Then
+                    Doc7.IsEnabled = True
+                ElseIf tabl.Rows(6)(1).ToString = "0" Then
                     Doc7.IsEnabled = False
                 End If
                 If tabl.Rows(7)(1).ToString = "1" Then
                     Doc8.IsEnabled = True
-                Else
+                ElseIf tabl.Rows(7)(1).ToString = "0" Then
+                    Doc8.IsEnabled = False
+                End If
+                Doc9.IsEnabled = False
+                Doc10.IsEnabled = False
+            ElseIf tabl.Rows.Count = 9 Then
+                If tabl.Rows(0)(1).ToString = "1" Then
+                    Doc1.IsEnabled = True
+                ElseIf tabl.Rows(0)(1).ToString = "0" Then
+                    Doc1.IsEnabled = False
+                End If
+                If tabl.Rows(1)(1).ToString = "1" Then
+                    Doc2.IsEnabled = True
+                ElseIf tabl.Rows(1)(1).ToString = "0" Then
+                    Doc2.IsEnabled = False
+                End If
+                If tabl.Rows(2)(1).ToString = "1" Then
+                    Doc3.IsEnabled = True
+                ElseIf tabl.Rows(2)(1).ToString = "0" Then
+                    Doc3.IsEnabled = False
+                End If
+                If tabl.Rows(3)(1).ToString = "1" Then
+                    Doc4.IsEnabled = True
+                ElseIf tabl.Rows(3)(1).ToString = "0" Then
+                    Doc4.IsEnabled = False
+                End If
+                If tabl.Rows(4)(1).ToString = "1" Then
+                    Doc5.IsEnabled = True
+                ElseIf tabl.Rows(4)(1).ToString = "0" Then
+                    Doc5.IsEnabled = False
+                End If
+                If tabl.Rows(5)(1).ToString = "1" Then
+                    Doc6.IsEnabled = True
+                ElseIf tabl.Rows(5)(1).ToString = "0" Then
+                    Doc6.IsEnabled = False
+                End If
+                If tabl.Rows(6)(1).ToString = "1" Then
+                    Doc7.IsEnabled = True
+                ElseIf tabl.Rows(6)(1).ToString = "0" Then
+                    Doc7.IsEnabled = False
+                End If
+                If tabl.Rows(7)(1).ToString = "1" Then
+                    Doc8.IsEnabled = True
+                ElseIf tabl.Rows(7)(1).ToString = "0" Then
                     Doc8.IsEnabled = False
                 End If
                 If tabl.Rows(8)(1).ToString = "1" Then
                     Doc9.IsEnabled = True
-                Else
+                ElseIf tabl.Rows(8)(1).ToString = "0" Then
+                    Doc9.IsEnabled = False
+                End If
+                Doc10.IsEnabled = False
+            ElseIf tabl.Rows.Count = 10 Then
+                If tabl.Rows(0)(1).ToString = "1" Then
+                    Doc1.IsEnabled = True
+                ElseIf tabl.Rows(0)(1).ToString = "0" Then
+                    Doc1.IsEnabled = False
+                End If
+                If tabl.Rows(1)(1).ToString = "1" Then
+                    Doc2.IsEnabled = True
+                ElseIf tabl.Rows(1)(1).ToString = "0" Then
+                    Doc2.IsEnabled = False
+                End If
+                If tabl.Rows(2)(1).ToString = "1" Then
+                    Doc3.IsEnabled = True
+                ElseIf tabl.Rows(2)(1).ToString = "0" Then
+                    Doc3.IsEnabled = False
+                End If
+                If tabl.Rows(3)(1).ToString = "1" Then
+                    Doc4.IsEnabled = True
+                ElseIf tabl.Rows(3)(1).ToString = "0" Then
+                    Doc4.IsEnabled = False
+                End If
+                If tabl.Rows(4)(1).ToString = "1" Then
+                    Doc5.IsEnabled = True
+                ElseIf tabl.Rows(4)(1).ToString = "0" Then
+                    Doc5.IsEnabled = False
+                End If
+                If tabl.Rows(5)(1).ToString = "1" Then
+                    Doc6.IsEnabled = True
+                ElseIf tabl.Rows(5)(1).ToString = "0" Then
+                    Doc6.IsEnabled = False
+                End If
+                If tabl.Rows(6)(1).ToString = "1" Then
+                    Doc7.IsEnabled = True
+                ElseIf tabl.Rows(6)(1).ToString = "0" Then
+                    Doc7.IsEnabled = False
+                End If
+                If tabl.Rows(7)(1).ToString = "1" Then
+                    Doc8.IsEnabled = True
+                ElseIf tabl.Rows(7)(1).ToString = "0" Then
+                    Doc8.IsEnabled = False
+                End If
+                If tabl.Rows(8)(1).ToString = "1" Then
+                    Doc9.IsEnabled = True
+                ElseIf tabl.Rows(8)(1).ToString = "0" Then
                     Doc9.IsEnabled = False
                 End If
                 If tabl.Rows(9)(1).ToString = "1" Then
                     Doc10.IsEnabled = True
-                Else
+                ElseIf tabl.Rows(9)(1).ToString = "0" Then
                     Doc10.IsEnabled = False
                 End If
-                conexion.Close()
+            ElseIf tabla.Rows.Count = 0 Then
+                Doc1.IsEnabled = False
+                Doc2.IsEnabled = False
+                Doc3.IsEnabled = False
+                Doc4.IsEnabled = False
+                Doc5.IsEnabled = False
+                Doc6.IsEnabled = False
+                Doc7.IsEnabled = False
+                Doc8.IsEnabled = False
+                Doc9.IsEnabled = False
+                Doc10.IsEnabled = False
             End If
         Catch ex As Exception
             MsgBox(ex.Message)
             Log.e("Error con Excepción y Traza", ex, New StackFrame(True))
         Finally
-            conexion.Close()
+            conexion1.Close()
         End Try
     End Sub
 
@@ -160,7 +450,159 @@ Public Class Secretarias
             adaptador = New MySqlDataAdapter(comando)
             tabla.Clear()
             adaptador.Fill(tabla)
-            If tabla.Rows.Count <> 0 Then
+            If tabla.Rows.Count = 1 Then
+                If tabla.Rows(0)(0).ToString = "6" Then
+                    Drname1.Text = tabla.Rows(0)(1).ToString
+                    Drfristname1.Text = tabla.Rows(0)(2).ToString
+                End If
+            ElseIf tabla.Rows.Count = 2 Then
+                If tabla.Rows(0)(0).ToString = "6" Then
+                    Drname1.Text = tabla.Rows(0)(1).ToString
+                    Drfristname1.Text = tabla.Rows(0)(2).ToString
+                End If
+                If tabla.Rows(1)(0).ToString = "7" Then
+                    Drname2.Text = tabla.Rows(1)(1).ToString
+                    Drfristname2.Text = tabla.Rows(1)(2).ToString
+                End If
+            ElseIf tabla.Rows.Count = 3 Then
+                If tabla.Rows(0)(0).ToString = "6" Then
+                    Drname1.Text = tabla.Rows(0)(1).ToString
+                    Drfristname1.Text = tabla.Rows(0)(2).ToString
+                End If
+                If tabla.Rows(1)(0).ToString = "7" Then
+                    Drname2.Text = tabla.Rows(1)(1).ToString
+                    Drfristname2.Text = tabla.Rows(1)(2).ToString
+                End If
+                If tabla.Rows(2)(0).ToString = "8" Then
+                    Drname3.Text = tabla.Rows(2)(1).ToString
+                    Drfristname3.Text = tabla.Rows(2)(2).ToString
+                End If
+            ElseIf tabla.Rows.Count = 4 Then
+                If tabla.Rows(0)(0).ToString = "6" Then
+                    Drname1.Text = tabla.Rows(0)(1).ToString
+                    Drfristname1.Text = tabla.Rows(0)(2).ToString
+                End If
+                If tabla.Rows(1)(0).ToString = "7" Then
+                    Drname2.Text = tabla.Rows(1)(1).ToString
+                    Drfristname2.Text = tabla.Rows(1)(2).ToString
+                End If
+                If tabla.Rows(2)(0).ToString = "8" Then
+                    Drname3.Text = tabla.Rows(2)(1).ToString
+                    Drfristname3.Text = tabla.Rows(2)(2).ToString
+                End If
+                If tabla.Rows(3)(0).ToString = "9" Then
+                    Drname4.Text = tabla.Rows(3)(1).ToString
+                    Drfristname4.Text = tabla.Rows(3)(2).ToString
+                End If
+            ElseIf tabla.Rows.Count = 5 Then
+                If tabla.Rows(0)(0).ToString = "6" Then
+                    Drname1.Text = tabla.Rows(0)(1).ToString
+                    Drfristname1.Text = tabla.Rows(0)(2).ToString
+                End If
+                If tabla.Rows(1)(0).ToString = "7" Then
+                    Drname2.Text = tabla.Rows(1)(1).ToString
+                    Drfristname2.Text = tabla.Rows(1)(2).ToString
+                End If
+                If tabla.Rows(2)(0).ToString = "8" Then
+                    Drname3.Text = tabla.Rows(2)(1).ToString
+                    Drfristname3.Text = tabla.Rows(2)(2).ToString
+                End If
+                If tabla.Rows(3)(0).ToString = "9" Then
+                    Drname4.Text = tabla.Rows(3)(1).ToString
+                    Drfristname4.Text = tabla.Rows(3)(2).ToString
+                End If
+                If tabla.Rows(4)(0).ToString = "10" Then
+                    Drname5.Text = tabla.Rows(4)(1).ToString
+                    Drfristname5.Text = tabla.Rows(4)(2).ToString
+                End If
+            ElseIf tabla.Rows.Count = 6 Then
+                If tabla.Rows(0)(0).ToString = "6" Then
+                    Drname1.Text = tabla.Rows(0)(1).ToString
+                    Drfristname1.Text = tabla.Rows(0)(2).ToString
+                End If
+                If tabla.Rows(1)(0).ToString = "7" Then
+                    Drname2.Text = tabla.Rows(1)(1).ToString
+                    Drfristname2.Text = tabla.Rows(1)(2).ToString
+                End If
+                If tabla.Rows(2)(0).ToString = "8" Then
+                    Drname3.Text = tabla.Rows(2)(1).ToString
+                    Drfristname3.Text = tabla.Rows(2)(2).ToString
+                End If
+                If tabla.Rows(3)(0).ToString = "9" Then
+                    Drname4.Text = tabla.Rows(3)(1).ToString
+                    Drfristname4.Text = tabla.Rows(3)(2).ToString
+                End If
+                If tabla.Rows(4)(0).ToString = "10" Then
+                    Drname5.Text = tabla.Rows(4)(1).ToString
+                    Drfristname5.Text = tabla.Rows(4)(2).ToString
+                End If
+                If tabla.Rows(5)(0).ToString = "11" Then
+                    Drname6.Text = tabla.Rows(5)(1).ToString
+                    Drfristname6.Text = tabla.Rows(5)(2).ToString
+                End If
+            ElseIf tabla.Rows.Count = 7 Then
+                If tabla.Rows(0)(0).ToString = "6" Then
+                    Drname1.Text = tabla.Rows(0)(1).ToString
+                    Drfristname1.Text = tabla.Rows(0)(2).ToString
+                End If
+                If tabla.Rows(1)(0).ToString = "7" Then
+                    Drname2.Text = tabla.Rows(1)(1).ToString
+                    Drfristname2.Text = tabla.Rows(1)(2).ToString
+                End If
+                If tabla.Rows(2)(0).ToString = "8" Then
+                    Drname3.Text = tabla.Rows(2)(1).ToString
+                    Drfristname3.Text = tabla.Rows(2)(2).ToString
+                End If
+                If tabla.Rows(3)(0).ToString = "9" Then
+                    Drname4.Text = tabla.Rows(3)(1).ToString
+                    Drfristname4.Text = tabla.Rows(3)(2).ToString
+                End If
+                If tabla.Rows(4)(0).ToString = "10" Then
+                    Drname5.Text = tabla.Rows(4)(1).ToString
+                    Drfristname5.Text = tabla.Rows(4)(2).ToString
+                End If
+                If tabla.Rows(5)(0).ToString = "11" Then
+                    Drname6.Text = tabla.Rows(5)(1).ToString
+                    Drfristname6.Text = tabla.Rows(5)(2).ToString
+                End If
+                If tabla.Rows(6)(0).ToString = "12" Then
+                    Drname7.Text = tabla.Rows(6)(1).ToString
+                    Drfristname7.Text = tabla.Rows(6)(2).ToString
+                End If
+            ElseIf tabla.Rows.Count = 8 Then
+                If tabla.Rows(0)(0).ToString = "6" Then
+                    Drname1.Text = tabla.Rows(0)(1).ToString
+                    Drfristname1.Text = tabla.Rows(0)(2).ToString
+                End If
+                If tabla.Rows(1)(0).ToString = "7" Then
+                    Drname2.Text = tabla.Rows(1)(1).ToString
+                    Drfristname2.Text = tabla.Rows(1)(2).ToString
+                End If
+                If tabla.Rows(2)(0).ToString = "8" Then
+                    Drname3.Text = tabla.Rows(2)(1).ToString
+                    Drfristname3.Text = tabla.Rows(2)(2).ToString
+                End If
+                If tabla.Rows(3)(0).ToString = "9" Then
+                    Drname4.Text = tabla.Rows(3)(1).ToString
+                    Drfristname4.Text = tabla.Rows(3)(2).ToString
+                End If
+                If tabla.Rows(4)(0).ToString = "10" Then
+                    Drname5.Text = tabla.Rows(4)(1).ToString
+                    Drfristname5.Text = tabla.Rows(4)(2).ToString
+                End If
+                If tabla.Rows(5)(0).ToString = "11" Then
+                    Drname6.Text = tabla.Rows(5)(1).ToString
+                    Drfristname6.Text = tabla.Rows(5)(2).ToString
+                End If
+                If tabla.Rows(6)(0).ToString = "12" Then
+                    Drname7.Text = tabla.Rows(6)(1).ToString
+                    Drfristname7.Text = tabla.Rows(6)(2).ToString
+                End If
+                If tabla.Rows(7)(0).ToString = "13" Then
+                    Drname8.Text = tabla.Rows(7)(1).ToString
+                    Drfristname8.Text = tabla.Rows(7)(2).ToString
+                End If
+            ElseIf tabla.Rows.Count = 9 Then
                 If tabla.Rows(0)(0).ToString = "6" Then
                     Drname1.Text = tabla.Rows(0)(1).ToString
                     Drfristname1.Text = tabla.Rows(0)(2).ToString
@@ -197,11 +639,43 @@ Public Class Secretarias
                     Drname9.Text = tabla.Rows(8)(1).ToString
                     Drfristname9.Text = tabla.Rows(8)(2).ToString
                 End If
+            ElseIf tabla.Rows.Count = 10 Then
+                If tabla.Rows(1)(0).ToString = "7" Then
+                    Drname2.Text = tabla.Rows(1)(1).ToString
+                    Drfristname2.Text = tabla.Rows(1)(2).ToString
+                End If
+                If tabla.Rows(2)(0).ToString = "8" Then
+                    Drname3.Text = tabla.Rows(2)(1).ToString
+                    Drfristname3.Text = tabla.Rows(2)(2).ToString
+                End If
+                If tabla.Rows(3)(0).ToString = "9" Then
+                    Drname4.Text = tabla.Rows(3)(1).ToString
+                    Drfristname4.Text = tabla.Rows(3)(2).ToString
+                End If
+                If tabla.Rows(4)(0).ToString = "10" Then
+                    Drname5.Text = tabla.Rows(4)(1).ToString
+                    Drfristname5.Text = tabla.Rows(4)(2).ToString
+                End If
+                If tabla.Rows(5)(0).ToString = "11" Then
+                    Drname6.Text = tabla.Rows(5)(1).ToString
+                    Drfristname6.Text = tabla.Rows(5)(2).ToString
+                End If
+                If tabla.Rows(6)(0).ToString = "12" Then
+                    Drname7.Text = tabla.Rows(6)(1).ToString
+                    Drfristname7.Text = tabla.Rows(6)(2).ToString
+                End If
+                If tabla.Rows(7)(0).ToString = "13" Then
+                    Drname8.Text = tabla.Rows(7)(1).ToString
+                    Drfristname8.Text = tabla.Rows(7)(2).ToString
+                End If
+                If tabla.Rows(8)(0).ToString = "14" Then
+                    Drname9.Text = tabla.Rows(8)(1).ToString
+                    Drfristname9.Text = tabla.Rows(8)(2).ToString
+                End If
                 If tabla.Rows(9)(0).ToString = "15" Then
                     Drname10.Text = tabla.Rows(9)(1).ToString
                     Drfristname10.Text = tabla.Rows(9)(2).ToString
                 End If
-                conexion.Close()
             End If
         Catch ex As Exception
             MsgBox(ex.Message)

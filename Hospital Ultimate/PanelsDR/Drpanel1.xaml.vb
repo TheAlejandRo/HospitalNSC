@@ -1,6 +1,5 @@
 ﻿Imports System.Data
 Imports System.Windows.Threading
-Imports MaterialDesignThemes.Wpf
 Imports MySql.Data.MySqlClient
 
 Public Class Drpanel1
@@ -66,7 +65,7 @@ Public Class Drpanel1
             comando.ExecuteNonQuery()
             list_pacientes.IsEnabled = True
             cliente_sig.IsEnabled = True
-        Catch ex As MySqlException
+        Catch ex As Exception
             MessageBox.Show(ex.Message)
             Log.e("Error con excepción y traza", ex, New StackFrame(True))
         Finally
@@ -103,7 +102,7 @@ Public Class Drpanel1
             comando.ExecuteNonQuery()
             cliente_sig.Content = "SIGUIENTE"
             cliente_sig.Width = 125
-        Catch ex As MySqlException
+        Catch ex As Exception
             MsgBox(ex.Message)
             Log.e("Error con excepción y traza", ex, New StackFrame(True))
         Finally
@@ -117,7 +116,6 @@ Public Class Drpanel1
         If list_pacientes.SelectedIndex <> -1 Then
             row = list_pacientes.SelectedItem
             paciente.Text = row.Row.ItemArray(0).ToString
-            index = list_pacientes.SelectedIndex
             Try
                 conexion1.Open()
                 Dim estadopac As String = String.Empty

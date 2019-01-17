@@ -34,57 +34,28 @@ Public Class Doctores
 
     Private Sub Doctores_Loaded(sender As Object, e As RoutedEventArgs) Handles Me.Loaded
         modocerrar = 0
-        Try
-            conexion.Open()
-            consulta = "SELECT idusuario FROM usuarios WHERE docnom='" & Dr_Title.Text & "' AND tipo_usuario='Doctor'"
-            comando = New MySqlCommand(consulta, conexion)
-            adaptador = New MySqlDataAdapter(comando)
-            tabla.Clear()
-            adaptador.Fill(tabla)
-            If tabla.Rows.Count = 1 Then
-                panel_dr.Children.Clear()
-                If tabla.Rows(0)(0).ToString = "6" Then
-                    panel_dr.Children.Add(New Drpanel1)
-                    Activo()
-                ElseIf tabla.Rows(0)(0).ToString = "7" Then
-                    panel_dr.Children.Add(New Drpanel2)
-                    Activo()
-                ElseIf tabla.Rows(0)(0).ToString = "8" Then
-                    panel_dr.Children.Add(New Drpanel3)
-                    Activo()
-                ElseIf tabla.Rows(0)(0).ToString = "9" Then
-                    panel_dr.Children.Add(New Drpanel4)
-                    Activo()
-                ElseIf tabla.Rows(0)(0).ToString = "10" Then
-                    panel_dr.Children.Add(New Drpanel5)
-                    Activo()
-                ElseIf tabla.Rows(0)(0).ToString = "11" Then
-                    panel_dr.Children.Add(New Drpanel6)
-                    Activo()
-                ElseIf tabla.Rows(0)(0).ToString = "12" Then
-                    panel_dr.Children.Add(New Drpanel7)
-                    Activo()
-                ElseIf tabla.Rows(0)(0).ToString = "13" Then
-                    panel_dr.Children.Add(New Drpanel8)
-                    Activo()
-                ElseIf tabla.Rows(0)(0).ToString = "14" Then
-                    panel_dr.Children.Add(New Drpanel9)
-                    Activo()
-                ElseIf tabla.Rows(0)(0).ToString = "15" Then
-                    panel_dr.Children.Add(New Drpanel10)
-                    Activo()
-                End If
-            Else
-                Dim dlgshw As New MessageDialog
-                dlgshw.Message.Text = "Contacte con el Administrador del Sistema, Error No.x004-1"
-                DialogHost.Show(dlgshw, "RootDialog")
-            End If
-        Catch ex As Exception
-            MessageBox.Show(ex.Message)
-            Log.e("Error con excepción y Traza", ex, New StackFrame(True))
-        Finally
-            conexion.Close()
-        End Try
+        panel_dr.Children.Clear()
+        If idDr.Text = "6" Then
+            panel_dr.Children.Add(New Drpanel1)
+        ElseIf idDr.Text = "7" Then
+            panel_dr.Children.Add(New Drpanel2)
+        ElseIf idDr.Text = "8" Then
+            panel_dr.Children.Add(New Drpanel3)
+        ElseIf idDr.Text = "9" Then
+            panel_dr.Children.Add(New Drpanel4)
+        ElseIf idDr.Text = "10" Then
+            panel_dr.Children.Add(New Drpanel5)
+        ElseIf idDr.Text = "11" Then
+            panel_dr.Children.Add(New Drpanel6)
+        ElseIf idDr.Text = "12" Then
+            panel_dr.Children.Add(New Drpanel7)
+        ElseIf idDr.Text = "13" Then
+            panel_dr.Children.Add(New Drpanel8)
+        ElseIf idDr.Text = "14" Then
+            panel_dr.Children.Add(New Drpanel9)
+        ElseIf idDr.Text = "15" Then
+            panel_dr.Children.Add(New Drpanel10)
+        End If
     End Sub
 
     Public Sub Activo()
@@ -121,6 +92,7 @@ Public Class Doctores
         If modocerrar = 1 Then
             e.Cancel = False
         Else
+            Inactivo()
             Dim dlgclshw As New MessageClsDlg
             dlgclshw.Message.Text = "¿Quieres cerrar el programa?"
             DialogHost.Show(dlgclshw, "RootDialog")

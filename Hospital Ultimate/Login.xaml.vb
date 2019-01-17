@@ -50,7 +50,7 @@ Public Class Login
                     conexion.Close()
                     Me.Close()
                 End If
-            ElseIf tabla.Rows.Count <> 1 Then
+            ElseIf tabla.Rows.Count > 1 Then
                 Dim dlgshw = New MessageDialog
                 dlgshw.Message.Text = "El usuario está duplicado, por favor verifique sus credenciales."
                 DialogHost.Show(dlgshw, "RootDialog")

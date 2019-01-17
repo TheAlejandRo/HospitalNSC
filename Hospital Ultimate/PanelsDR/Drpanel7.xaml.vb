@@ -4,6 +4,8 @@ Imports System.Windows.Threading
 
 Public Class Drpanel7
 
+    Dim index As Integer = -1
+    Dim conexion1 As New MySqlConnection("server=192.168.1.90; user=TheAlejandRo; password=Tech.Code; database=dbturnos")
     Dim row As DataRowView
     Dim WithEvents ds As New DispatcherTimer
     Dim conexion As New MySqlConnection("server=192.168.1.90; user=TheAlejandRo; password=Tech.Code; database=dbturnos")
@@ -14,7 +16,7 @@ Public Class Drpanel7
     Dim update_state As String = String.Empty
 
     Private Sub Drpanel1_Loaded(sender As Object, e As RoutedEventArgs) Handles Me.Loaded
-        ds.Interval = New TimeSpan(0, 0, 20)
+        ds.Interval = New TimeSpan(0, 0, 1)
         ds.Start()
         estado.IsChecked = True
         Lista()
@@ -29,30 +31,30 @@ Public Class Drpanel7
             tabla.Clear()
             adaptador.Fill(tabla)
             If tabla.Rows.Count <> 0 Then
-                list_pacientes.SelectedIndex = 0
                 list_pacientes.ItemsSource = tabla.DefaultView
-                cliente_sig.IsEnabled = True
+                list_pacientes.SelectedIndex = index
             Else
+                index = -1
                 list_pacientes.SelectedItems.Clear()
                 list_pacientes.SelectedIndex = -1
                 list_pacientes.ItemsSource = tabla.DefaultView
-                cliente_sig.IsEnabled = False
             End If
-        Catch ex As MySqlException
+        Catch ex As Exception
             MessageBox.Show(ex.Message)
+            Log.e("Error con excepción y traza", ex, New StackFrame(True))
         Finally
             conexion.Close()
         End Try
     End Sub
 
-    Private Sub estado_Checked(sender As Object, e As RoutedEventArgs) Handles estado.Click
-        If estado.IsChecked = True Then
-            Activo()
-            txt_estado.Text = "Conectado"
-        Else
-            Inactivo()
-            txt_estado.Text = "Desconectado"
-        End If
+    Private Sub estado_Checked(sender As Object, e As RoutedEventArgs) Handles estado.Checked
+        Activo()
+        txt_estado.Text = "Conectado"
+    End Sub
+
+    Private Sub estado_Unchecked(sender As Object, e As RoutedEventArgs) Handles estado.Unchecked
+        Inactivo()
+        txt_estado.Text = "Desconectado"
     End Sub
 
     Private Sub Activo()
@@ -61,8 +63,11 @@ Public Class Drpanel7
             update_state = "UPDATE usuarios SET estado='1' WHERE idusuario='12'"
             comando = New MySqlCommand(update_state, conexion)
             comando.ExecuteNonQuery()
-        Catch ex As MySqlException
+            list_pacientes.IsEnabled = True
+            cliente_sig.IsEnabled = True
+        Catch ex As Exception
             MessageBox.Show(ex.Message)
+            Log.e("Error con excepción y traza", ex, New StackFrame(True))
         Finally
             conexion.Close()
         End Try
@@ -74,8 +79,11 @@ Public Class Drpanel7
             update_state = "UPDATE usuarios SET estado='0' WHERE idusuario='12'"
             comando = New MySqlCommand(update_state, conexion)
             comando.ExecuteNonQuery()
-        Catch ex As MySqlException
+            list_pacientes.IsEnabled = False
+            cliente_sig.IsEnabled = False
+        Catch ex As Exception
             MessageBox.Show(ex.Message)
+            Log.e("Error con excepción y Traza", ex, New StackFrame(True))
         Finally
             conexion.Close()
         End Try
@@ -92,18 +100,16 @@ Public Class Drpanel7
             estadopaciente = "UPDATE pacientes SET estado_paciente='2' WHERE tiket='" & paciente.Text & "'"
             comando = New MySqlCommand(estadopaciente, conexion)
             comando.ExecuteNonQuery()
-        Catch ex As MySqlException
+            cliente_sig.Content = "SIGUIENTE"
+            cliente_sig.Width = 125
+        Catch ex As Exception
             MsgBox(ex.Message)
+            Log.e("Error con excepción y traza", ex, New StackFrame(True))
         Finally
             conexion.Close()
         End Try
         list_pacientes.SelectedIndex += 1
-        Dim cuentapacientes As Integer
-        cuentapacientes = (list_pacientes.Items.Count - 1)
-        If list_pacientes.SelectedIndex < cuentapacientes Then
-        ElseIf list_pacientes.SelectedIndex = cuentapacientes Then
-            MsgBox("Último registro")
-        End If
+        index = list_pacientes.SelectedIndex
     End Sub
 
     Private Sub list_pacientes_SelectedCellsChanged(sender As Object, e As SelectedCellsChangedEventArgs) Handles list_pacientes.SelectedCellsChanged
@@ -111,18 +117,21 @@ Public Class Drpanel7
             row = list_pacientes.SelectedItem
             paciente.Text = row.Row.ItemArray(0).ToString
             Try
-                conexion.Open()
+                conexion1.Open()
                 Dim estadopac As String = String.Empty
                 estadopac = "UPDATE pacientes SET estado_paciente='1' WHERE tiket='" & paciente.Text & "'"
-                comando = New MySqlCommand(estadopac, conexion)
+                comando = New MySqlCommand(estadopac, conexion1)
                 comando.ExecuteNonQuery()
+                cliente_sig.Content = "Marcar como Atendido"
+                cliente_sig.Width = 190
             Catch ex As Exception
-
+                MsgBox(ex.Message)
+                Log.e("Error con excepción y traza", ex, New StackFrame(True))
             Finally
-                conexion.Close()
+                conexion1.Close()
             End Try
         Else
-            paciente.Text = ""
+            paciente.Text = "0"
         End If
     End Sub
 End Class

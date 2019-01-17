@@ -98,6 +98,27 @@ Partial Friend NotInheritable Class MySettings
             Me("NameFile") = value
         End Set
     End Property
+    
+    <Global.System.Configuration.UserScopedSettingAttribute(),  _
+     Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+     Global.System.Configuration.DefaultSettingValueAttribute("False")>  _
+    Public Property PermitirCambio() As Boolean
+        Get
+            Return CType(Me("PermitirCambio"),Boolean)
+        End Get
+        Set
+            Me("PermitirCambio") = value
+        End Set
+    End Property
+    
+    <Global.System.Configuration.ApplicationScopedSettingAttribute(),  _
+     Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+     Global.System.Configuration.DefaultSettingValueAttribute("Hospital Nuestra Señora del Carmen Cobán Alta Verapaz")>  _
+    Public ReadOnly Property Banner() As String
+        Get
+            Return CType(Me("Banner"),String)
+        End Get
+    End Property
 End Class
 
 Namespace My

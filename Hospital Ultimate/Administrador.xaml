@@ -83,20 +83,19 @@
                         </DockPanel>
                     </materialDesign:ColorZone>
                 </Border>
-                <Grid x:Name="PgAdmin" Grid.Row="1"/>
+                <!--<Grid x:Name="PgAdmin" Grid.Row="1"/>-->
                 <Grid x:Name="Usuariosgeneral" Margin="10,0,10,10" IsEnabled="True" Visibility="Visible" Grid.Row="1">
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition/>
                         <ColumnDefinition/>
                     </Grid.ColumnDefinitions>
                     <Grid.RowDefinitions>
-                        <RowDefinition Height="auto"/>
-                        <RowDefinition/>
+                        <RowDefinition Height="286"/>
                         <RowDefinition/>
                     </Grid.RowDefinitions>
-                    <DataGrid x:Name="Usersgrid" Grid.Row="1" Grid.ColumnSpan="2" SelectedIndex="-1" Foreground="#FF1976D2" HorizontalGridLinesBrush="#FF1676D2" HeadersVisibility="None" CanUserAddRows="False" CanUserResizeRows="False" Focusable="False" HorizontalScrollBarVisibility="Disabled" MinColumnWidth="5" MaxColumnWidth="130" CanUserReorderColumns="False" CanUserResizeColumns="False" CanUserSortColumns="False"/>
+                    <DataGrid x:Name="Usersgrid" IsReadOnly="True" Grid.ColumnSpan="2" SelectedIndex="-1" Foreground="#FF1976D2" HorizontalGridLinesBrush="#FF1676D2" HeadersVisibility="Column" CanUserAddRows="False" CanUserResizeRows="False" Focusable="False" HorizontalScrollBarVisibility="Disabled" MinColumnWidth="5" MaxColumnWidth="130" CanUserReorderColumns="False" Margin="0,26,0,0"/>
                     <TextBox x:Name="user"
-                 Grid.Column="0" Grid.Row="2"
+                 Grid.Column="0" Grid.Row="1"
                 Margin="60 135 60 0"
                 materialDesign:HintAssist.Hint="Usuario"
                 Text="{Binding Name}"
@@ -104,14 +103,14 @@
                  Foreground="#FF1976D2"
                 VerticalAlignment="Top" Height="25" />
                     <PasswordBox x:Name="Txt_newpassword"
-                 Grid.Column="0" Grid.Row="2"
+                 Grid.Column="0" Grid.Row="1"
                  Margin="60,170,60,0"
                  materialDesign:HintAssist.Hint="Ingrese la nueva contraseña"
                  FontSize="12"
                      Foreground="#FF1976D2"
                      VerticalAlignment="Top" Height="25"/>
                     <TextBox x:Name="IDnew"
-                 Grid.Column="1" Grid.Row="2"
+                 Grid.Column="1" Grid.Row="1"
                  Margin="60 30 60 0"
                  materialDesign:HintAssist.Hint="ID del usuario"
                  Text="{Binding Name}"
@@ -119,7 +118,7 @@
                  Foreground="#FF1676D2"
                  VerticalAlignment="Top" Height="25"/>
                     <TextBox x:Name="tel1"
-                 Grid.Column="1" Grid.Row="2"
+                 Grid.Column="1" Grid.Row="1"
                  Margin="90 65 60 0"
                  materialDesign:HintAssist.Hint="Teléfono #1"
                  Text="{Binding Name}"
@@ -127,7 +126,7 @@
                  Foreground="#FF1676D2"
                  VerticalAlignment="Top" Height="25"/>
                     <TextBox x:Name="tel2"
-                 Grid.Column="1" Grid.Row="2"
+                 Grid.Column="1" Grid.Row="1"
                  Margin="90 100 60 0"
                  materialDesign:HintAssist.Hint="Teléfono #2"
                  Text="{Binding Name}"
@@ -135,7 +134,7 @@
                  Foreground="#FF1676D2"
                  VerticalAlignment="Top" Height="25"/>
                     <TextBox x:Name="tel3"
-                 Grid.Column="1" Grid.Row="2"
+                 Grid.Column="1" Grid.Row="1"
                  Margin="90 135 60 0"
                  materialDesign:HintAssist.Hint="Teléfono #3"
                  Text="{Binding Name}"
@@ -143,7 +142,7 @@
                  Foreground="#FF1676D2"
                  VerticalAlignment="Top" Height="25"/>
                     <TextBox x:Name="CodClinica"
-                 Grid.Column="0" Grid.Row="2"
+                 Grid.Column="0" Grid.Row="1"
                  Margin="60 30 120 0"
                  materialDesign:HintAssist.Hint="Clínica"
                  Text="{Binding Name}"
@@ -151,7 +150,7 @@
                  Foreground="#FF1676D2"
                  VerticalAlignment="Top" Height="25"/>
                     <TextBox x:Name="Nameuser"
-                 Grid.Column="0" Grid.Row="2"
+                 Grid.Column="0" Grid.Row="1"
                  Margin="60 65 60 0"
                  materialDesign:HintAssist.Hint="Nombres"
                  Text="{Binding Name}"
@@ -159,7 +158,7 @@
                  Foreground="#FF1676D2"
                  VerticalAlignment="Top" Height="25"/>
                     <TextBox x:Name="TypeUser"
-                             Grid.Column="0" Grid.Row="2"
+                             Grid.Column="0" Grid.Row="1"
                              Margin="60 205 60 0"
                              materialDesign:HintAssist.Hint="Tipo de usuario"
                              Text="{Binding Name}"
@@ -167,7 +166,7 @@
                              Foreground="#FF1676D2"
                              VerticalAlignment="Top" Height="25"/>
                     <TextBox x:Name="Firstuser"
-                 Grid.Column="0" Grid.Row="2"
+                 Grid.Column="0" Grid.Row="1"
                  Margin="60 100 60 0"
                  materialDesign:HintAssist.Hint="Apellidos"
                  Text="{Binding Name}"
@@ -175,27 +174,29 @@
                  Foreground="#FF1676D2"
                  VerticalAlignment="Top" Height="25"/>
                     <!-- floating action button with progress -->
-                    <Button x:Name="Btnactualizar"
+                    <materialDesign:Badged Badge="Recargar Lista" BadgePlacementMode="Bottom" Margin="53,181,312,0" Grid.Column="1" Grid.Row="1" Width="50" Height="50" VerticalAlignment="Top" HorizontalAlignment="Center">
+                        <Button x:Name="Btnactualizar"
                             Style="{StaticResource MaterialDesignFloatingActionButton}"
-                        Margin="0,165,0,0"
-                        Grid.Column="1" Grid.Row="2"
-                            Width="50" Height="50" ToolTip="Actualizar la Lista">
-                        <materialDesign:PackIcon
-                            Kind="CloudSync" Width="32" Height="32" Focusable="False"/>
-                    </Button>
-                    <materialDesign:Card Background="#FF1676D2" Foreground="{DynamicResource PrimaryHueDarkForegroundBrush}" Grid.Row="0" Grid.ColumnSpan="2" Padding="5">
-                        <DockPanel LastChildFill="False" Margin="10,0,10,0">
-                            <TextBlock Text="ID" FontWeight="DemiBold"  MinWidth="20" Width="25" VerticalAlignment="Top" TextAlignment="Center"/>
-                            <TextBlock Text="Tipo de Usuario" FontWeight="DemiBold"  MinWidth="100" Width="110" VerticalAlignment="Top" TextAlignment="Center"/>
-                            <TextBlock Text="Usuario" FontWeight="DemiBold"  MinWidth="51" Width="80" VerticalAlignment="Top" TextAlignment="Center"/>
-                            <TextBlock Text="Nombres" FontWeight="DemiBold"  MinWidth="59" Width="130" VerticalAlignment="Top" TextAlignment="Center"/>
-                            <TextBlock Text="Apellidos" FontWeight="DemiBold"  MinWidth="130" VerticalAlignment="Top" TextAlignment="Center"/>
-                            <TextBlock Text="Teléfono #1" FontWeight="DemiBold"  MinWidth="73" Width="83" VerticalAlignment="Top" TextAlignment="Center"/>
-                            <TextBlock Text="Teléfono #2" FontWeight="DemiBold" MinWidth="73" Width="83" VerticalAlignment="Top" TextAlignment="Center"/>
-                            <TextBlock Text="Teléfono #3" FontWeight="DemiBold" Width="83" VerticalAlignment="Top" TextAlignment="Center"/>
-                            <TextBlock Text="Clínica" FontWeight="DemiBold" MinWidth="44" Width="74" VerticalAlignment="Top" TextAlignment="Center"/>
-                        </DockPanel>
-                    </materialDesign:Card>
+                            Width="50" Height="50">
+                            <materialDesign:PackIcon
+                            Kind="Reload" Width="50" Height="50" Focusable="False" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"/>
+                        </Button>
+                    </materialDesign:Badged>
+                    <materialDesign:Badged x:Name="UpdateUserBG" BadgePlacementMode="BottomRight" Grid.Column="1" Grid.Row="1" Width="50" Height="50" VerticalAlignment="Top" HorizontalAlignment="Center" Margin="137,187,228,0">
+                        <Button x:Name="Actualizaruser" Style="{StaticResource MaterialDesignFloatingActionButton}" Height="50" Width="50" >
+                            <materialDesign:PackIcon Kind="AccountConvert" Width="34" Height="34"/>
+                        </Button>
+                    </materialDesign:Badged>
+                    <materialDesign:Badged x:Name="DeletUser" BadgePlacementMode="BottomRight" Grid.Column="1" Grid.Row="1" Margin="313,187,52,0" VerticalAlignment="Top" HorizontalAlignment="Center" Width="50" Height="50">
+                        <Button x:Name="DeleteUser" Style="{StaticResource MaterialDesignFloatingActionButton}" Width="50" Height="50">
+                            <materialDesign:PackIcon Kind="AccountRemove" Width="34" Height="34"/>
+                        </Button>
+                    </materialDesign:Badged>
+                    <materialDesign:Badged x:Name="AddUserB" BadgePlacementMode="BottomRight" Grid.Column="1" Grid.Row="1" Margin="227,187,138,0" HorizontalAlignment="Center" VerticalAlignment="Top" Width="50" Height="50">
+                        <Button x:Name="AddUser" Style="{StaticResource MaterialDesignFloatingActionButton}" Width="50" Height="50">
+                            <materialDesign:PackIcon Kind="AccountPlus" Width="34" Height="34"/>
+                        </Button>
+                    </materialDesign:Badged>
                 </Grid>
                 <materialDesign:Snackbar MessageQueue="{materialDesign:MessageQueue}"
                                      x:Name="MainSnack"

@@ -10,8 +10,8 @@
              FontFamily="Noto Sans">
     <Grid Margin="10">
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="17*"/>
-            <ColumnDefinition Width="9*"/>
+            <ColumnDefinition Width="529*"/>
+            <ColumnDefinition Width="251*"/>
         </Grid.ColumnDefinitions>
         <DataGrid x:Name="DtTikets" IsReadOnly="True" Margin="10" Focusable="False" HorizontalGridLinesBrush="#FF1676D2" HeadersVisibility="None" Foreground="#FF1676D2" CanUserAddRows="False" CanUserDeleteRows="False" CanUserResizeRows="False">
             <DataGrid.AlternatingRowBackground>
@@ -29,7 +29,7 @@
                 Text="{Binding Name}"
                  FontSize="12"
                  Foreground="#FF1976D2"
-                VerticalAlignment="Top"/>
+                VerticalAlignment="Top" Height="25"/>
         <TextBox x:Name="idDoctor"
                  Grid.Column="1"
                  Margin="60 90 60 0"
@@ -37,7 +37,7 @@
                  Text="{Binding Name}"
                  FontSize="12"
                  Foreground="#FF1676D2"
-                 VerticalAlignment="Top"/>
+                 VerticalAlignment="Top" Height="25"/>
         <TextBox x:Name="doctor"
                  Grid.Column="1"
                  Margin="60 120 60 0"
@@ -45,16 +45,15 @@
                  Text="{Binding Name}"
                  FontSize="12"
                  Foreground="#FF1676D2"
-                 VerticalAlignment="Top"/>
+                 VerticalAlignment="Top" Height="25"/>
         <TextBox x:Name="tiket"
                  Grid.Column="1"
-                 Margin="0 150 90 0"
+                 Margin="61,150,151,0"
                  materialDesign:HintAssist.Hint="Tiket"
                  Text="{Binding Name}"
                  FontSize="12"
                  Foreground="#FF1676D2"
-                 VerticalAlignment="Top"
-                 Width="60"/>
+                 VerticalAlignment="Top" Height="25"/>
         <TextBox x:Name="clinica"
                  Grid.Column="1"
                  Margin="60 180 60 0"
@@ -62,20 +61,28 @@
                  Text="{Binding Name}"
                  FontSize="12"
                  Foreground="#FF1676D2"
-                 VerticalAlignment="Top"/>
+                 VerticalAlignment="Top" Height="25"/>
         <TextBox x:Name="estado"
                  Grid.Column="1"
-                 Margin="0 210 90 0"
+                 Margin="61,210,151,0"
                  materialDesign:HintAssist.Hint="Estado"
                  Text="{Binding Name}"
                  FontSize="12"
                  Foreground="#FF1676D2"
-                 VerticalAlignment="Top"
-                 Width="60"/>
-        <Button x:Name="DeleteTiket"
-                Grid.Column="1"
-                Content="Eliminar Tiket"
-                Margin="60 270 60 0"
-                VerticalAlignment="Top"/>
+                 VerticalAlignment="Top" Height="25"/>
+        <materialDesign:Badged Grid.Column="1" Margin="60 270 0 0" Badge="ELIMINAR">
+            <Button x:Name="DeleteTiket" Style="{StaticResource MaterialDesignFloatingActionDarkButton}" Width="50" Height="50">
+            <materialDesign:PackIcon Kind="RemoveCircle" Width="38" Height="38"/>
+            </Button>
+        </materialDesign:Badged>
+        <materialDesign:Badged
+  Badge="VACIAR" Grid.Column="1" VerticalAlignment="Top" Margin="0 270 60 0" HorizontalAlignment="Right">
+            <Button x:Name="vaciarlista" Style="{StaticResource MaterialDesignFloatingActionDarkButton}" Width="50" Height="50">
+                <materialDesign:PackIcon
+    Kind="TrashCanCircle"
+    Height="38"
+    Width="38" />
+            </Button>
+        </materialDesign:Badged>
     </Grid>
 </UserControl>
