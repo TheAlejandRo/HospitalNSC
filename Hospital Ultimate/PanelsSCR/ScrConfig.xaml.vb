@@ -83,11 +83,14 @@ Public Class ScrConfig
         My.Settings.Save()
     End Sub
 
-    Private Sub ScrConfig_IsEnabledChanged(sender As Object, e As DependencyPropertyChangedEventArgs) Handles Me.IsEnabledChanged
-
+    Private Sub msgsave_Click(sender As Object, e As RoutedEventArgs) Handles msgsave.Click
+        My.Settings.Banner = BannerText.Text
+        My.Settings.Save()
     End Sub
 
-    Private Sub ScrConfig_Initialized(sender As Object, e As EventArgs) Handles Me.Initialized
-
+    Private Sub msgclear_Click(sender As Object, e As RoutedEventArgs) Handles msgclear.Click
+        BannerText.Clear()
+        My.Settings.Banner = "Hospital Nuestra Señora del Carmen"
+        My.Settings.Save()
     End Sub
 End Class

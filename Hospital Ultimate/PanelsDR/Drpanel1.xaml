@@ -6,7 +6,7 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:Hospital_Ultimate"
              mc:Ignorable="d" 
-             d:DesignHeight="357" d:DesignWidth="550"
+             d:DesignHeight="357" d:DesignWidth="700"
              FontFamily="Noto Sans">
     <materialDesign:DrawerHost Focusable="False">
         <Grid>
@@ -20,7 +20,7 @@
             <ToggleButton x:Name="estado"
                       Grid.Column="1"
                 Style="{StaticResource MaterialDesignSwitchToggleButton}"  Margin="0,10,10,0"
-                      HorizontalAlignment="Right" Width="60" Height="30" VerticalAlignment="Top">
+                      HorizontalAlignment="Right" Width="60" Height="30" VerticalAlignment="Top" Background="#FF12C900">
                 <materialDesign:PackIcon Kind="AccountOff" Cursor="Hand">
                 </materialDesign:PackIcon>
                 <materialDesign:ToggleButtonAssist.OnContent>
@@ -28,15 +28,16 @@
                 </materialDesign:ToggleButtonAssist.OnContent>
             </ToggleButton>
             <TextBlock x:Name="txt_estado"
-                   Grid.Column="1" HorizontalAlignment="Right" Margin="0,15,70,0" TextWrapping="Wrap"
+                   Grid.Column="1" HorizontalAlignment="Right" Margin="0,15,70,0"
                    Text="Conectado" VerticalAlignment="Top" Foreground="#FF1976D2" Height="20" Width="80" TextAlignment="Center">
                 <TextBlock.Effect>
                     <DropShadowEffect ShadowDepth="4" Opacity="0.5" BlurRadius="4"/>
                 </TextBlock.Effect>
             </TextBlock>
             <Button x:Name="cliente_sig"
-                Content="SIGUIENTE" Grid.Column="1"
-                Height="41" Width="125" Margin="0 40 0 0" FontWeight="Bold"/>
+                Content="Llamar" Grid.Column="1"  Width="80" Margin="0 40 150 0" FontWeight="Bold"/>
+            <Button x:Name="ReCall" Grid.Column="1" Content="Volver a llamar" Width="140" Margin="150 40 0 0" FontWeight="Bold"/>
+            <Button x:Name="Complete" Grid.Column="1" Content="Atendido" Width="100" Margin="0 140 0 0"/>
             <TextBlock
                    Grid.Column="1" Text="Tiket No." Height="40" Width="160"
                    FontSize="30" Foreground="#FF1976D2" FontWeight="Bold" TextAlignment="Center" Margin="0 0 60 100"/>
@@ -44,6 +45,12 @@
                    Grid.Column="1" Text="0"
                    Height="40" Width="120"
                    FontSize="30" Foreground="#FF1976D2" FontWeight="Bold" TextAlignment="Left" Margin="200 0 0 100"/>
+            <Button x:Name="clientup" Style="{StaticResource MaterialDesignFloatingActionMiniButton}" Grid.Column="1" VerticalAlignment="Center" HorizontalAlignment="Left" Margin="20 0 0 60" Width="40" Height="40">
+                <materialDesign:PackIcon Kind="ArrowUp" Width="36" Height="36"/>
+            </Button>
+            <Button x:Name="clientdown" Style="{StaticResource MaterialDesignFloatingActionMiniButton}" Grid.Column="1" VerticalAlignment="Center" HorizontalAlignment="Left" Margin="20 60 0 0" Width="40" Height="40">
+                <materialDesign:PackIcon Kind="ArrowDown" Width="36" Height="36"/>
+            </Button>
         </Grid>
         <!--<materialDesign:DrawerHost.BottomDrawerContent>
             <StackPanel Margin="16" HorizontalAlignment="Center" Orientation="Horizontal">

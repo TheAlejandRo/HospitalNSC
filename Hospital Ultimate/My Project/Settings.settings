@@ -17,7 +17,7 @@
     <Setting Name="PermitirCambio" Type="System.Boolean" Scope="User">
       <Value Profile="(Default)">False</Value>
     </Setting>
-    <Setting Name="Banner" Type="System.String" Scope="Application">
+    <Setting Name="Banner" Type="System.String" Scope="User">
       <Value Profile="(Default)">Hospital Nuestra Señora del Carmen Cobán Alta Verapaz</Value>
     </Setting>
   </Settings>

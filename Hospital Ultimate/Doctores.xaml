@@ -7,7 +7,7 @@
         xmlns:local="clr-namespace:Hospital_Ultimate"
         mc:Ignorable="d"
         Title="Doctor"
-        Height="400" Width="550"
+        Height="400" Width="700"
         WindowStyle="None" AllowsTransparency="True"
         Background="{DynamicResource MaterialDesignPaper}"
         FontFamily="Noto Sans">

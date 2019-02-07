@@ -111,13 +111,16 @@ Partial Friend NotInheritable Class MySettings
         End Set
     End Property
     
-    <Global.System.Configuration.ApplicationScopedSettingAttribute(),  _
+    <Global.System.Configuration.UserScopedSettingAttribute(),  _
      Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
      Global.System.Configuration.DefaultSettingValueAttribute("Hospital Nuestra Señora del Carmen Cobán Alta Verapaz")>  _
-    Public ReadOnly Property Banner() As String
+    Public Property Banner() As String
         Get
             Return CType(Me("Banner"),String)
         End Get
+        Set
+            Me("Banner") = value
+        End Set
     End Property
 End Class
 

@@ -25,7 +25,7 @@ Public Class Drpanel6
     Public Sub Lista()
         Try
             conexion.Open()
-            consulta = "SELECT Tiket FROM pacientes WHERE idDoctor='11' AND estado_paciente='0' OR estado_paciente='1'"
+            consulta = "SELECT Tiket FROM pacientes WHERE idDoctor='11' AND estado_paciente IN ('0', '1')"
             comando = New MySqlCommand(consulta, conexion)
             adaptador = New MySqlDataAdapter(comando)
             tabla.Clear()
@@ -95,43 +95,68 @@ Public Class Drpanel6
 
     Private Sub cliente_sig_Click(sender As Object, e As RoutedEventArgs) Handles cliente_sig.Click
         Try
-            conexion.Open()
-            Dim estadopaciente As String = String.Empty
-            estadopaciente = "UPDATE pacientes SET estado_paciente='2' WHERE tiket='" & paciente.Text & "'"
-            comando = New MySqlCommand(estadopaciente, conexion)
+            conexion1.Open()
+            Dim estadopac As String = String.Empty
+            estadopac = "UPDATE pacientes SET estado_paciente='1', CallSpeak='1' WHERE tiket='" & paciente.Text & "' AND idDoctor='11'"
+            comando = New MySqlCommand(estadopac, conexion1)
             comando.ExecuteNonQuery()
-            cliente_sig.Content = "SIGUIENTE"
-            cliente_sig.Width = 125
         Catch ex As Exception
             MsgBox(ex.Message)
             Log.e("Error con excepción y traza", ex, New StackFrame(True))
         Finally
-            conexion.Close()
+            conexion1.Close()
         End Try
-        list_pacientes.SelectedIndex += 1
-        index = list_pacientes.SelectedIndex
     End Sub
 
     Private Sub list_pacientes_SelectedCellsChanged(sender As Object, e As SelectedCellsChangedEventArgs) Handles list_pacientes.SelectedCellsChanged
         If list_pacientes.SelectedIndex <> -1 Then
             row = list_pacientes.SelectedItem
             paciente.Text = row.Row.ItemArray(0).ToString
-            Try
-                conexion1.Open()
-                Dim estadopac As String = String.Empty
-                estadopac = "UPDATE pacientes SET estado_paciente='1' WHERE tiket='" & paciente.Text & "'"
-                comando = New MySqlCommand(estadopac, conexion1)
-                comando.ExecuteNonQuery()
-                cliente_sig.Content = "Marcar como Atendido"
-                cliente_sig.Width = 190
-            Catch ex As Exception
-                MsgBox(ex.Message)
-                Log.e("Error con excepción y traza", ex, New StackFrame(True))
-            Finally
-                conexion1.Close()
-            End Try
+            index = list_pacientes.SelectedIndex
         Else
             paciente.Text = "0"
         End If
+    End Sub
+
+    Private Sub clientup_Click(sender As Object, e As RoutedEventArgs) Handles clientup.Click
+        If list_pacientes.SelectedIndex <> -1 Then
+            list_pacientes.SelectedIndex -= 1
+            index = list_pacientes.SelectedIndex
+        End If
+    End Sub
+
+    Private Sub clientdown_Click(sender As Object, e As RoutedEventArgs) Handles clientdown.Click
+        list_pacientes.SelectedIndex += 1
+        index = list_pacientes.SelectedIndex
+    End Sub
+
+    Private Sub Complete_Click(sender As Object, e As RoutedEventArgs) Handles Complete.Click
+        Try
+            conexion.Open()
+            Dim estadopaciente As String = String.Empty
+            estadopaciente = "UPDATE pacientes SET estado_paciente='2' WHERE tiket='" & paciente.Text & "'  AND idDoctor='11'"
+            comando = New MySqlCommand(estadopaciente, conexion)
+            comando.ExecuteNonQuery()
+        Catch ex As Exception
+            MsgBox(ex.Message)
+            Log.e("Error con excepción y traza", ex, New StackFrame(True))
+        Finally
+            conexion.Close()
+        End Try
+    End Sub
+
+    Private Sub ReCall_Click(sender As Object, e As RoutedEventArgs) Handles ReCall.Click
+        Try
+            conexion1.Open()
+            Dim estadopac As String = String.Empty
+            estadopac = "UPDATE pacientes SET estado_paciente='1', CallSpeak='1' WHERE tiket='" & paciente.Text & "'  AND idDoctor='11'"
+            comando = New MySqlCommand(estadopac, conexion1)
+            comando.ExecuteNonQuery()
+        Catch ex As Exception
+            MsgBox(ex.Message)
+            Log.e("Error con excepción y traza", ex, New StackFrame(True))
+        Finally
+            conexion1.Close()
+        End Try
     End Sub
 End Class

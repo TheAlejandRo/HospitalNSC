@@ -40,10 +40,18 @@
                       Margin="20 140 0 0" VerticalAlignment="Top" HorizontalAlignment="Left"/>
         <Label x:Name="RPofflineLB" Grid.Row="1" Grid.Column="0" Margin="70 135 0 0" HorizontalAlignment="Left" VerticalAlignment="Top" Content="Offline" FontSize="12" Foreground="#FF1676D2" FontWeight="Bold"/>
         <Grid Grid.Row="1" Grid.Column="0" VerticalAlignment="Top" Margin="0 173 0 0" Height="40">
-        <TextBlock x:Name="URLofflineVideo" Margin="30 3 0 0" HorizontalAlignment="Left" VerticalAlignment="Top" Width="180" FontSize="14" Height="25" Foreground="#FF1676D2" TextOptions.TextFormattingMode="Display" TextWrapping="Wrap" Text="https://www.youtube.com/watch?v=uFFgZws1sDk"/>
-        <materialDesign:Badged Margin="220 0 0 0" Badge="{materialDesign:PackIcon FileVideo}" BadgeColorZoneMode="Accent">
-            <Button x:Name="LoadVideo" Content="Cargar Video"/>
-        </materialDesign:Badged>
+        <TextBlock x:Name="URLofflineVideo" Margin="30 3 0 0" HorizontalAlignment="Left" VerticalAlignment="Top" Width="180" FontSize="14" Height="25" Foreground="#FF1676D2" TextOptions.TextFormattingMode="Display" Text="https://www.youtube.com/watch?v=uFFgZws1sDk"/>
+            <materialDesign:Badged Margin="220 0 0 0" Badge="{materialDesign:PackIcon FileVideo}" BadgeColorZoneMode="Accent">
+                <Button x:Name="LoadVideo" Content="Cargar Video"/>
+            </materialDesign:Badged>
         </Grid>
+        <Label Grid.Column="1" Grid.Row="1" Content="Mensaje de promoción" Foreground="#FF1676D2" Height="30" Width="140" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="40 0 0 0"/>
+        <TextBox x:Name="BannerText" Grid.Column="1" Grid.Row="1" VerticalAlignment="Top" Margin="30 40 30 0" materialDesign:HintAssist.Hint="Hospital Nuestra Señora del Carmen" Foreground="#FF1676D2" SelectionBrush="#990078D7"/>
+        <Button x:Name="msgsave" Grid.Column="1" Grid.Row="1" Style="{StaticResource MaterialDesignFloatingActionMiniButton}" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="150 75 0 0" ToolTip="Guardar" Width="24" Height="24">
+            <materialDesign:PackIcon Kind="CheckboxMarkedCircle" Height="18" Width="18"/>
+        </Button>
+        <Button x:Name="msgclear" Grid.Column="1" Grid.Row="1" Style="{StaticResource MaterialDesignFloatingActionMiniButton}" HorizontalAlignment="Right" VerticalAlignment="Top" Margin="0 75 150 0" ToolTip="Borrar" Width="24" Height="24" Background="#FFF32121" BorderBrush="#FFF32121">
+            <materialDesign:PackIcon Kind="RemoveCircle" Height="18" Width="18"/>
+        </Button>
     </Grid>
 </UserControl>

@@ -7,12 +7,11 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Hospital_Ultimate"
         mc:Ignorable="d"
-        Title="Sala de Espera" Height="1080" Width="1920"
+        Title="Sala de Espera" Height="990" Width="1760"
         WindowStyle="None"
         Background="{DynamicResource MaterialDesignPaper}"
         FontFamily="Noto Sans">
-    <materialDesign:DialogHost Identifier="RootDialog" SnackbarMessageQueue="{Binding ElementName=MainSnack, Path=MessageQueue}">
-        <materialDesign:DrawerHost IsRightDrawerOpen="{Binding IsChecked, ElementName=btn_menu}" Foreground="#FF1976D2">
+    <materialDesign:DrawerHost IsRightDrawerOpen="{Binding IsChecked, ElementName=btn_menu}" Foreground="#FF1976D2">
             <materialDesign:DrawerHost.RightDrawerContent >
                 <DockPanel
                     MinWidth="200">
@@ -47,59 +46,59 @@
                     </ListBox>
                 </DockPanel>
             </materialDesign:DrawerHost.RightDrawerContent>
-            <Grid>
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="1320*"/>
-                    <ColumnDefinition Width="240*"/>
-                    <ColumnDefinition Width="145*"/>
-                    <ColumnDefinition Width="207*"/>
-                </Grid.ColumnDefinitions>
-                <Grid.RowDefinitions>
-                    <RowDefinition Height="Auto"/>
-                    <RowDefinition Height="53*"/>
-                    <RowDefinition Height="10*"/>
-                    <RowDefinition Height="10*"/>
-                </Grid.RowDefinitions>
-                <TextBlock Text="Doctor" Grid.Column="1" Grid.Row="1" Foreground="DodgerBlue" FontSize="40" FontWeight="Bold" VerticalAlignment="Top" TextAlignment="Center" Height="54"/>
-                <TextBlock Text="Tiket" Grid.Column="2" Grid.Row="1" Foreground="DodgerBlue" FontSize="40" FontWeight="Bold" VerticalAlignment="Top" TextAlignment="Center" Height="54"/>
+        <materialDesign:DialogHost x:Name="client" Identifier="RootDialog" SnackbarMessageQueue="{Binding ElementName=MainSnack, Path=MessageQueue}" AutomationProperties.IsOffscreenBehavior="Onscreen" CloseOnClickAway="True" DialogTheme="Light">
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="1320*"/>
+                <ColumnDefinition Width="240*"/>
+                <ColumnDefinition Width="145*"/>
+                <ColumnDefinition Width="207*"/>
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="53*"/>
+                <RowDefinition Height="10*"/>
+                <RowDefinition Height="10*"/>
+            </Grid.RowDefinitions>
+            <TextBlock Text="Doctor" Grid.Column="1" Grid.Row="1" Foreground="DodgerBlue" FontSize="40" FontWeight="Bold" VerticalAlignment="Top" TextAlignment="Center" Height="54"/>
+            <TextBlock Text="Tiket" Grid.Column="2" Grid.Row="1" Foreground="DodgerBlue" FontSize="40" FontWeight="Bold" VerticalAlignment="Top" TextAlignment="Center" Height="54"/>
                 <TextBlock Text="Clínica" Grid.Column="3" Grid.Row="1" Foreground="DodgerBlue" FontSize="40" FontWeight="Bold" VerticalAlignment="Top" TextAlignment="Center" Height="54"/>
-                <materialDesign:Snackbar MessageQueue="{materialDesign:MessageQueue}"
-                                         x:Name="MainSnack"
-                                         Grid.Row="3" Margin="798,0,234,0" Height="0" Width="288"/>
                 <cefsharp:ChromiumWebBrowser x:Name="web_view"  Grid.Row="1" IsEnabled="False" Visibility="Collapsed" AutomationProperties.IsOffscreenBehavior="Onscreen"/>
-                <DataGrid x:Name="Listado_tikets" Margin="0,59,0,0" FontSize="28" HorizontalGridLinesBrush="#FF1976D2" Foreground="#FF1976D2" Grid.Column="1" Focusable="False" CanUserSortColumns="False" CanUserResizeColumns="False" CanUserReorderColumns="False" CanUserDeleteRows="False" CanUserResizeRows="False" CanUserAddRows="False" Grid.Row="1" HeadersVisibility="None" FontStretch="UltraCondensed" FontWeight="SemiBold" RowDetailsVisibilityMode="Collapsed" SelectionUnit="CellOrRowHeader" EnableRowVirtualization="False" Grid.ColumnSpan="3"/>
-                <Grid Grid.Row="2" Grid.ColumnSpan="4" Background="#FF1676D2" Margin="0,0,0,-5">
-                    <Image Source="Logo.ico" Width="100" VerticalAlignment="Top" HorizontalAlignment="Center"/>
-                    <Label x:Name="FechaM" Foreground="#FFFFFF" FontSize="70" HorizontalAlignment="Left"/>
-                    <Label x:Name="HoraM" Foreground="#FFFFFF" FontSize="70" HorizontalAlignment="Right"/>
-                </Grid>
-                <Canvas Name="ViewingBox" Grid.ColumnSpan="4" Grid.Row="3" Background="#FF1676D2">
-                    <Label Canvas.Left="1920" Canvas.Bottom="20" Name="BoxOne" FontSize="50" Foreground="White">Hospital Nuestra Señora del Carmen</Label>
-                    <Label Canvas.Left="1920"  Canvas.Bottom="20" HorizontalAlignment="Stretch" Name="BoxTwo" VerticalAlignment="Top" FontSize="50" Foreground="White">Hospital Nuestra Señora del Carmen</Label>
-                </Canvas>
-                <MediaElement x:Name="OfflineView" Grid.Row="1" Grid.Column="0" Volume="1" IsEnabled="False"  Visibility="Collapsed" SnapsToDevicePixels="True" ScrollViewer.CanContentScroll="True" Margin="-10,0,0,0" Stretch="Uniform" UnloadedBehavior="Manual"/>
-                <Image x:Name="Portada" Grid.Row="1" Grid.Column="0" IsEnabled="False" Visibility="Collapsed" Source="Logotipo Hospital Nuestra Señora del Carmen - editable transparent.png"/>
-                <Border x:Name="win_mov" CornerRadius="0,0,0,0" Grid.ColumnSpan="4">
-                    <materialDesign:ColorZone
+            <DataGrid x:Name="Listado_tikets" Margin="0,59,0,0" FontSize="28" HorizontalGridLinesBrush="#FF1976D2" Foreground="#FF1976D2" Grid.Column="1" Focusable="False" CanUserSortColumns="False" CanUserResizeColumns="False" CanUserReorderColumns="False" CanUserDeleteRows="False" CanUserResizeRows="False" CanUserAddRows="False" Grid.Row="1" HeadersVisibility="None" FontStretch="UltraCondensed" FontWeight="SemiBold" RowDetailsVisibilityMode="Collapsed" SelectionUnit="CellOrRowHeader" EnableRowVirtualization="False" Grid.ColumnSpan="3"/>
+            <Grid Grid.Row="2" Grid.ColumnSpan="4" Background="#FF1676D2" Margin="0,0,0,-5">
+                <Image Source="Logo.ico" Width="100" VerticalAlignment="Top" HorizontalAlignment="Center"/>
+                <Label x:Name="FechaM" Foreground="#FFFFFF" FontSize="70" HorizontalAlignment="Left"/>
+                <Label x:Name="HoraM" Foreground="#FFFFFF" FontSize="70" HorizontalAlignment="Right"/>
+            </Grid>
+            <Canvas Name="ViewingBox" Grid.ColumnSpan="4" Grid.Row="3" Background="#FF1676D2">
+                    <Label Canvas.Left="1760" Canvas.Bottom="5" Name="BoxOne" FontSize="50" Foreground="White"></Label>
+                    <Label Canvas.Left="1760" Canvas.Bottom="5"  Name="BoxTwo" VerticalAlignment="Top" FontSize="50" Foreground="White"></Label>
+            </Canvas>
+            <MediaElement x:Name="OfflineView" Grid.Row="1" Grid.Column="0" Volume="1" IsEnabled="False"  Visibility="Collapsed" SnapsToDevicePixels="True" ScrollViewer.CanContentScroll="True" Margin="-10,0,0,0" Stretch="Uniform" UnloadedBehavior="Manual"/>
+            <Image x:Name="Portada" Grid.Row="1" Grid.Column="0" IsEnabled="False" Visibility="Collapsed" Source="Logotipo Hospital Nuestra Señora del Carmen - editable transparent.png"/>
+            <Border x:Name="win_mov" Grid.ColumnSpan="4">
+                <materialDesign:ColorZone
             Mode="PrimaryDark"
             Padding="10"
             CornerRadius="0"
             Margin="0">
-                        <DockPanel>
-                            <ToggleButton x:Name="btn_menu"
+                    <DockPanel>
+                        <ToggleButton x:Name="btn_menu"
                                           Style="{DynamicResource MaterialDesignHamburgerToggleButton}"
                                           IsChecked="False"
                                           HorizontalAlignment="Right"
                                           Cursor="Hand" Width="30" Height="30" DockPanel.Dock="Right"/>
-                            <TextBlock
+                        <TextBlock
                     VerticalAlignment="Center" HorizontalAlignment="Center"
                     Margin="30 0 0 0"
                     FontSize="22"
                                 Text="Sala de Espera"/>
-                        </DockPanel>
-                    </materialDesign:ColorZone>
-                </Border>
+                    </DockPanel>
+                </materialDesign:ColorZone>
+            </Border>
+                <materialDesign:Snackbar x:Name="MainSnack"
+                                     MessageQueue="{materialDesign:MessageQueue}" Grid.RowSpan="4" Grid.ColumnSpan="4"/>
             </Grid>
-        </materialDesign:DrawerHost>
-    </materialDesign:DialogHost>
+        </materialDesign:DialogHost>
+    </materialDesign:DrawerHost>
 </Window>

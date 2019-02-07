@@ -1,5 +1,4 @@
-﻿Imports System
-Imports System.Data
+﻿Imports System.Data
 Imports MySql.Data.MySqlClient
 Imports MaterialDesignThemes.Wpf
 Imports System.ComponentModel
@@ -39,7 +38,7 @@ Public Class Secretarias
         btn_menu.IsChecked = False
         Dim dlgclshw As New MessageClsDlg
         dlgclshw.Message.Text = "¿Quieres cerrar el programa?"
-        DialogHost.Show(dlgclshw, "RootDialog")
+        DialogHost.Show(dlgclshw, "RootDialogClose")
     End Sub
 
     Private Sub cls_sesion_Selected(sender As Object, e As RoutedEventArgs) Handles cls_sesion.Selected
@@ -54,7 +53,7 @@ Public Class Secretarias
 
     Private Sub pnl_espera_Selected(sender As Object, e As RoutedEventArgs) Handles pnl_espera.Selected
         btn_menu.IsChecked = False
-        Dim panel As New MainWindow
+        Dim panel As New Panel
         panel.Show()
     End Sub
 

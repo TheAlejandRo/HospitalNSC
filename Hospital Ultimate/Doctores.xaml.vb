@@ -7,10 +7,7 @@ Public Class Doctores
 
     Dim modocerrar As Integer = 0
     Dim conexion As New MySqlConnection("server=192.168.1.90; user=TheAlejandRo; password=Tech.Code; database=dbturnos")
-    Dim consulta As String = String.Empty
     Dim comando As MySqlCommand
-    Dim adaptador As MySqlDataAdapter
-    Dim tabla As New DataTable
     Dim update_state As String = String.Empty
 
     Private Sub win_mov_MouseLeftButtonDown(sender As Object, e As MouseButtonEventArgs) Handles win_mov.MouseLeftButtonDown

@@ -1,0 +1,19 @@
+﻿<UserControl x:Class="MessageDialogPaciente"
+             xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:Hospital_Ultimate"
+             mc:Ignorable="d" 
+             d:DesignHeight="600" d:DesignWidth="800">
+    <Grid Margin="10">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        <Label x:Name="Header" Grid.Row="0" FontSize="100" Content="Paciente Número" Foreground="#FF1676D2" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"/>
+        <Separator VerticalAlignment="Bottom"/>
+        <TextBlock x:Name="CodPac" Grid.Row="1" FontSize="100" Text="DR459252" Foreground="#FF63A3E0" TextAlignment="Center" VerticalAlignment="Center"/>
+    </Grid>
+</UserControl>
