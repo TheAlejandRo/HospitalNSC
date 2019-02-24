@@ -1,11 +1,12 @@
 ﻿Imports MySql.Data.MySqlClient
 Imports System.Data
+Imports MaterialDesignThemes.Wpf
 
 Public Class ScrDeleteTiket
 
     Dim fila As Integer = -1
     Dim row As DataRowView
-    Dim conexion As New MySqlConnection("server=192.168.1.90; user=TheAlejandRo; password=Tech.Code; database=dbturnos")
+    Dim conexion As New MySqlConnection("server=192.168.68.73; user=TheAlejandRo; password=Tech.Code; database=dbturnos")
     Dim consulta As String = String.Empty
     Dim comando As MySqlCommand
     Dim adaptador As MySqlDataAdapter
@@ -70,12 +71,16 @@ Public Class ScrDeleteTiket
             eliminar = "DELETE FROM pacientes WHERE pacientes.IDcliente='" & idcliente.Text & "'"
             comando = New MySqlCommand(eliminar, conexion)
             comando.ExecuteNonQuery()
+            Dim msgdialog As New MessageDialog
+            msgdialog.Message.Text = "Tiket eliminado correctamente"
+            DialogHost.Show(msgdialog, "RootDialog")
         Catch ex As Exception
             MsgBox(ex.Message)
             Log.e("Error con excepción y traza", ex, New StackFrame(True))
         Finally
             conexion.Close()
         End Try
+        Lista()
     End Sub
 
     Private Sub vaciarlista_Click(sender As Object, e As RoutedEventArgs) Handles vaciarlista.Click
@@ -84,11 +89,15 @@ Public Class ScrDeleteTiket
             vaciar = "TRUNCATE TABLE pacientes"
             comando = New MySqlCommand(vaciar, conexion)
             comando.ExecuteNonQuery()
+            Dim msgdialog As New MessageDialog
+            msgdialog.Message.Text = "Lista de tikets vacía"
+            DialogHost.Show(msgdialog, "RootDialog")
         Catch ex As Exception
             MsgBox(ex.Message)
             Log.e("Error con excepción y Traza", ex, New StackFrame(True))
         Finally
             conexion.Close()
         End Try
+        Lista()
     End Sub
 End Class

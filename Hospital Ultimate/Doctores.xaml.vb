@@ -6,7 +6,7 @@ Imports System.ComponentModel
 Public Class Doctores
 
     Dim modocerrar As Integer = 0
-    Dim conexion As New MySqlConnection("server=192.168.1.90; user=TheAlejandRo; password=Tech.Code; database=dbturnos")
+    Dim conexion As New MySqlConnection("server=192.168.68.73; user=TheAlejandRo; password=Tech.Code; database=dbturnos")
     Dim comando As MySqlCommand
     Dim update_state As String = String.Empty
 

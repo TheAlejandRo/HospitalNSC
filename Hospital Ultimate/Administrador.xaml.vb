@@ -11,10 +11,10 @@ Public Class Administrador
     Dim updateuser As String = String.Empty
     Dim modocerrar As Integer = 0
     Dim row As DataRowView
-    Dim conexion As New MySqlConnection("server=192.168.1.90; user=TheAlejandRo; password=Tech.Code; database=dbturnos")
-    Dim conexion1 As New MySqlConnection("server=192.168.1.90; user=TheAlejandRo; password=Tech.Code; database=dbturnos")
-    Dim conexion2 As New MySqlConnection("server=192.168.1.90; user=TheAlejandRo; password=Tech.Code; database=dbturnos")
-    Dim conexion3 As New MySqlConnection("server=192.168.1.90; user=TheAlejandRo; password=Tech.Code; database=dbturnos")
+    Dim conexion As New MySqlConnection("server=192.168.68.73; user=TheAlejandRo; password=Tech.Code; database=dbturnos")
+    Dim conexion1 As New MySqlConnection("server=192.168.68.73; user=TheAlejandRo; password=Tech.Code; database=dbturnos")
+    Dim conexion2 As New MySqlConnection("server=192.168.68.73; user=TheAlejandRo; password=Tech.Code; database=dbturnos")
+    Dim conexion3 As New MySqlConnection("server=192.168.68.73; user=TheAlejandRo; password=Tech.Code; database=dbturnos")
     Dim consulta As String = String.Empty
     Dim comando As MySqlCommand
     Dim adaptador As MySqlDataAdapter
@@ -283,11 +283,11 @@ Public Class Administrador
 
     Private Sub ds_Tick(sender As Object, e As EventArgs) Handles ds.Tick
         If My.Settings.PermitirCambio = True Then
+            Dim conexion5 As New MySqlConnection("server=127.0.0.1; user=TheAlejandRo; password=Tech.Code; database=dbturnos")
             Try
-                Dim conexion1 As New MySqlConnection("server=192.168.1.90; user=TheAlejandRo; password=Tech.Code; database=dbturnos")
-                conexion1.Open()
+                conexion5.Open()
                 updateuser = "UPDATE usuarios SET tipo_usuario='" & TypeUser.Text & "', user='" & user.Text & "', docnom='" & Nameuser.Text & "', apnom='" & Firstuser.Text & "', tel1='" & tel1.Text & "', tel2='" & tel2.Text & "', tel3='" & tel3.Text & "', codclinica='" & CodClinica.Text & "', pass='" & Txt_newpassword.Password & "' WHERE idusuario='" & IDnew.Text & "'"
-                comando = New MySqlCommand(updateuser, conexion1)
+                comando = New MySqlCommand(updateuser, conexion5)
                 comando.ExecuteNonQuery()
                 refresh = 2
                 Lista()
@@ -296,7 +296,7 @@ Public Class Administrador
                 MessageBox.Show(ex.Message)
                 Log.e("Error con excepción y traza", ex, New StackFrame(True))
             Finally
-                conexion.Close()
+                conexion5.Close()
             End Try
             ds.Stop()
         End If

@@ -8,8 +8,8 @@ Public Class Secretarias
 
     Dim formadecerrar As Integer = 0
     Dim WithEvents Ds As New DispatcherTimer
-    Dim conexion As New MySqlConnection("server=192.168.1.90; user=TheAlejandRo; password=Tech.Code; database=dbturnos")
-    Dim conexion1 As New MySqlConnection("server=192.168.1.90; user=TheAlejandRo; password=Tech.Code; database=dbturnos")
+    Dim conexion As New MySqlConnection("server=192.168.68.73; user=TheAlejandRo; password=Tech.Code; database=dbturnos")
+    Dim conexion1 As New MySqlConnection("server=192.168.68.73; user=TheAlejandRo; password=Tech.Code; database=dbturnos")
     Dim consulta As String = String.Empty
     Dim comando As MySqlCommand
     Dim adaptador As MySqlDataAdapter

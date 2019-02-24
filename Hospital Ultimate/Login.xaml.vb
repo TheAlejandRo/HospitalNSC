@@ -9,7 +9,7 @@ Public Class Login
     Dim Secretaria As New Secretarias
     Dim administrador As New Administrador
     Dim Doctores As New Doctores
-    Dim conexion As New MySqlConnection("server=192.168.1.90; user=TheAlejandRo; password=Tech.Code; database=dbturnos")
+    Dim conexion As New MySqlConnection("server=192.168.68.73; user=TheAlejandRo; password=Tech.Code; database=dbturnos")
     Dim consulta As String = String.Empty
     Dim comando As MySqlCommand
     Dim adaptador As MySqlDataAdapter
@@ -28,21 +28,21 @@ Public Class Login
             tabla.Clear()
             adaptador.Fill(tabla)
             If tabla.Rows.Count = 1 Then
-                If tabla.Rows(0)(0).ToString = "Administrador" Then
+                If tabla.Rows(0)(0).ToString = "Administrador" Or tabla.Rows(0)(0).ToString = "administrador" Or tabla.Rows(0)(0).ToString = "Administradora" Or tabla.Rows(0)(0).ToString = "administradora" Then
                     administrador.Admin_Title.Text = tabla.Rows(0)(1).ToString
                     administrador.IDadmin.Text = tabla.Rows(0)(2).ToString
                     administrador.Show()
                     modocerrar = 1
                     conexion.Close()
                     Me.Close()
-                ElseIf tabla.Rows(0)(0).ToString = "Doctor" Then
+                ElseIf tabla.Rows(0)(0).ToString = "Doctor" Or tabla.Rows(0)(0).ToString = "doctor" Then
                     Doctores.Dr_Title.Text = tabla.Rows(0)(1).ToString
                     Doctores.idDr.Text = tabla.Rows(0)(2).ToString
                     Doctores.Show()
                     modocerrar = 1
                     conexion.Close()
                     Me.Close()
-                ElseIf tabla.Rows(0)(0).ToString = "Secretaria" Then
+                ElseIf tabla.Rows(0)(0).ToString = "Secretaria" Or tabla.Rows(0)(0).ToString = "secretaria" Then
                     Secretaria.Secretaria_Nom.Text = tabla.Rows(0)(1).ToString
                     Secretaria.IDscr.Text = tabla.Rows(0)(2).ToString
                     Secretaria.Show()

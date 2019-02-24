@@ -1,14 +1,15 @@
 ﻿Imports System.Data
 Imports MySql.Data.MySqlClient
 Imports System.Windows.Threading
+Imports MaterialDesignThemes.Wpf
 
 Public Class Drpanel8
 
     Dim index As Integer = -1
-    Dim conexion1 As New MySqlConnection("server=192.168.1.90; user=TheAlejandRo; password=Tech.Code; database=dbturnos")
+    Dim conexion1 As New MySqlConnection("server=192.168.68.73; user=TheAlejandRo; password=Tech.Code; database=dbturnos")
     Dim row As DataRowView
     Dim WithEvents ds As New DispatcherTimer
-    Dim conexion As New MySqlConnection("server=192.168.1.90; user=TheAlejandRo; password=Tech.Code; database=dbturnos")
+    Dim conexion As New MySqlConnection("server=192.168.68.73; user=TheAlejandRo; password=Tech.Code; database=dbturnos")
     Dim consulta As String = String.Empty
     Dim comando As MySqlCommand
     Dim adaptador As MySqlDataAdapter
@@ -94,18 +95,24 @@ Public Class Drpanel8
     End Sub
 
     Private Sub cliente_sig_Click(sender As Object, e As RoutedEventArgs) Handles cliente_sig.Click
-        Try
-            conexion1.Open()
-            Dim estadopac As String = String.Empty
-            estadopac = "UPDATE pacientes SET estado_paciente='1', CallSpeak='1' WHERE tiket='" & paciente.Text & "' AND idDoctor='13'"
-            comando = New MySqlCommand(estadopac, conexion1)
-            comando.ExecuteNonQuery()
-        Catch ex As Exception
-            MsgBox(ex.Message)
-            Log.e("Error con excepción y traza", ex, New StackFrame(True))
-        Finally
-            conexion1.Close()
-        End Try
+        If list_pacientes.SelectedIndex <> -1 Then
+            Try
+                conexion1.Open()
+                Dim estadopac As String = String.Empty
+                estadopac = "UPDATE pacientes SET estado_paciente='1', CallSpeak='1' WHERE tiket='" & paciente.Text & "' AND idDoctor='13'"
+                comando = New MySqlCommand(estadopac, conexion1)
+                comando.ExecuteNonQuery()
+            Catch ex As Exception
+                MsgBox(ex.Message)
+                Log.e("Error con excepción y traza", ex, New StackFrame(True))
+            Finally
+                conexion1.Close()
+            End Try
+        Else
+            Dim msgdlg As New MessageDialog
+        msgdlg.Message.Text = "No hay paciente seleccionado para llamar"
+        DialogHost.Show(msgdlg, "RootDialog")
+        End If
     End Sub
 
     Private Sub list_pacientes_SelectedCellsChanged(sender As Object, e As SelectedCellsChangedEventArgs) Handles list_pacientes.SelectedCellsChanged

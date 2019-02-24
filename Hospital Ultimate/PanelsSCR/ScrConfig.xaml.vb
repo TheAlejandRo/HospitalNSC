@@ -5,6 +5,7 @@ Public Class ScrConfig
     Private Sub ScrConfig_Loaded(sender As Object, e As RoutedEventArgs) Handles Me.Loaded
         URLvideo.Text = My.Settings.URLvideo
         URLofflineVideo.Text = My.Settings.NameFile
+        BannerText.Text = My.Settings.Banner
         If My.Settings.ModeView = 0 Then
             RPonline.IsChecked = False
             RPoffline.IsChecked = True
