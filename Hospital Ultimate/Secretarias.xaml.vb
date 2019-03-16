@@ -8,8 +8,8 @@ Public Class Secretarias
 
     Dim formadecerrar As Integer = 0
     Dim WithEvents Ds As New DispatcherTimer
-    Dim conexion As New MySqlConnection("server=192.168.68.73; user=TheAlejandRo; password=Tech.Code; database=dbturnos")
-    Dim conexion1 As New MySqlConnection("server=192.168.68.73; user=TheAlejandRo; password=Tech.Code; database=dbturnos")
+    Dim conexion As New MySqlConnection("server=" & My.Settings.ipServer & "; user=TheAlejandRo; password=Tech.Code; database=dbturnos")
+    Dim conexion1 As New MySqlConnection("server=" & My.Settings.ipServer & "; user=TheAlejandRo; password=Tech.Code; database=dbturnos")
     Dim consulta As String = String.Empty
     Dim comando As MySqlCommand
     Dim adaptador As MySqlDataAdapter
@@ -690,213 +690,263 @@ Public Class Secretarias
     End Sub
 
     Private Sub DR1_Click(sender As Object, e As RoutedEventArgs) Handles DR1.Click
-        Try
-            conexion.Open()
-            consulta = "SELECT codclinica FROM usuarios WHERE idusuario='6'"
-            comando = New MySqlCommand(consulta, conexion)
-            adaptador = New MySqlDataAdapter(comando)
-            Dim clinicatbl As New DataTable
-            clinicatbl.Clear()
-            adaptador.Fill(clinicatbl)
-            tiket = "INSERT INTO pacientes (IDcliente, idDoctor, Doctor, Tiket, Clinica, estado_paciente) VALUES ('NULL', '6', '" & Drname1.Text & "', '" & TiketDr1.Text & "', '" & clinicatbl.Rows(0)(0).ToString & "', '0')"
-            comando = New MySqlCommand(tiket, conexion)
-            comando.ExecuteNonQueryAsync()
-        Catch ex As Exception
-            MsgBox(ex.Message)
-            Log.e("Error con Excepción y Traza", ex, New StackFrame(True))
-        Finally
-            TiketDr1.Text = ""
-            conexion.Close()
-        End Try
+        If TiketDr1.text <> "" Then
+            Try
+                conexion.Open()
+                consulta = "SELECT codclinica FROM usuarios WHERE idusuario='6'"
+                comando = New MySqlCommand(consulta, conexion)
+                adaptador = New MySqlDataAdapter(comando)
+                Dim clinicatbl As New DataTable
+                clinicatbl.Clear()
+                adaptador.Fill(clinicatbl)
+                tiket = "INSERT INTO pacientes (IDcliente, idDoctor, Doctor, Tiket, Clinica, estado_paciente) VALUES ('NULL', '6', '" & Drname1.Text & "', '" & TiketDr1.Text & "', '" & clinicatbl.Rows(0)(0).ToString & "', '0')"
+                comando = New MySqlCommand(tiket, conexion)
+                comando.ExecuteNonQueryAsync()
+            Catch ex As Exception
+                MsgBox(ex.Message)
+                Log.e("Error con Excepción y Traza", ex, New StackFrame(True))
+            Finally
+                TiketDr1.Text = ""
+                conexion.Close()
+            End Try
+        Else
+            Dim dslgshw As New MessageDialog
+            dslgshw.message.text = "Está tratando de enviar un tiket vacío"
+        End If
     End Sub
 
     Private Sub DR2_Click(sender As Object, e As RoutedEventArgs) Handles DR2.Click
-        Try
-            conexion.Open()
-            consulta = "SELECT codclinica FROM usuarios WHERE idusuario='7'"
-            comando = New MySqlCommand(consulta, conexion)
-            adaptador = New MySqlDataAdapter(comando)
-            Dim clinicatbl As New DataTable
-            clinicatbl.Clear()
-            adaptador.Fill(clinicatbl)
-            tiket = "INSERT INTO pacientes (IDcliente, idDoctor, Doctor, Tiket, Clinica, estado_paciente) VALUES ('NULL', '7', '" & Drname2.Text & "', '" & TiketDr2.Text & "', '" & clinicatbl.Rows(0)(0).ToString & "', '0')"
-            comando = New MySqlCommand(tiket, conexion)
-            comando.ExecuteNonQueryAsync()
-        Catch ex As Exception
-            MsgBox(ex.Message)
-            Log.e("Error con Excepción y Traza", ex, New StackFrame(True))
-        Finally
-            TiketDr2.Text = ""
-            conexion.Close()
-        End Try
+        If TiketDr2.text <> "" Then
+            Try
+                conexion.Open()
+                consulta = "SELECT codclinica FROM usuarios WHERE idusuario='7'"
+                comando = New MySqlCommand(consulta, conexion)
+                adaptador = New MySqlDataAdapter(comando)
+                Dim clinicatbl As New DataTable
+                clinicatbl.Clear()
+                adaptador.Fill(clinicatbl)
+                tiket = "INSERT INTO pacientes (IDcliente, idDoctor, Doctor, Tiket, Clinica, estado_paciente) VALUES ('NULL', '7', '" & Drname2.Text & "', '" & TiketDr2.Text & "', '" & clinicatbl.Rows(0)(0).ToString & "', '0')"
+                comando = New MySqlCommand(tiket, conexion)
+                comando.ExecuteNonQueryAsync()
+            Catch ex As Exception
+                MsgBox(ex.Message)
+                Log.e("Error con Excepción y Traza", ex, New StackFrame(True))
+            Finally
+                TiketDr2.Text = ""
+                conexion.Close()
+            End Try
+        Else
+            Dim dslgshw As New MessageDialog
+            dslgshw.message.text = "Está tratando de enviar un tiket vacío"
+        End If
     End Sub
 
     Private Sub DR3_Click(sender As Object, e As RoutedEventArgs) Handles DR3.Click
-        Try
-            conexion.Open()
-            consulta = "SELECT codclinica FROM usuarios WHERE idusuario='8'"
-            comando = New MySqlCommand(consulta, conexion)
-            adaptador = New MySqlDataAdapter(comando)
-            Dim clinicatbl As New DataTable
-            clinicatbl.Clear()
-            adaptador.Fill(clinicatbl)
-            tiket = "INSERT INTO pacientes (IDcliente, idDoctor, Doctor, Tiket, Clinica, estado_paciente) VALUES ('NULL', '8', '" & Drname3.Text & "', '" & TiketDr3.Text & "', '" & clinicatbl.Rows(0)(0).ToString & "', '0')"
-            comando = New MySqlCommand(tiket, conexion)
-            comando.ExecuteNonQueryAsync()
-        Catch ex As Exception
-            MsgBox(ex.Message)
-            Log.e("Error con Excepción y Traza", ex, New StackFrame(True))
-        Finally
-            TiketDr3.Text = ""
-            conexion.Close()
-        End Try
+        If TiketDr3.text <> "" Then
+            Try
+                conexion.Open()
+                consulta = "SELECT codclinica FROM usuarios WHERE idusuario='8'"
+                comando = New MySqlCommand(consulta, conexion)
+                adaptador = New MySqlDataAdapter(comando)
+                Dim clinicatbl As New DataTable
+                clinicatbl.Clear()
+                adaptador.Fill(clinicatbl)
+                tiket = "INSERT INTO pacientes (IDcliente, idDoctor, Doctor, Tiket, Clinica, estado_paciente) VALUES ('NULL', '8', '" & Drname3.Text & "', '" & TiketDr3.Text & "', '" & clinicatbl.Rows(0)(0).ToString & "', '0')"
+                comando = New MySqlCommand(tiket, conexion)
+                comando.ExecuteNonQueryAsync()
+            Catch ex As Exception
+                MsgBox(ex.Message)
+                Log.e("Error con Excepción y Traza", ex, New StackFrame(True))
+            Finally
+                TiketDr3.Text = ""
+                conexion.Close()
+            End Try
+        Else
+            Dim dslgshw As New MessageDialog
+            dslgshw.message.text = "Está tratando de enviar un tiket vacío"
+        End If
     End Sub
 
     Private Sub DR4_Click(sender As Object, e As RoutedEventArgs) Handles DR4.Click
-        Try
-            conexion.Open()
-            consulta = "SELECT codclinica FROM usuarios WHERE idusuario='9'"
-            comando = New MySqlCommand(consulta, conexion)
-            adaptador = New MySqlDataAdapter(comando)
-            Dim clinicatbl As New DataTable
-            clinicatbl.Clear()
-            adaptador.Fill(clinicatbl)
-            tiket = "INSERT INTO pacientes (IDcliente, idDoctor, Doctor, Tiket, Clinica, estado_paciente) VALUES ('NULL', '9', '" & Drname4.Text & "', '" & TiketDr4.Text & "', '" & clinicatbl.Rows(0)(0).ToString & "', '0')"
-            comando = New MySqlCommand(tiket, conexion)
-            comando.ExecuteNonQueryAsync()
-        Catch ex As Exception
-            MsgBox(ex.Message)
-            Log.e("Error con Excepción y Traza", ex, New StackFrame(True))
-        Finally
-            TiketDr4.Text = ""
-            conexion.Close()
-        End Try
+        If TiketDr4.text <> "" Then
+            Try
+                conexion.Open()
+                consulta = "SELECT codclinica FROM usuarios WHERE idusuario='9'"
+                comando = New MySqlCommand(consulta, conexion)
+                adaptador = New MySqlDataAdapter(comando)
+                Dim clinicatbl As New DataTable
+                clinicatbl.Clear()
+                adaptador.Fill(clinicatbl)
+                tiket = "INSERT INTO pacientes (IDcliente, idDoctor, Doctor, Tiket, Clinica, estado_paciente) VALUES ('NULL', '9', '" & Drname4.Text & "', '" & TiketDr4.Text & "', '" & clinicatbl.Rows(0)(0).ToString & "', '0')"
+                comando = New MySqlCommand(tiket, conexion)
+                comando.ExecuteNonQueryAsync()
+            Catch ex As Exception
+                MsgBox(ex.Message)
+                Log.e("Error con Excepción y Traza", ex, New StackFrame(True))
+            Finally
+                TiketDr4.Text = ""
+                conexion.Close()
+            End Try
+        Else
+            Dim dslgshw As New MessageDialog
+            dslgshw.message.text = "Está tratando de enviar un tiket vacío"
+        End If
     End Sub
 
     Private Sub DR5_Click(sender As Object, e As RoutedEventArgs) Handles DR5.Click
-        Try
-            conexion.Open()
-            consulta = "SELECT codclinica FROM usuarios WHERE idusuario='10'"
-            comando = New MySqlCommand(consulta, conexion)
-            adaptador = New MySqlDataAdapter(comando)
-            Dim clinicatbl As New DataTable
-            clinicatbl.Clear()
-            adaptador.Fill(clinicatbl)
-            tiket = "INSERT INTO pacientes (IDcliente, idDoctor, Doctor, Tiket, Clinica, estado_paciente) VALUES ('NULL', '10', '" & Drname5.Text & "', '" & TiketDr5.Text & "', '" & clinicatbl.Rows(0)(0).ToString & "', '0')"
-            comando = New MySqlCommand(tiket, conexion)
-            comando.ExecuteNonQueryAsync()
-        Catch ex As Exception
-            MsgBox(ex.Message)
-            Log.e("Error con Excepción y Traza", ex, New StackFrame(True))
-        Finally
-            TiketDr5.Text = ""
-            conexion.Close()
-        End Try
+        If TiketDr5.text <> "" Then
+            Try
+                conexion.Open()
+                consulta = "SELECT codclinica FROM usuarios WHERE idusuario='10'"
+                comando = New MySqlCommand(consulta, conexion)
+                adaptador = New MySqlDataAdapter(comando)
+                Dim clinicatbl As New DataTable
+                clinicatbl.Clear()
+                adaptador.Fill(clinicatbl)
+                tiket = "INSERT INTO pacientes (IDcliente, idDoctor, Doctor, Tiket, Clinica, estado_paciente) VALUES ('NULL', '10', '" & Drname5.Text & "', '" & TiketDr5.Text & "', '" & clinicatbl.Rows(0)(0).ToString & "', '0')"
+                comando = New MySqlCommand(tiket, conexion)
+                comando.ExecuteNonQueryAsync()
+            Catch ex As Exception
+                MsgBox(ex.Message)
+                Log.e("Error con Excepción y Traza", ex, New StackFrame(True))
+            Finally
+                TiketDr5.Text = ""
+                conexion.Close()
+            End Try
+        Else
+            Dim dslgshw As New MessageDialog
+            dslgshw.message.text = "Está tratando de enviar un tiket vacío"
+        End If
     End Sub
 
     Private Sub DR6_Click(sender As Object, e As RoutedEventArgs) Handles DR6.Click
-        Try
-            conexion.Open()
-            consulta = "SELECT codclinica FROM usuarios WHERE idusuario='11'"
-            comando = New MySqlCommand(consulta, conexion)
-            adaptador = New MySqlDataAdapter(comando)
-            Dim clinicatbl As New DataTable
-            clinicatbl.Clear()
-            adaptador.Fill(clinicatbl)
-            tiket = "INSERT INTO pacientes (IDcliente, idDoctor, Doctor, Tiket, Clinica, estado_paciente) VALUES ('NULL', '11', '" & Drname6.Text & "', '" & TiketDr6.Text & "', '" & clinicatbl.Rows(0)(0).ToString & "', '0')"
-            comando = New MySqlCommand(tiket, conexion)
-            comando.ExecuteNonQueryAsync()
-        Catch ex As Exception
-            MsgBox(ex.Message)
-            Log.e("Error con Excepción y Traza", ex, New StackFrame(True))
-        Finally
-            TiketDr6.Text = ""
-            conexion.Close()
-        End Try
+        If TiketDr6.text <> "" Then
+            Try
+                conexion.Open()
+                consulta = "SELECT codclinica FROM usuarios WHERE idusuario='11'"
+                comando = New MySqlCommand(consulta, conexion)
+                adaptador = New MySqlDataAdapter(comando)
+                Dim clinicatbl As New DataTable
+                clinicatbl.Clear()
+                adaptador.Fill(clinicatbl)
+                tiket = "INSERT INTO pacientes (IDcliente, idDoctor, Doctor, Tiket, Clinica, estado_paciente) VALUES ('NULL', '11', '" & Drname6.Text & "', '" & TiketDr6.Text & "', '" & clinicatbl.Rows(0)(0).ToString & "', '0')"
+                comando = New MySqlCommand(tiket, conexion)
+                comando.ExecuteNonQueryAsync()
+            Catch ex As Exception
+                MsgBox(ex.Message)
+                Log.e("Error con Excepción y Traza", ex, New StackFrame(True))
+            Finally
+                TiketDr6.Text = ""
+                conexion.Close()
+            End Try
+        Else
+            Dim dslgshw As New MessageDialog
+            dslgshw.message.text = "Está tratando de enviar un tiket vacío"
+        End If
     End Sub
 
     Private Sub DR7_Click(sender As Object, e As RoutedEventArgs) Handles DR7.Click
-        Try
-            conexion.Open()
-            consulta = "SELECT codclinica FROM usuarios WHERE idusuario='12'"
-            comando = New MySqlCommand(consulta, conexion)
-            adaptador = New MySqlDataAdapter(comando)
-            Dim clinicatbl As New DataTable
-            clinicatbl.Clear()
-            adaptador.Fill(clinicatbl)
-            tiket = "INSERT INTO pacientes (IDcliente, idDoctor, Doctor, Tiket, Clinica, estado_paciente) VALUES ('NULL', '12', '" & Drname7.Text & "', '" & TiketDr7.Text & "', '" & clinicatbl.Rows(0)(0).ToString & "', '0')"
-            comando = New MySqlCommand(tiket, conexion)
-            comando.ExecuteNonQueryAsync()
-        Catch ex As Exception
-            MsgBox(ex.Message)
-            Log.e("Error con Excepción y Traza", ex, New StackFrame(True))
-        Finally
-            TiketDr7.Text = ""
-            conexion.Close()
-        End Try
+        If TiketDr7.text <> "" Then
+            Try
+                conexion.Open()
+                consulta = "SELECT codclinica FROM usuarios WHERE idusuario='12'"
+                comando = New MySqlCommand(consulta, conexion)
+                adaptador = New MySqlDataAdapter(comando)
+                Dim clinicatbl As New DataTable
+                clinicatbl.Clear()
+                adaptador.Fill(clinicatbl)
+                tiket = "INSERT INTO pacientes (IDcliente, idDoctor, Doctor, Tiket, Clinica, estado_paciente) VALUES ('NULL', '12', '" & Drname7.Text & "', '" & TiketDr7.Text & "', '" & clinicatbl.Rows(0)(0).ToString & "', '0')"
+                comando = New MySqlCommand(tiket, conexion)
+                comando.ExecuteNonQueryAsync()
+            Catch ex As Exception
+                MsgBox(ex.Message)
+                Log.e("Error con Excepción y Traza", ex, New StackFrame(True))
+            Finally
+                TiketDr7.Text = ""
+                conexion.Close()
+            End Try
+        Else
+            Dim dslgshw As New MessageDialog
+            dslgshw.message.text = "Está tratando de enviar un tiket vacío"
+        End If
     End Sub
 
     Private Sub DR8_Click(sender As Object, e As RoutedEventArgs) Handles DR8.Click
-        Try
-            conexion.Open()
-            consulta = "SELECT codclinica FROM usuarios WHERE idusuario='13'"
-            comando = New MySqlCommand(consulta, conexion)
-            adaptador = New MySqlDataAdapter(comando)
-            Dim clinicatbl As New DataTable
-            clinicatbl.Clear()
-            adaptador.Fill(clinicatbl)
-            tiket = "INSERT INTO pacientes (IDcliente, idDoctor, Doctor, Tiket, Clinica, estado_paciente) VALUES ('NULL', '13', '" & Drname8.Text & "', '" & TiketDr8.Text & "', '" & clinicatbl.Rows(0)(0).ToString & "', '0')"
-            comando = New MySqlCommand(tiket, conexion)
-            comando.ExecuteNonQueryAsync()
-        Catch ex As Exception
-            MsgBox(ex.Message)
-            Log.e("Error con Excepción y Traza", ex, New StackFrame(True))
-        Finally
-            TiketDr8.Text = ""
-            conexion.Close()
-        End Try
+        If TiketDr8.text <> "" Then
+            Try
+                conexion.Open()
+                consulta = "SELECT codclinica FROM usuarios WHERE idusuario='13'"
+                comando = New MySqlCommand(consulta, conexion)
+                adaptador = New MySqlDataAdapter(comando)
+                Dim clinicatbl As New DataTable
+                clinicatbl.Clear()
+                adaptador.Fill(clinicatbl)
+                tiket = "INSERT INTO pacientes (IDcliente, idDoctor, Doctor, Tiket, Clinica, estado_paciente) VALUES ('NULL', '13', '" & Drname8.Text & "', '" & TiketDr8.Text & "', '" & clinicatbl.Rows(0)(0).ToString & "', '0')"
+                comando = New MySqlCommand(tiket, conexion)
+                comando.ExecuteNonQueryAsync()
+            Catch ex As Exception
+                MsgBox(ex.Message)
+                Log.e("Error con Excepción y Traza", ex, New StackFrame(True))
+            Finally
+                TiketDr8.Text = ""
+                conexion.Close()
+            End Try
+        Else
+            Dim dslgshw As New MessageDialog
+            dslgshw.message.text = "Está tratando de enviar un tiket vacío"
+        End If
     End Sub
 
     Private Sub DR9_Click(sender As Object, e As RoutedEventArgs) Handles DR9.Click
-        Try
-            conexion.Open()
-            consulta = "SELECT codclinica FROM usuarios WHERE idusuario='14'"
-            comando = New MySqlCommand(consulta, conexion)
-            adaptador = New MySqlDataAdapter(comando)
-            Dim clinicatbl As New DataTable
-            clinicatbl.Clear()
-            adaptador.Fill(clinicatbl)
-            tiket = "INSERT INTO pacientes (IDcliente, idDoctor, Doctor, Tiket, Clinica, estado_paciente) VALUES ('NULL', '14', '" & Drname9.Text & "', '" & TiketDr9.Text & "', '" & clinicatbl.Rows(0)(0).ToString & "', '0')"
-            comando = New MySqlCommand(tiket, conexion)
-            comando.ExecuteNonQueryAsync()
-        Catch ex As Exception
-            MsgBox(ex.Message)
-            Log.e("Error con Excepción y Traza", ex, New StackFrame(True))
-        Finally
-            TiketDr9.Text = ""
-            conexion.Close()
-        End Try
+        If TiketDr9.text <> "" Then
+            Try
+                conexion.Open()
+                consulta = "SELECT codclinica FROM usuarios WHERE idusuario='14'"
+                comando = New MySqlCommand(consulta, conexion)
+                adaptador = New MySqlDataAdapter(comando)
+                Dim clinicatbl As New DataTable
+                clinicatbl.Clear()
+                adaptador.Fill(clinicatbl)
+                tiket = "INSERT INTO pacientes (IDcliente, idDoctor, Doctor, Tiket, Clinica, estado_paciente) VALUES ('NULL', '14', '" & Drname9.Text & "', '" & TiketDr9.Text & "', '" & clinicatbl.Rows(0)(0).ToString & "', '0')"
+                comando = New MySqlCommand(tiket, conexion)
+                comando.ExecuteNonQueryAsync()
+            Catch ex As Exception
+                MsgBox(ex.Message)
+                Log.e("Error con Excepción y Traza", ex, New StackFrame(True))
+            Finally
+                TiketDr9.Text = ""
+                conexion.Close()
+            End Try
+        Else
+            Dim dslgshw As New MessageDialog
+            dslgshw.message.text = "Está tratando de enviar un tiket vacío"
+        End If
     End Sub
 
     Private Sub DR10_Click(sender As Object, e As RoutedEventArgs) Handles DR10.Click
-        Try
-            conexion.Open()
-            consulta = "SELECT codclinica FROM usuarios WHERE idusuario='15'"
-            comando = New MySqlCommand(consulta, conexion)
-            adaptador = New MySqlDataAdapter(comando)
-            Dim clinicatbl As New DataTable
-            clinicatbl.Clear()
-            adaptador.Fill(clinicatbl)
-            tiket = "INSERT INTO pacientes (IDcliente, idDoctor, Doctor, Tiket, Clinica, estado_paciente) VALUES ('NULL', '15', '" & Drname10.Text & "', '" & TiketDr10.Text & "', '" & clinicatbl.Rows(0)(0).ToString & "', '0')"
-            comando = New MySqlCommand(tiket, conexion)
-            comando.ExecuteNonQueryAsync()
-        Catch ex As Exception
-            MsgBox(ex.Message)
-            Log.e("Error con Excepción y Traza", ex, New StackFrame(True))
-        Finally
-            TiketDr10.Text = ""
-            conexion.Close()
-        End Try
+        If TiketDr10.text <> "" Then
+            Try
+                conexion.Open()
+                consulta = "SELECT codclinica FROM usuarios WHERE idusuario='15'"
+                comando = New MySqlCommand(consulta, conexion)
+                adaptador = New MySqlDataAdapter(comando)
+                Dim clinicatbl As New DataTable
+                clinicatbl.Clear()
+                adaptador.Fill(clinicatbl)
+                tiket = "INSERT INTO pacientes (IDcliente, idDoctor, Doctor, Tiket, Clinica, estado_paciente) VALUES ('NULL', '15', '" & Drname10.Text & "', '" & TiketDr10.Text & "', '" & clinicatbl.Rows(0)(0).ToString & "', '0')"
+                comando = New MySqlCommand(tiket, conexion)
+                comando.ExecuteNonQueryAsync()
+            Catch ex As Exception
+                MsgBox(ex.Message)
+                Log.e("Error con Excepción y Traza", ex, New StackFrame(True))
+            Finally
+                TiketDr10.Text = ""
+                conexion.Close()
+            End Try
+        Else
+            Dim dslgshw As New MessageDialog
+            dslgshw.message.text = "Está tratando de enviar un tiket vacío"
+        End If
     End Sub
 
     Private Sub DeleteTiket_Selected(sender As Object, e As RoutedEventArgs) Handles DeleteTiket.Selected
@@ -907,5 +957,25 @@ Public Class Secretarias
         FuncionesExtras.Visibility = Visibility.Visible
         FuncionesExtras.Children.Clear()
         FuncionesExtras.Children.Add(New ScrDeleteTiket)
+    End Sub
+
+    Private Sub MinWindow_Click(sender As Object, e As RoutedEventArgs) Handles MinWindow.Click
+        Me.WindowState = WindowState.Minimized
+    End Sub
+
+    Private Sub MaxWindow_Click(sender As Object, e As RoutedEventArgs) Handles MaxWindow.Click
+        If Me.WindowState = WindowState.Normal Then
+            IconMax.Kind = PackIconKind.WindowRestore
+            Me.WindowState = WindowState.Maximized
+        Else
+            IconMax.Kind = PackIconKind.WindowMaximize
+            Me.WindowState = WindowState.Normal
+        End If
+    End Sub
+
+    Private Sub CloseWindow_Click(sender As Object, e As RoutedEventArgs) Handles CloseWindow.Click
+        Dim dlgclshw As New MessageClsDlg
+        dlgclshw.Message.Text = "¿Quieres cerrar el programa?"
+        DialogHost.Show(dlgclshw, "RootDialogClose")
     End Sub
 End Class

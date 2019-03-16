@@ -9,7 +9,7 @@ Public Class Login
     Dim Secretaria As New Secretarias
     Dim administrador As New Administrador
     Dim Doctores As New Doctores
-    Dim conexion As New MySqlConnection("server=192.168.68.73; user=TheAlejandRo; password=Tech.Code; database=dbturnos")
+    Dim conexion As New MySqlConnection("server=" & My.Settings.ipServer & "; user=TheAlejandRo; password=Tech.Code; database=dbturnos")
     Dim consulta As String = String.Empty
     Dim comando As MySqlCommand
     Dim adaptador As MySqlDataAdapter
@@ -67,7 +67,7 @@ Public Class Login
         End Try
     End Sub
 
-    Private Sub bnt_close_Click(sender As Object, e As RoutedEventArgs) Handles bnt_close.Click
+    Private Sub CloseWindow_Click(sender As Object, e As RoutedEventArgs) Handles CloseWindow.Click
         Dim dlgclshw = New MessageClsDlg
         dlgclshw.Message.Text = "¿Quieres cerrar el programa?"
         DialogHost.Show(dlgclshw, "RootDialog")
@@ -86,5 +86,9 @@ Public Class Login
 
     Private Sub Login_Loaded(sender As Object, e As RoutedEventArgs) Handles Me.Loaded
         modocerrar = 0
+    End Sub
+
+    Private Sub MinWindow_Click(sender As Object, e As RoutedEventArgs) Handles MinWindow.Click
+        Me.WindowState = WindowState.Minimized
     End Sub
 End Class

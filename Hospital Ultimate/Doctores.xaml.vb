@@ -1,12 +1,11 @@
-﻿Imports System.Data
-Imports MySql.Data.MySqlClient
+﻿Imports MySql.Data.MySqlClient
 Imports MaterialDesignThemes.Wpf
 Imports System.ComponentModel
 
 Public Class Doctores
 
     Dim modocerrar As Integer = 0
-    Dim conexion As New MySqlConnection("server=192.168.68.73; user=TheAlejandRo; password=Tech.Code; database=dbturnos")
+    Dim conexion As New MySqlConnection("server=" & My.Settings.ipServer & "; user=TheAlejandRo; password=Tech.Code; database=dbturnos")
     Dim comando As MySqlCommand
     Dim update_state As String = String.Empty
 
@@ -94,5 +93,26 @@ Public Class Doctores
             dlgclshw.Message.Text = "¿Quieres cerrar el programa?"
             DialogHost.Show(dlgclshw, "RootDialog")
         End If
+    End Sub
+
+    Private Sub MinWindow_Click(sender As Object, e As RoutedEventArgs) Handles MinWindow.Click
+        Me.WindowState = WindowState.Minimized
+    End Sub
+
+    Private Sub MaxWindow_Click(sender As Object, e As RoutedEventArgs) Handles MaxWindow.Click
+        If Me.WindowState = WindowState.Normal Then
+            IconMax.Kind = PackIconKind.WindowRestore
+            Me.WindowState = WindowState.Maximized
+        Else
+            IconMax.Kind = PackIconKind.WindowMaximize
+            Me.WindowState = WindowState.Normal
+        End If
+    End Sub
+
+    Private Sub CloseWindow_Click(sender As Object, e As RoutedEventArgs) Handles CloseWindow.Click
+        Inactivo()
+        Dim dlgclshw As New MessageClsDlg
+        dlgclshw.Message.Text = "¿Quieres cerrar el programa?"
+        DialogHost.Show(dlgclshw, "RootDialog")
     End Sub
 End Class

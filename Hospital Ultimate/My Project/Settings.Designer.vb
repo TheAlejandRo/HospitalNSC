@@ -122,6 +122,15 @@ Partial Friend NotInheritable Class MySettings
             Me("Banner") = value
         End Set
     End Property
+    
+    <Global.System.Configuration.ApplicationScopedSettingAttribute(),  _
+     Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+     Global.System.Configuration.DefaultSettingValueAttribute("192.168.1.3")>  _
+    Public ReadOnly Property ipServer() As String
+        Get
+            Return CType(Me("ipServer"),String)
+        End Get
+    End Property
 End Class
 
 Namespace My

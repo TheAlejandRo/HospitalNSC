@@ -26,13 +26,23 @@
                         Padding="10"
                         CornerRadius="20,20,0,0"
                         materialDesign:ShadowAssist.ShadowDepth="Depth3"
-                        Margin="0">
+                        Margin="0" Background="#FF1976D2">
+                            <materialDesign:ColorZone.Effect>
+                                <DropShadowEffect BlurRadius="4" Opacity="0.7" RenderingBias="Quality" ShadowDepth="3"/>
+                            </materialDesign:ColorZone.Effect>
                             <DockPanel>
                                 <TextBlock
-                                    VerticalAlignment="Center" HorizontalAlignment="Center"
-                                    Margin="0 0 0 0" FontSize="14" FontWeight="Normal">
+                                    DockPanel.Dock="Left"
+                                    Margin="83 0 0 0"
+                                    FontSize="14" FontWeight="Normal">
                                 Hospital NSC - Login
                                 </TextBlock>
+                                <Button x:Name="MinWindow" Style="{StaticResource MaterialDesignFloatingActionMiniDarkButton}" Height="20" Width="20" Margin="35 0 0 0" HorizontalAlignment="Right" Background="#FF00B200" BorderBrush="#FF00B200">
+                                    <materialDesign:PackIcon Kind="WindowMinimize"/>
+                                </Button>
+                                <Button x:Name="CloseWindow" Style="{StaticResource MaterialDesignFloatingActionMiniDarkButton}" Height="20" Width="20" HorizontalAlignment="Right" Background="Red" BorderBrush="Red" IsCancel="True">
+                                    <materialDesign:PackIcon Kind="WindowClose"/>
+                                </Button>
                             </DockPanel>
                         </materialDesign:ColorZone>
                     </Border>
@@ -40,53 +50,41 @@
                 Height="200" Width="200"
                 Grid.Row="1" VerticalAlignment="Top" Margin="0,15,0,0"
                 Grid.ColumnSpan="2" Source="Logotipo Hospital Nuestra Señora del Carmen - editable transparent.png"/>
-                    <TextBlock
-                Foreground="DodgerBlue" FontWeight="Bold"
+                    <TextBlock FontWeight="Bold"
                         FontSize="16"
                 Grid.Row="1"
                 Margin="0,75,90,0"
-                VerticalAlignment="Center" HorizontalAlignment="Center">
+                VerticalAlignment="Center" HorizontalAlignment="Center" Foreground="#FF1976D2">
                 Usuario
                     </TextBlock>
                     <TextBox x:Name="Txt_user"
-                Width="100"  Height="26" BorderBrush="#7F0078D7"
+                Width="100"  Height="26"
                 FontSize="12"
                 Grid.Row="1"
-                Margin="120,75,0,0" FontFamily="Segoe UI Semibold">
+                Margin="120,75,0,0" FontFamily="Segoe UI Semibold" BorderBrush="#FF1976D2" CaretBrush="#FF252525" SelectionBrush="#991B2A5C" Foreground="#FF1B2A5C">
                         <!--SelectionBrush="#990078D7" BorderBrush="#7F0078D7" Foreground="#D8000000"-->
                     </TextBox>
-                    <TextBlock
-                Foreground="DodgerBlue" FontWeight="Bold"
+                    <TextBlock FontWeight="Bold"
                         FontSize="16"
                 Grid.Row="1"
                 Margin="0,185,115,0"
-                VerticalAlignment="Center" HorizontalAlignment="Center">
+                VerticalAlignment="Center" HorizontalAlignment="Center" Foreground="#FF1976D2">
                 Contraseña
                     </TextBlock>
                     <PasswordBox x:Name="Txt_pass"
                 Width="100" Height="26"
                                  FontSize="12"
                 Grid.Row="1"
-                Margin="120,185,0,0" BorderBrush="#7F0078D7" FontFamily="Segoe UI Semibold"/>
+                Margin="120,185,0,0" FontFamily="Segoe UI Semibold" CaretBrush="#FF252525" BorderBrush="#FF1976D2" SelectionBrush="#991B2A5C" Foreground="#FF1B2A5C"/>
                     <Button x:Name="btn_sig"
-                Width="145"
-                Margin="15,0,0,0"
-                VerticalAlignment="Bottom" HorizontalAlignment="Left"
+                Margin="15 0 15 0"
+                VerticalAlignment="Bottom" HorizontalAlignment="Stretch"
                 Grid.Row="1"
                 Style="{StaticResource MaterialDesignFlatButton}"
-                            FontWeight="Bold"
-                            IsDefault="True">
-                        Aceptar
-                    </Button>
-                    <Button x:Name="bnt_close"
-                Width="145"
-                Margin="0 0 15 0"
-                VerticalAlignment="Bottom" HorizontalAlignment="Right"
-                Grid.Row="1"
-                Style="{StaticResource MaterialDesignFlatButton}"
-                            FontWeight="Bold"
-                            IsCancel="True">
-                        Cerrar
+                            FontWeight="ExtraBold"
+                            FontSize="16"
+                            IsDefault="True" Foreground="#FF1976D2" Background="{x:Null}" BorderBrush="{x:Null}">
+                        Continuar
                     </Button>
                     <materialDesign:Snackbar MessageQueue="{materialDesign:MessageQueue}"
                                          x:Name="MainSnack"

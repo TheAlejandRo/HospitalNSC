@@ -18,17 +18,17 @@ Public Class Panel
     Dim Dtimer As DispatcherTimer = New DispatcherTimer
     Dim WithEvents TiempCall1 As New DispatcherTimer
     Dim WithEvents tiempcall As New DispatcherTimer
-    Dim conexion As New MySqlConnection("server=192.168.68.73; user=TheAlejandRo; password=Tech.Code; database=dbturnos")
+    Dim conexion As New MySqlConnection("server=" & My.Settings.ipServer & "; user=TheAlejandRo; password=Tech.Code; database=dbturnos")
     Dim consulta As String = String.Empty
     Dim comando As MySqlCommand
     Dim adaptador As MySqlDataAdapter
     Dim tabla As New DataTable
-    Dim conexion1 As New MySqlConnection("server=192.168.68.73; user=TheAlejandRo; password=Tech.Code; database=dbturnos")
+    Dim conexion1 As New MySqlConnection("server=" & My.Settings.ipServer & "; user=TheAlejandRo; password=Tech.Code; database=dbturnos")
     Dim consulta1 As String = String.Empty
     Dim comando1 As MySqlCommand
     Dim adaptador1 As MySqlDataAdapter
     Dim tabla1 As New DataTable
-    Dim conexion2 As New MySqlConnection("server=192.168.68.73; user=TheAlejandRo; password=Tech.Code; database=dbturnos")
+    Dim conexion2 As New MySqlConnection("server=" & My.Settings.ipServer & "; user=TheAlejandRo; password=Tech.Code; database=dbturnos")
     Dim consulta2 As String = String.Empty
     Dim comando2 As MySqlCommand
     Dim timecall As Integer = 0

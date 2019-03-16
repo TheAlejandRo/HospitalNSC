@@ -70,17 +70,27 @@
                                 CornerRadius="0,0,15,15"
                                 materialDesign:ShadowAssist.ShadowDepth="Depth3"
                                 Margin="0" Grid.RowSpan="2">
-                        <DockPanel>
+                        <Grid>
                             <ToggleButton x:Name="btn_menu"
                                            Style="{DynamicResource MaterialDesignHamburgerToggleButton}"
                                             IsChecked="False"
                                             Cursor="Hand"
-                                      Height="23" Width="23"/>
+                                      Height="23" Width="23"
+                                          HorizontalAlignment="Left" VerticalAlignment="Center"/>
                             <TextBlock x:Name="Admin_Title"
                                     VerticalAlignment="Center" HorizontalAlignment="Center"
                                     Margin="0 0 23 0"
                                     Text="Administrador" FontSize="16"/>
-                        </DockPanel>
+                            <Button x:Name="MinWindow" Style="{StaticResource MaterialDesignFloatingActionMiniDarkButton}" Height="20" Width="20" Margin="0 0 50 0" HorizontalAlignment="Right" VerticalAlignment="Top" Background="#FF00B200" BorderBrush="#FF00B200">
+                                <materialDesign:PackIcon Kind="WindowMinimize"/>
+                            </Button>
+                            <Button x:Name="MaxWindow" Style="{StaticResource MaterialDesignFloatingActionMiniDarkButton}" Height="20" Width="20" Margin="0 0 25 0" HorizontalAlignment="Right" VerticalAlignment="Top" Background="DarkGoldenrod" BorderBrush="DarkGoldenrod">
+                                <materialDesign:PackIcon x:Name="IconMax" Kind="WindowMaximize"/>
+                            </Button>
+                            <Button x:Name="CloseWindow" Style="{StaticResource MaterialDesignFloatingActionMiniDarkButton}" Height="20" Width="20" HorizontalAlignment="Right" VerticalAlignment="Top" Background="Red" BorderBrush="Red">
+                                <materialDesign:PackIcon Kind="WindowClose"/>
+                            </Button>
+                        </Grid>
                     </materialDesign:ColorZone>
                 </Border>
                 <!--<Grid x:Name="PgAdmin" Grid.Row="1"/>-->
@@ -96,85 +106,91 @@
                     <DataGrid x:Name="Usersgrid" IsReadOnly="True" Grid.ColumnSpan="2" SelectedIndex="-1" Foreground="#FF1976D2" HorizontalGridLinesBrush="#FF1676D2" HeadersVisibility="Column" CanUserAddRows="False" CanUserResizeRows="False" Focusable="False" HorizontalScrollBarVisibility="Disabled" MinColumnWidth="5" MaxColumnWidth="130" CanUserReorderColumns="False" Margin="0,26,0,0"/>
                     <TextBox x:Name="user"
                  Grid.Column="0" Grid.Row="1"
+                             Style="{StaticResource MaterialDesignFloatingHintTextBox}"
                 Margin="60 135 60 0"
                 materialDesign:HintAssist.Hint="Usuario"
                 Text="{Binding Name}"
                  FontSize="12"
                  Foreground="#FF1976D2"
-                VerticalAlignment="Top" Height="25" />
+                VerticalAlignment="Top"/>
                     <PasswordBox x:Name="Txt_newpassword"
                  Grid.Column="0" Grid.Row="1"
                  Margin="60,170,60,0"
                  materialDesign:HintAssist.Hint="Ingrese la nueva contraseña"
                  FontSize="12"
                      Foreground="#FF1976D2"
-                     VerticalAlignment="Top" Height="25"/>
+                     VerticalAlignment="Top"/>
                     <TextBox x:Name="IDnew"
                  Grid.Column="1" Grid.Row="1"
+                             Style="{StaticResource MaterialDesignFloatingHintTextBox}"
                  Margin="60 30 60 0"
                  materialDesign:HintAssist.Hint="ID del usuario"
                  Text="{Binding Name}"
                  FontSize="12"
                  Foreground="#FF1676D2"
-                 VerticalAlignment="Top" Height="25"/>
+                 VerticalAlignment="Top"/>
                     <TextBox x:Name="tel1"
                  Grid.Column="1" Grid.Row="1"
+                             Style="{StaticResource MaterialDesignFloatingHintTextBox}"
                  Margin="90 65 60 0"
                  materialDesign:HintAssist.Hint="Teléfono #1"
                  Text="{Binding Name}"
                  FontSize="12"
                  Foreground="#FF1676D2"
-                 VerticalAlignment="Top" Height="25"/>
+                 VerticalAlignment="Top"/>
                     <TextBox x:Name="tel2"
                  Grid.Column="1" Grid.Row="1"
                  Margin="90 100 60 0"
                  materialDesign:HintAssist.Hint="Teléfono #2"
+                             Style="{StaticResource MaterialDesignFloatingHintTextBox}"
                  Text="{Binding Name}"
                  FontSize="12"
                  Foreground="#FF1676D2"
-                 VerticalAlignment="Top" Height="25"/>
+                 VerticalAlignment="Top"/>
                     <TextBox x:Name="tel3"
+                             Style="{StaticResource MaterialDesignFloatingHintTextBox}"
                  Grid.Column="1" Grid.Row="1"
                  Margin="90 135 60 0"
                  materialDesign:HintAssist.Hint="Teléfono #3"
                  Text="{Binding Name}"
                  FontSize="12"
                  Foreground="#FF1676D2"
-                 VerticalAlignment="Top" Height="25"/>
+                 VerticalAlignment="Top"/>
                     <TextBox x:Name="CodClinica"
+                             Style="{StaticResource MaterialDesignFloatingHintTextBox}"
                  Grid.Column="0" Grid.Row="1"
                  Margin="60 30 120 0"
                  materialDesign:HintAssist.Hint="Clínica"
                  Text="{Binding Name}"
                  FontSize="12"
                  Foreground="#FF1676D2"
-                 VerticalAlignment="Top" Height="25"/>
+                 VerticalAlignment="Top"/>
                     <TextBox x:Name="Nameuser"
                  Grid.Column="0" Grid.Row="1"
+                             Style="{StaticResource MaterialDesignFloatingHintTextBox}"
                  Margin="60 65 60 0"
                  materialDesign:HintAssist.Hint="Nombres"
                  Text="{Binding Name}"
                  FontSize="12"
                  Foreground="#FF1676D2"
-                 VerticalAlignment="Top" Height="25"/>
+                 VerticalAlignment="Top"/>
                     <TextBox x:Name="TypeUser"
                              Grid.Column="0" Grid.Row="1"
+                             Style="{StaticResource MaterialDesignFloatingHintTextBox}"
                              Margin="60 205 60 0"
                              materialDesign:HintAssist.Hint="Tipo de usuario"
                              Text="{Binding Name}"
                              FontSize="12"
                              Foreground="#FF1676D2"
-                             VerticalAlignment="Top" Height="25"/>
+                             VerticalAlignment="Top"/>
                     <TextBox x:Name="Firstuser"
                  Grid.Column="0" Grid.Row="1"
+                             Style="{StaticResource MaterialDesignFloatingHintTextBox}"
                  Margin="60 100 60 0"
                  materialDesign:HintAssist.Hint="Apellidos"
-                 Text="{Binding Name}"
-                 FontSize="12"
-                 Foreground="#FF1676D2"
-                 VerticalAlignment="Top" Height="25"/>
+                 VerticalAlignment="Top"/>
                     <!-- floating action button with progress -->
-                    <materialDesign:Badged Badge="Recargar Lista" BadgePlacementMode="Bottom" Margin="53,181,312,0" Grid.Column="1" Grid.Row="1" Width="50" Height="50" VerticalAlignment="Top" HorizontalAlignment="Center">
+                    <materialDesign:Badged Badge="Recargar Lista" BadgePlacementMode="Bottom" Margin="53,187,312,0" Grid.Column="1" Grid.Row="1" Width="50" Height="50" VerticalAlignment="Top" HorizontalAlignment="Center">
                         <Button x:Name="Btnactualizar"
                             Style="{StaticResource MaterialDesignFloatingActionButton}"
                             Width="50" Height="50">

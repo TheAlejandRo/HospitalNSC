@@ -11,10 +11,10 @@ Public Class Administrador
     Dim updateuser As String = String.Empty
     Dim modocerrar As Integer = 0
     Dim row As DataRowView
-    Dim conexion As New MySqlConnection("server=192.168.68.73; user=TheAlejandRo; password=Tech.Code; database=dbturnos")
-    Dim conexion1 As New MySqlConnection("server=192.168.68.73; user=TheAlejandRo; password=Tech.Code; database=dbturnos")
-    Dim conexion2 As New MySqlConnection("server=192.168.68.73; user=TheAlejandRo; password=Tech.Code; database=dbturnos")
-    Dim conexion3 As New MySqlConnection("server=192.168.68.73; user=TheAlejandRo; password=Tech.Code; database=dbturnos")
+    Dim conexion As New MySqlConnection("server=" & My.Settings.ipServer & "; user=TheAlejandRo; password=Tech.Code; database=dbturnos")
+    Dim conexion1 As New MySqlConnection("server=" & My.Settings.ipServer & "; user=TheAlejandRo; password=Tech.Code; database=dbturnos")
+    Dim conexion2 As New MySqlConnection("server=" & My.Settings.ipServer & "; user=TheAlejandRo; password=Tech.Code; database=dbturnos")
+    Dim conexion3 As New MySqlConnection("server=" & My.Settings.ipServer & "; user=TheAlejandRo; password=Tech.Code; database=dbturnos")
     Dim consulta As String = String.Empty
     Dim comando As MySqlCommand
     Dim adaptador As MySqlDataAdapter
@@ -323,5 +323,26 @@ Public Class Administrador
             dlgshw.Message.Text = "Error: No cumple con los datos necesarios para eliminar a este usuario"
             DialogHost.Show(dlgshw, "RootDialog")
         End If
+    End Sub
+
+    Private Sub MinWindow_Click(sender As Object, e As RoutedEventArgs) Handles MinWindow.Click
+        Me.WindowState = WindowState.Minimized
+    End Sub
+
+    Private Sub MaxWindow_Click(sender As Object, e As RoutedEventArgs) Handles MaxWindow.Click
+        If Me.WindowState = WindowState.Normal Then
+            IconMax.Kind = PackIconKind.WindowRestore
+            Me.WindowState = WindowState.Maximized
+        Else
+            IconMax.Kind = PackIconKind.WindowMaximize
+            Me.WindowState = WindowState.Normal
+        End If
+    End Sub
+
+    Private Sub CloseWindow_Click(sender As Object, e As RoutedEventArgs) Handles CloseWindow.Click
+        btn_menu.IsChecked = False
+        Dim dlgclshw = New MessageClsDlg
+        dlgclshw.Message.Text = "¿Quieres cerrar el programa?"
+        DialogHost.Show(dlgclshw, "RootDialog")
     End Sub
 End Class

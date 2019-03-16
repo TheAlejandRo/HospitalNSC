@@ -68,17 +68,27 @@
             CornerRadius="0,0,15,15"
             materialDesign:ShadowAssist.ShadowDepth="Depth2"
             Margin="0">
-                        <DockPanel>
+                        <Grid>
                             <ToggleButton x:Name="btn_menu"
                             Style="{StaticResource MaterialDesignHamburgerToggleButton}"
                                           IsChecked="False"
                                   Cursor="Hand"
-                                      Height="23" Width="23"/>
+                                      Height="23" Width="23"
+                                          HorizontalAlignment="Left" VerticalAlignment="Center"/>
                             <TextBlock x:Name="Dr_Title"
                     VerticalAlignment="Center" HorizontalAlignment="Center"
                     Margin="0 0 23 0"
                     Text="Doctor" FontSize="16"/>
-                        </DockPanel>
+                            <Button x:Name="MinWindow" Style="{StaticResource MaterialDesignFloatingActionMiniDarkButton}" Height="20" Width="20" Margin="0 0 50 0" HorizontalAlignment="Right" VerticalAlignment="Top" Background="#FF00B200" BorderBrush="#FF00B200">
+                                <materialDesign:PackIcon Kind="WindowMinimize"/>
+                            </Button>
+                            <Button x:Name="MaxWindow" Style="{StaticResource MaterialDesignFloatingActionMiniDarkButton}" Height="20" Width="20" Margin="0 0 25 0" HorizontalAlignment="Right" VerticalAlignment="Top" Background="DarkGoldenrod" BorderBrush="DarkGoldenrod">
+                                <materialDesign:PackIcon x:Name="IconMax" Kind="WindowMaximize"/>
+                            </Button>
+                            <Button x:Name="CloseWindow" Style="{StaticResource MaterialDesignFloatingActionMiniDarkButton}" Height="20" Width="20" HorizontalAlignment="Right" VerticalAlignment="Top" Background="Red" BorderBrush="Red">
+                                <materialDesign:PackIcon Kind="WindowClose"/>
+                            </Button>
+                        </Grid>
                     </materialDesign:ColorZone>
                 </Border>
                 <materialDesign:Snackbar x:Name="MainSnack"
