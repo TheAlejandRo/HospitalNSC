@@ -6,7 +6,7 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         mc:Ignorable="d"
-        Title="Sala de Espera" Height="990" Width="1760"
+        Title="Sala de Espera" Height="720" Width="1280"
         WindowStyle="None"
         Background="{DynamicResource MaterialDesignPaper}"
         FontFamily="Noto Sans">
@@ -58,10 +58,11 @@
                     <RowDefinition Height="10*"/>
                     <RowDefinition Height="10*"/>
                 </Grid.RowDefinitions>
-                <TextBlock Text="Doctor" Grid.Column="1" Grid.Row="1" Foreground="#FF003AFF" FontSize="40" FontWeight="Bold" VerticalAlignment="Top" TextAlignment="Center" Height="54"/>
-                <TextBlock Text="Tiket" Grid.Column="2" Grid.Row="1" Foreground="#FF003AFF" FontSize="40" FontWeight="Bold" VerticalAlignment="Top" TextAlignment="Center" Height="54"/>
-                <cefsharp:ChromiumWebBrowser x:Name="web_view"  Grid.Row="1" IsEnabled="False" Visibility="Collapsed" AutomationProperties.IsOffscreenBehavior="Onscreen"/>
-                <DataGrid x:Name="Listado_tikets" Margin="0,59,0,0" FontSize="30" HorizontalGridLinesBrush="#FF1976D2" Foreground="#FF003AFF" Grid.Column="1" Focusable="False" CanUserSortColumns="False" CanUserResizeColumns="False" CanUserReorderColumns="False" CanUserDeleteRows="False" CanUserResizeRows="False" CanUserAddRows="False" Grid.Row="1" HeadersVisibility="None" FontStretch="UltraCondensed" FontWeight="SemiBold" RowDetailsVisibilityMode="Collapsed" SelectionUnit="CellOrRowHeader" EnableRowVirtualization="False" Grid.ColumnSpan="2" ColumnWidth="260" MaxColumnWidth="260" IsReadOnly="True" HorizontalScrollBarVisibility="Disabled"/>
+                <TextBlock Text="ATIENDE" Grid.Column="2" Grid.Row="1" Foreground="#FF003AFF" FontSize="32" FontWeight="Bold" VerticalAlignment="Top" TextAlignment="Center" HorizontalAlignment="Center" Margin="0,10,0,0"/>
+                <Border Grid.Column="1" Grid.ColumnSpan="2" BorderBrush="#FF1B79D6" BorderThickness="1" HorizontalAlignment="Center" Height="80" Margin="0,3,0,0" Grid.Row="1" VerticalAlignment="Top" Width="3" CornerRadius="5" Background="#FF1B79D6"/>
+                <TextBlock Text="No. TICKET" Grid.Row="1" Foreground="#FF003AFF" FontSize="32" FontWeight="Bold" VerticalAlignment="Top" TextAlignment="Center" HorizontalAlignment="Center" Margin="0,10,0,0" Width="196" Grid.Column="1" Height="39" TextWrapping="Wrap" TextOptions.TextHintingMode="Animated" LineStackingStrategy="BlockLineHeight"/>
+                <cefsharp:ChromiumWebBrowser x:Name="web_view"  Grid.Row="1" IsEnabled="False"  AutomationProperties.IsOffscreenBehavior="Onscreen"/>
+                <DataGrid x:Name="Listado_tikets" Margin="0,50,0,0" FontSize="30" HorizontalGridLinesBrush="#FF1976D2" Foreground="#FF003AFF" Grid.Column="1" Focusable="False" CanUserSortColumns="False" CanUserResizeColumns="False" CanUserReorderColumns="False" CanUserDeleteRows="False" CanUserResizeRows="False" CanUserAddRows="False" Grid.Row="1" HeadersVisibility="None" FontStretch="UltraCondensed" FontWeight="SemiBold" RowDetailsVisibilityMode="Collapsed" SelectionUnit="CellOrRowHeader" EnableRowVirtualization="False" Grid.ColumnSpan="2" ColumnWidth="260" MaxColumnWidth="260" IsReadOnly="True" HorizontalScrollBarVisibility="Disabled"/>
                 <Grid Grid.Row="2" Grid.ColumnSpan="3">
                     <Grid.Background>
                         <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
@@ -70,8 +71,8 @@
                         </LinearGradientBrush>
                     </Grid.Background>
                     <Image Source="Logo.ico" Width="90" VerticalAlignment="Top" HorizontalAlignment="Center"/>
-                    <Label x:Name="FechaM" Foreground="#FFFFFF" FontSize="70" HorizontalAlignment="Left"/>
-                    <Label x:Name="HoraM" Foreground="#FFFFFF" FontSize="70" HorizontalAlignment="Right"/>
+                    <Label x:Name="FechaM" Foreground="#FFFFFF" FontSize="70" HorizontalAlignment="Left" Background="{x:Null}" FontWeight="Bold" TextOptions.TextFormattingMode="Display" TextOptions.TextHintingMode="Fixed" VerticalAlignment="Center" Margin="10,0,0,0"/>
+                    <Label x:Name="HoraM" Foreground="#FFFFFF" FontSize="70" HorizontalAlignment="Right" VerticalAlignment="Center" Margin="0,0,10,0"/>
                 </Grid>
                 <Canvas Name="ViewingBox" Grid.ColumnSpan="3" Grid.Row="3">
                     <Canvas.Background>
@@ -80,8 +81,8 @@
                             <GradientStop Color="#FF1B2A5C"/>
                         </LinearGradientBrush>
                     </Canvas.Background>
-                    <Label Canvas.Left="1760" Canvas.Bottom="5" Name="BoxOne" FontSize="50" Foreground="White"></Label>
-                    <Label Canvas.Left="1760" Canvas.Bottom="5"  Name="BoxTwo" VerticalAlignment="Top" FontSize="50" Foreground="White"></Label>
+                    <Label Canvas.Left="99999" Canvas.Bottom="5" Name="BoxOne" FontSize="50" Foreground="White"></Label>
+                    <Label Canvas.Left="99999" Canvas.Bottom="5"  Name="BoxTwo" VerticalAlignment="Top" FontSize="50" Foreground="White"></Label>
                 </Canvas>
                 <MediaElement x:Name="OfflineView" Grid.Row="1" Grid.Column="0" IsEnabled="False"  Visibility="Collapsed" SnapsToDevicePixels="True" ScrollViewer.CanContentScroll="True" Margin="-10,0,0,0" Stretch="Uniform" UnloadedBehavior="Manual" Volume="0.05"/>
                 <Image x:Name="Portada" Grid.Row="1" Grid.Column="0" IsEnabled="False" Visibility="Collapsed" Source="Logotipo Hospital Nuestra Señora del Carmen - editable transparent.png"/>

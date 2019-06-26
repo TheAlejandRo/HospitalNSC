@@ -9,7 +9,7 @@ Public Class Login
     Dim Secretaria As New Secretarias
     Dim administrador As New Administrador
     Dim Doctores As New Doctores
-    Dim conexion As New MySqlConnection("server=" & My.Settings.ipServer & "; user=TheAlejandRo; password=Tech.Code; database=dbturnos")
+    Dim conexion As New MySqlConnection(My.Settings.Server)
     Dim consulta As String = String.Empty
     Dim comando As MySqlCommand
     Dim adaptador As MySqlDataAdapter

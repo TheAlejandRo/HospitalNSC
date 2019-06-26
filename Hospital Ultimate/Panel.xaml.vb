@@ -18,17 +18,17 @@ Public Class Panel
     Dim Dtimer As DispatcherTimer = New DispatcherTimer
     Dim WithEvents TiempCall1 As New DispatcherTimer
     Dim WithEvents tiempcall As New DispatcherTimer
-    Dim conexion As New MySqlConnection("server=" & My.Settings.ipServer & "; user=TheAlejandRo; password=Tech.Code; database=dbturnos")
+    Dim conexion As New MySqlConnection(My.Settings.Server)
     Dim consulta As String = String.Empty
     Dim comando As MySqlCommand
     Dim adaptador As MySqlDataAdapter
     Dim tabla As New DataTable
-    Dim conexion1 As New MySqlConnection("server=" & My.Settings.ipServer & "; user=TheAlejandRo; password=Tech.Code; database=dbturnos")
+    Dim conexion1 As New MySqlConnection(My.Settings.Server)
     Dim consulta1 As String = String.Empty
     Dim comando1 As MySqlCommand
     Dim adaptador1 As MySqlDataAdapter
     Dim tabla1 As New DataTable
-    Dim conexion2 As New MySqlConnection("server=" & My.Settings.ipServer & "; user=TheAlejandRo; password=Tech.Code; database=dbturnos")
+    Dim conexion2 As New MySqlConnection(My.Settings.Server)
     Dim consulta2 As String = String.Empty
     Dim comando2 As MySqlCommand
     Dim timecall As Integer = 0
@@ -59,20 +59,25 @@ Public Class Panel
         TiempCall1.Interval = New TimeSpan(0, 0, 1)
         TiempCall1.Start()
 
-        BoxOne.Content = My.Settings.Banner
-        BoxTwo.Content = My.Settings.Banner
+        Dim speed As Double
+
+        If BoxOne.ActualWidth > ViewingBox.ActualWidth Then
+            speed = 0.02
+        Else
+            speed = 0.05
+        End If
 
         dubAnim.From = Me.ActualWidth
-        dubAnim.To = -Me.ActualWidth
-        dubAnim.SpeedRatio = 0.05
+        dubAnim.To = -(BoxOne.ActualWidth * 2)
+        dubAnim.SpeedRatio = speed
         AddHandler dubAnim.Completed, AddressOf dubAnim_Completed
-        Timeline.SetDesiredFrameRate(dubAnim, 320)
+        Timeline.SetDesiredFrameRate(dubAnim, 500)
         BoxOne.BeginAnimation(Canvas.LeftProperty, dubAnim)
 
         dubAnim2.From = Me.ActualWidth
-        dubAnim2.To = -Me.ActualWidth
-        dubAnim2.SpeedRatio = 0.05
-        Timeline.SetDesiredFrameRate(dubAnim2, 320)
+        dubAnim2.To = -(BoxTwo.ActualWidth * 2)
+        dubAnim2.SpeedRatio = speed
+        Timeline.SetDesiredFrameRate(dubAnim2, 500)
         AddHandler dubAnim2.Completed, AddressOf dubAnim2_Completed
 
         AddHandler NewsTimer.Tick, AddressOf NewsTimer_Tick
@@ -85,13 +90,13 @@ Public Class Panel
         Dim BoxTwoLocation As Point = BoxTwo.TranslatePoint(New Point(0, 0), ViewingBox)
 
         If leadText = Texts.BoxOne Then
-            Dim loc As Double = BoxOneLocation.X + Me.ActualWidth
+            Dim loc As Double = BoxOneLocation.X + BoxOne.ActualWidth
             If loc < ViewingBox.ActualWidth / 1.5 Then
                 BoxTwo.BeginAnimation(Canvas.LeftProperty, dubAnim2)
                 NewsTimer.Stop()
             End If
         Else
-            Dim loc As Double = BoxTwoLocation.X + Me.ActualWidth
+            Dim loc As Double = BoxTwoLocation.X + BoxTwo.ActualWidth
             If loc < ViewingBox.ActualWidth / 1.5 Then
                 BoxOne.BeginAnimation(Canvas.LeftProperty, dubAnim)
                 NewsTimer.Stop()
@@ -112,7 +117,7 @@ Public Class Panel
     Private Sub Dtimer_Tick(ByVal sender As Object, ByVal e As EventArgs)
         Try
             conexion.Open()
-            consulta = "SELECT Doctor, Tiket FROM pacientes WHERE estado_paciente='1'"
+            consulta = "SELECT Tiket, Doctor FROM pacientes WHERE estado_paciente='1'"
             comando = New MySqlCommand(consulta, conexion)
             adaptador = New MySqlDataAdapter(comando)
             tabla.Clear()
@@ -172,12 +177,12 @@ Public Class Panel
         TiempCall1.Stop()
         clientCall.Header.Content = tabla1.Rows(0)(0).ToString
         clientCall.CodPac.Text = tabla1.Rows(0)(1).ToString
-        If timecall = 2 Then
+        If timecall = 1 Then
             DialogHost.Show(clientCall, "RootClient")
-        ElseIf timecall = 5 Then
+        ElseIf timecall = 3 Then
             Try
                 conexion2.Open()
-                consulta2 = "UPDATE pacientes SET CallSpeak='0' WHERE tiket='" & clientCall.CodPac.Text & "' AND Doctor='" & clientCall.Header.Content & "'"
+                consulta2 = "UPDATE pacientes SET CallSpeak='0' WHERE tiket='" & clientCall.CodPac.Text & "' AND Doctor='" & clientCall.Header.Content & "' AND IDcliente='" & tabla1.Rows(0)(2).ToString & "'"
                 comando2 = New MySqlCommand(consulta2, conexion2)
                 comando2.ExecuteNonQuery()
             Catch ex As Exception
@@ -196,7 +201,7 @@ Public Class Panel
     Private Sub TiempCall1_Tick(sender As Object, e As EventArgs) Handles TiempCall1.Tick
         Try
             conexion1.Open()
-            consulta1 = "SELECT Doctor, Tiket FROM pacientes WHERE estado_paciente='1' AND CallSpeak='1'"
+            consulta1 = "SELECT Doctor, Tiket, IDcliente FROM pacientes WHERE estado_paciente='1' AND CallSpeak='1'"
             comando1 = New MySqlCommand(consulta1, conexion1)
             adaptador1 = New MySqlDataAdapter(comando1)
             tabla1.Clear()

@@ -3,7 +3,7 @@ Imports MySql.Data.MySqlClient
 
 Public Class Autentication
 
-    Dim conexion As New MySqlConnection("server=" & My.Settings.ipServer & " user=TheAlejandRo; password=Tech.Code; database=dbturnos")
+    Dim conexion As New MySqlConnection(My.Settings.Server)
     Dim consulta As String = String.Empty
     Dim comando As MySqlCommand
     Dim adaptador As MySqlDataAdapter

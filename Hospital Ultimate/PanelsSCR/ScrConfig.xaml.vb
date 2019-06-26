@@ -93,5 +93,7 @@ Public Class ScrConfig
         BannerText.Clear()
         My.Settings.Banner = "Hospital Nuestra Señora del Carmen"
         My.Settings.Save()
+        My.Windows.Panel.BoxOne.Content = My.Settings.Banner
+        My.Windows.Panel.BoxTwo.Content = My.Settings.Banner
     End Sub
 End Class

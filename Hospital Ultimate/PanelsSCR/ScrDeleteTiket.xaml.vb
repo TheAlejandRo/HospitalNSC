@@ -6,7 +6,7 @@ Public Class ScrDeleteTiket
 
     Dim fila As Integer = -1
     Dim row As DataRowView
-    Dim conexion As New MySqlConnection("server=" & My.Settings.ipServer & "; user=TheAlejandRo; password=Tech.Code; database=dbturnos")
+    Dim conexion As New MySqlConnection(My.Settings.Server)
     Dim consulta As String = String.Empty
     Dim comando As MySqlCommand
     Dim adaptador As MySqlDataAdapter

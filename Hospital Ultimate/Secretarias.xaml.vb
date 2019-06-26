@@ -8,8 +8,13 @@ Public Class Secretarias
 
     Dim formadecerrar As Integer = 0
     Dim WithEvents Ds As New DispatcherTimer
-    Dim conexion As New MySqlConnection("server=" & My.Settings.ipServer & "; user=TheAlejandRo; password=Tech.Code; database=dbturnos")
-    Dim conexion1 As New MySqlConnection("server=" & My.Settings.ipServer & "; user=TheAlejandRo; password=Tech.Code; database=dbturnos")
+    Dim conexion As New MySqlConnection(My.Settings.Server)
+    Dim conexion1 As New MySqlConnection(My.Settings.Server)
+    Dim conexion2 As New MySqlConnection(My.Settings.Server)
+    Dim consulta1 As String = String.Empty
+    Dim comando1 As MySqlCommand
+    Dim adaptador1 As MySqlDataAdapter
+    Dim tabla1 As New DataTable
     Dim consulta As String = String.Empty
     Dim comando As MySqlCommand
     Dim adaptador As MySqlDataAdapter
@@ -54,6 +59,8 @@ Public Class Secretarias
     Private Sub pnl_espera_Selected(sender As Object, e As RoutedEventArgs) Handles pnl_espera.Selected
         btn_menu.IsChecked = False
         Dim panel As New Panel
+        panel.BoxOne.Content = My.Settings.Banner
+        panel.BoxTwo.Content = My.Settings.Banner
         panel.Show()
     End Sub
 
@@ -684,9 +691,233 @@ Public Class Secretarias
         End Try
     End Sub
 
+    Private Sub TiketsDR()
+        If Doc1.IsEnabled = True Then
+            Try
+                conexion2.Open()
+                consulta1 = "SELECT Tiket FROM pacientes WHERE estado_paciente='1' AND idDoctor='6'"
+                comando1 = New MySqlCommand(consulta1, conexion2)
+                adaptador1 = New MySqlDataAdapter(comando1)
+                tabla1.Clear()
+                adaptador1.Fill(tabla1)
+                If tabla1.Rows.Count = 1 Then
+                    TiketAct1.Content = tabla1.Rows(0)(0).ToString()
+                    BSig1.IsEnabled = True
+                ElseIf tabla1.Rows.Count <> 2 Then
+                    TiketAct1.Content = "Sin paciente en sala"
+                    BSig1.IsEnabled = False
+                End If
+            Catch ex As Exception
+                MsgBox(ex.Message)
+                Log.e("Error con Excepcion y Traza", ex, New StackFrame(True))
+            Finally
+                conexion2.Close()
+            End Try
+        End If
+        If Doc2.IsEnabled = True Then
+            Try
+                conexion2.Open()
+                consulta1 = "SELECT Tiket FROM pacientes WHERE estado_paciente='1' AND idDoctor='7'"
+                comando1 = New MySqlCommand(consulta1, conexion2)
+                adaptador1 = New MySqlDataAdapter(comando1)
+                tabla1.Clear()
+                adaptador1.Fill(tabla1)
+                If tabla1.Rows.Count = 1 Then
+                    TiketAct2.Content = tabla1.Rows(0)(0).ToString()
+                    BSig2.IsEnabled = True
+                ElseIf tabla1.Rows.Count <> 2 Then
+                    TiketAct2.Content = "Sin paciente en sala"
+                    BSig2.IsEnabled = False
+                End If
+            Catch ex As Exception
+                MsgBox(ex.Message)
+                Log.e("Error con Excepcion y Traza", ex, New StackFrame(True))
+            Finally
+                conexion2.Close()
+            End Try
+        End If
+        If Doc3.IsEnabled = True Then
+            Try
+                conexion2.Open()
+                consulta1 = "SELECT Tiket FROM pacientes WHERE estado_paciente='1' AND idDoctor='8'"
+                comando1 = New MySqlCommand(consulta1, conexion2)
+                adaptador1 = New MySqlDataAdapter(comando1)
+                tabla1.Clear()
+                adaptador1.Fill(tabla1)
+                If tabla1.Rows.Count = 1 Then
+                    TiketAct3.Content = tabla1.Rows(0)(0).ToString()
+                    BSig3.IsEnabled = True
+                ElseIf tabla1.Rows.Count <> 2 Then
+                    TiketAct3.Content = "Sin paciente en sala"
+                    BSig3.IsEnabled = False
+                End If
+            Catch ex As Exception
+                MsgBox(ex.Message)
+                Log.e("Error con Excepcion y Traza", ex, New StackFrame(True))
+            Finally
+                conexion2.Close()
+            End Try
+        End If
+        If Doc4.IsEnabled = True Then
+            Try
+                conexion2.Open()
+                consulta1 = "SELECT Tiket FROM pacientes WHERE estado_paciente='1' AND idDoctor='9'"
+                comando1 = New MySqlCommand(consulta1, conexion2)
+                adaptador1 = New MySqlDataAdapter(comando1)
+                tabla1.Clear()
+                adaptador1.Fill(tabla1)
+                If tabla1.Rows.Count = 1 Then
+                    TiketAct4.Content = tabla1.Rows(0)(0).ToString()
+                    BSig4.IsEnabled = True
+                ElseIf tabla1.Rows.Count <> 2 Then
+                    TiketAct4.Content = "Sin paciente en sala"
+                    BSig4.IsEnabled = False
+                End If
+            Catch ex As Exception
+                MsgBox(ex.Message)
+                Log.e("Error con Excepcion y Traza", ex, New StackFrame(True))
+            Finally
+                conexion2.Close()
+            End Try
+        End If
+        If Doc5.IsEnabled = True Then
+            Try
+                conexion2.Open()
+                consulta1 = "SELECT Tiket FROM pacientes WHERE estado_paciente='1' AND idDoctor='10'"
+                comando1 = New MySqlCommand(consulta1, conexion2)
+                adaptador1 = New MySqlDataAdapter(comando1)
+                tabla1.Clear()
+                adaptador1.Fill(tabla1)
+                If tabla1.Rows.Count = 1 Then
+                    TiketAct5.Content = tabla1.Rows(0)(0).ToString()
+                    BSig5.IsEnabled = True
+                ElseIf tabla1.Rows.Count <> 1 Then
+                    TiketAct5.Content = "Sin paciente en sala"
+                    BSig5.IsEnabled = False
+                End If
+            Catch ex As Exception
+                MsgBox(ex.Message)
+                Log.e("Error con Excepcion y Traza", ex, New StackFrame(True))
+            Finally
+                conexion2.Close()
+            End Try
+        End If
+        If Doc6.IsEnabled = True Then
+            Try
+                conexion2.Open()
+                consulta1 = "SELECT Tiket FROM pacientes WHERE estado_paciente='1' AND idDoctor='11'"
+                comando1 = New MySqlCommand(consulta1, conexion2)
+                adaptador1 = New MySqlDataAdapter(comando1)
+                tabla1.Clear()
+                adaptador1.Fill(tabla1)
+                If tabla1.Rows.Count = 1 Then
+                    TiketAct6.Content = tabla1.Rows(0)(0).ToString()
+                    BSig6.IsEnabled = True
+                ElseIf tabla1.Rows.Count <> 2 Then
+                    TiketAct6.Content = "Sin paciente en sala"
+                    BSig6.IsEnabled = False
+                End If
+            Catch ex As Exception
+                MsgBox(ex.Message)
+                Log.e("Error con Excepcion y Traza", ex, New StackFrame(True))
+            Finally
+                conexion2.Close()
+            End Try
+        End If
+        If Doc7.IsEnabled = True Then
+            Try
+                conexion2.Open()
+                consulta1 = "SELECT Tiket FROM pacientes WHERE estado_paciente='1' AND idDoctor='12'"
+                comando1 = New MySqlCommand(consulta1, conexion2)
+                adaptador1 = New MySqlDataAdapter(comando1)
+                tabla1.Clear()
+                adaptador1.Fill(tabla1)
+                If tabla1.Rows.Count = 1 Then
+                    TiketAct7.Content = tabla1.Rows(0)(0).ToString()
+                    BSig7.IsEnabled = True
+                ElseIf tabla1.Rows.Count <> 2 Then
+                    TiketAct7.Content = "Sin paciente en sala"
+                    BSig7.IsEnabled = False
+                End If
+            Catch ex As Exception
+                MsgBox(ex.Message)
+                Log.e("Error con Excepcion y Traza", ex, New StackFrame(True))
+            Finally
+                conexion2.Close()
+            End Try
+        End If
+        If Doc8.IsEnabled = True Then
+            Try
+                conexion2.Open()
+                consulta1 = "SELECT Tiket FROM pacientes WHERE estado_paciente='1' AND idDoctor='13'"
+                comando1 = New MySqlCommand(consulta1, conexion2)
+                adaptador1 = New MySqlDataAdapter(comando1)
+                tabla1.Clear()
+                adaptador1.Fill(tabla1)
+                If tabla1.Rows.Count = 1 Then
+                    TiketAct8.Content = tabla1.Rows(0)(0).ToString()
+                    BSig8.IsEnabled = True
+                ElseIf tabla1.Rows.Count <> 2 Then
+                    TiketAct8.Content = "Sin paciente en sala"
+                    BSig8.IsEnabled = False
+                End If
+            Catch ex As Exception
+                MsgBox(ex.Message)
+                Log.e("Error con Excepcion y Traza", ex, New StackFrame(True))
+            Finally
+                conexion2.Close()
+            End Try
+        End If
+        If Doc9.IsEnabled = True Then
+            Try
+                conexion2.Open()
+                consulta1 = "SELECT Tiket FROM pacientes WHERE estado_paciente='1' AND idDoctor='14'"
+                comando1 = New MySqlCommand(consulta1, conexion2)
+                adaptador1 = New MySqlDataAdapter(comando1)
+                tabla1.Clear()
+                adaptador1.Fill(tabla1)
+                If tabla1.Rows.Count = 1 Then
+                    TiketAct9.Content = tabla1.Rows(0)(0).ToString()
+                    BSig9.IsEnabled = True
+                ElseIf tabla1.Rows.Count <> 2 Then
+                    TiketAct9.Content = "Sin paciente en sala"
+                    BSig9.IsEnabled = False
+                End If
+            Catch ex As Exception
+                MsgBox(ex.Message)
+                Log.e("Error con Excepcion y Traza", ex, New StackFrame(True))
+            Finally
+                conexion2.Close()
+            End Try
+        End If
+        If Doc10.IsEnabled = True Then
+            Try
+                conexion2.Open()
+                consulta1 = "SELECT Tiket FROM pacientes WHERE estado_paciente='1' AND idDoctor='15'"
+                comando1 = New MySqlCommand(consulta1, conexion2)
+                adaptador1 = New MySqlDataAdapter(comando1)
+                tabla1.Clear()
+                adaptador1.Fill(tabla1)
+                If tabla1.Rows.Count = 1 Then
+                    TiketAct10.Content = tabla1.Rows(0)(0).ToString()
+                    BSig10.IsEnabled = True
+                ElseIf tabla1.Rows.Count <> 2 Then
+                    TiketAct10.Content = "Sin paciente en sala"
+                    BSig10.IsEnabled = False
+                End If
+            Catch ex As Exception
+                MsgBox(ex.Message)
+                Log.e("Error con Excepcion y Traza", ex, New StackFrame(True))
+            Finally
+                conexion2.Close()
+            End Try
+        End If
+    End Sub
+
     Private Sub Ds_Tick(sender As Object, e As EventArgs) Handles Ds.Tick
         DRnames()
         ActiveDR()
+        TiketsDR()
     End Sub
 
     Private Sub DR1_Click(sender As Object, e As RoutedEventArgs) Handles DR1.Click

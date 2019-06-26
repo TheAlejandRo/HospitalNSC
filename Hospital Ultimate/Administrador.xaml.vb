@@ -11,10 +11,10 @@ Public Class Administrador
     Dim updateuser As String = String.Empty
     Dim modocerrar As Integer = 0
     Dim row As DataRowView
-    Dim conexion As New MySqlConnection("server=" & My.Settings.ipServer & "; user=TheAlejandRo; password=Tech.Code; database=dbturnos")
-    Dim conexion1 As New MySqlConnection("server=" & My.Settings.ipServer & "; user=TheAlejandRo; password=Tech.Code; database=dbturnos")
-    Dim conexion2 As New MySqlConnection("server=" & My.Settings.ipServer & "; user=TheAlejandRo; password=Tech.Code; database=dbturnos")
-    Dim conexion3 As New MySqlConnection("server=" & My.Settings.ipServer & "; user=TheAlejandRo; password=Tech.Code; database=dbturnos")
+    Dim conexion As New MySqlConnection(My.Settings.Server)
+    Dim conexion1 As New MySqlConnection(My.Settings.Server)
+    Dim conexion2 As New MySqlConnection(My.Settings.Server)
+    Dim conexion3 As New MySqlConnection(My.Settings.Server)
     Dim consulta As String = String.Empty
     Dim comando As MySqlCommand
     Dim adaptador As MySqlDataAdapter
