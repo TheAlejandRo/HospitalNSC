@@ -7,6 +7,7 @@ Public Class Login
 
     Dim modocerrar As Integer = 0
     Dim Secretaria As New Secretarias
+    Dim Panel As New Panel
     Dim administrador As New Administrador
     Dim Doctores As New Doctores
     Dim conexion As New MySqlConnection(My.Settings.Server)

@@ -97,7 +97,7 @@ Public Class Drpanel2
                 Dim estadopac As String = String.Empty
                 Dim r As DataRowView
                 r = list_pacientes.SelectedItem
-                estadopac = "UPDATE pacientes SET estado_paciente='1', CallSpeak='1' WHERE tiket='" & paciente.Text & "' AND idDoctor='7'" & r.Row.ItemArray(1).ToString & "'"
+                estadopac = "UPDATE pacientes SET estado_paciente='1', CallSpeak='1' WHERE tiket='" & paciente.Text & "' AND idDoctor='7' AND IDcliente='" & r.Row.ItemArray(1).ToString & "'"
                 comando = New MySqlCommand(estadopac, conexion1)
                 comando.ExecuteNonQuery()
             Catch ex As Exception
@@ -139,7 +139,7 @@ Public Class Drpanel2
         Try
             conexion.Open()
             Dim estadopaciente As String = String.Empty
-            estadopaciente = "UPDATE pacientes SET estado_paciente='2' WHERE tiket='" & paciente.Text & "'  AND idDoctor='7'" & tabla.Rows(0)(1).ToString & "'"
+            estadopaciente = "UPDATE pacientes SET estado_paciente='2' WHERE tiket='" & paciente.Text & "' AND idDoctor='7' AND IDcliente='" & tabla.Rows(0)(1).ToString & "'"
             comando = New MySqlCommand(estadopaciente, conexion)
             comando.ExecuteNonQuery()
         Catch ex As Exception
@@ -154,7 +154,7 @@ Public Class Drpanel2
         Try
             conexion1.Open()
             Dim estadopac As String = String.Empty
-            estadopac = "UPDATE pacientes SET estado_paciente='1', CallSpeak='1' WHERE tiket='" & paciente.Text & "'  AND idDoctor='7'" & tabla.Rows(0)(1).ToString & "'"
+            estadopac = "UPDATE pacientes SET estado_paciente='1', CallSpeak='1' WHERE tiket='" & paciente.Text & "' AND idDoctor='7' AND IDcliente='" & tabla.Rows(0)(1).ToString & "'"
             comando = New MySqlCommand(estadopac, conexion1)
             comando.ExecuteNonQuery()
         Catch ex As Exception

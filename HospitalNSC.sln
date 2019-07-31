@@ -9,16 +9,19 @@ Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
 		Debug|x86 = Debug|x86
+		Hospital Ultimate|Any CPU = Hospital Ultimate|Any CPU
+		Hospital Ultimate|x86 = Hospital Ultimate|x86
 		Release|Any CPU = Release|Any CPU
 		Release|x86 = Release|x86
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{AA6119BC-3F73-45BF-8190-3BE4C59856B9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{AA6119BC-3F73-45BF-8190-3BE4C59856B9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AA6119BC-3F73-45BF-8190-3BE4C59856B9}.Debug|Any CPU.ActiveCfg = Debug|x86
 		{AA6119BC-3F73-45BF-8190-3BE4C59856B9}.Debug|x86.ActiveCfg = Debug|x86
 		{AA6119BC-3F73-45BF-8190-3BE4C59856B9}.Debug|x86.Build.0 = Debug|x86
-		{AA6119BC-3F73-45BF-8190-3BE4C59856B9}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{AA6119BC-3F73-45BF-8190-3BE4C59856B9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{AA6119BC-3F73-45BF-8190-3BE4C59856B9}.Hospital Ultimate|Any CPU.ActiveCfg = Hospital Ultimate|x86
+		{AA6119BC-3F73-45BF-8190-3BE4C59856B9}.Hospital Ultimate|x86.ActiveCfg = Debug|x86
+		{AA6119BC-3F73-45BF-8190-3BE4C59856B9}.Hospital Ultimate|x86.Build.0 = Debug|x86
+		{AA6119BC-3F73-45BF-8190-3BE4C59856B9}.Release|Any CPU.ActiveCfg = Release|x86
 		{AA6119BC-3F73-45BF-8190-3BE4C59856B9}.Release|x86.ActiveCfg = Release|x86
 		{AA6119BC-3F73-45BF-8190-3BE4C59856B9}.Release|x86.Build.0 = Release|x86
 	EndGlobalSection

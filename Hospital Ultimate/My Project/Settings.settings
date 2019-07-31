@@ -21,7 +21,7 @@
       <Value Profile="(Default)">Hospital Nuestra Señora del Carmen Cobán Alta Verapaz</Value>
     </Setting>
     <Setting Name="Server" Type="System.String" Scope="Application">
-      <Value Profile="(Default)">server=192.168.0.9; user=""; password=HospitalTurnos.app; database=dbturnos</Value>
+      <Value Profile="(Default)">server=192.168.0.7; user=""; password=HospitalTurnos.app; database=dbturnos</Value>
     </Setting>
   </Settings>
 </SettingsFile>

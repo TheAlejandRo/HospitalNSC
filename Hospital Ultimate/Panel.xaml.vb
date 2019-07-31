@@ -20,9 +20,11 @@ Public Class Panel
     Dim WithEvents tiempcall As New DispatcherTimer
     Dim conexion As New MySqlConnection(My.Settings.Server)
     Dim consulta As String = String.Empty
+    Dim consultaC As String = String.Empty
     Dim comando As MySqlCommand
     Dim adaptador As MySqlDataAdapter
     Dim tabla As New DataTable
+    Dim tablaC As New DataTable
     Dim conexion1 As New MySqlConnection(My.Settings.Server)
     Dim consulta1 As String = String.Empty
     Dim comando1 As MySqlCommand
@@ -31,6 +33,8 @@ Public Class Panel
     Dim conexion2 As New MySqlConnection(My.Settings.Server)
     Dim consulta2 As String = String.Empty
     Dim comando2 As MySqlCommand
+    Dim comandoC As MySqlCommand
+    Dim adaptadorC As MySqlDataAdapter
     Dim timecall As Integer = 0
 
     Private Sub win_mov_MouseLeftButtonDown(sender As Object, e As MouseButtonEventArgs) Handles win_mov.MouseLeftButtonDown
@@ -117,12 +121,18 @@ Public Class Panel
     Private Sub Dtimer_Tick(ByVal sender As Object, ByVal e As EventArgs)
         Try
             conexion.Open()
-            consulta = "SELECT Tiket, Doctor FROM pacientes WHERE estado_paciente='1'"
+            consulta = "SELECT Tiket FROM pacientes WHERE estado_paciente='1'"
+            consultaC = "SELECT Doctor FROM pacientes WHERE estado_paciente='1'"
             comando = New MySqlCommand(consulta, conexion)
+            comandoC = New MySqlCommand(consultaC, conexion)
             adaptador = New MySqlDataAdapter(comando)
+            adaptadorC = New MySqlDataAdapter(comandoC)
             tabla.Clear()
+            tablaC.Clear()
             adaptador.Fill(tabla)
+            adaptadorC.Fill(tablaC)
             Listado_tikets.ItemsSource = tabla.DefaultView
+            Listado_tikets_Copy.ItemsSource = tablaC.DefaultView
         Catch ex As Exception
             MessageBox.Show(ex.Message)
             Log.e("Error con excepción y traza", ex, New StackFrame(True))
@@ -136,7 +146,6 @@ Public Class Panel
     Private Sub ModoVisual()
         If My.Settings.ModeView = 1 Then
             web_view.IsEnabled = True
-            web_view.Visibility = Visibility.Visible
             If My.Settings.URLvideo <> "" Then
                 web_view.Address = My.Settings.URLvideo
             Else

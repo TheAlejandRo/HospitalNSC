@@ -101,7 +101,7 @@ Public Class Drpanel10
                 Dim estadopac As String = String.Empty
                 Dim r As DataRowView
                 r = list_pacientes.SelectedItem
-                estadopac = "UPDATE pacientes SET estado_paciente='1', CallSpeak='1' WHERE tiket='" & paciente.Text & "' AND idDoctor='15'" & r.Row.ItemArray(1).ToString & "'"
+                estadopac = "UPDATE pacientes SET estado_paciente='1', CallSpeak='1' WHERE tiket='" & paciente.Text & "' AND idDoctor='15' AND IDcliente='" & r.Row.ItemArray(1).ToString & "'"
                 comando = New MySqlCommand(estadopac, conexion1)
                 comando.ExecuteNonQuery()
             Catch ex As Exception

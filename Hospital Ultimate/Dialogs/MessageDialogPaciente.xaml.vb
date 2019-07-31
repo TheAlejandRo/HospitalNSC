@@ -16,18 +16,20 @@ Public Class MessageDialogPaciente
         voz.Volume = 100
         voz.Rate = -2
         voz.SelectVoiceByHints(VoiceGender.NotSet, VoiceAge.NotSet, 0, New Globalization.CultureInfo("es-ES"))
-        voz.Speak("Paciente con el Tiquet")
+        voz.Speak("Ticket del paciente...")
         voz.SelectVoiceByHints(VoiceGender.NotSet, VoiceAge.NotSet, 0, New Globalization.CultureInfo("es-ES"))
+        voz.Rate = -3
         voz.Speak(CodPac.Text)
         voz.SelectVoiceByHints(VoiceGender.NotSet, VoiceAge.NotSet, 0, New Globalization.CultureInfo("es-ES"))
-        voz.Speak("Pase a la clínica del doctor" + Header.Content)
+        voz.Rate = -2
+        voz.Speak("Le atenderán en la clínica DE...")
+        voz.SelectVoiceByHints(VoiceGender.NotSet, VoiceAge.NotSet, 12, New Globalization.CultureInfo("es-ES"))
+        voz.Rate = -3
+        voz.Speak(Header.Content)
     End Sub
 
     Private Sub tiemp_Tick(sender As Object, e As EventArgs) Handles tiemp.Tick
-        tiempejec += 1
-        If tiempejec = 1 Then
-            SpeakVoice()
-            tiemp.Stop()
-        End If
+        SpeakVoice()
+        tiemp.Stop()
     End Sub
 End Class
